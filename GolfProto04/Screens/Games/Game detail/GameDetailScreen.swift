@@ -168,16 +168,18 @@ struct GameDetailScreen: View {
                             Button {
                                 UpdateCompetitorTeam(competitor: competitor, value: 1)
                                 
-                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
-                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
-                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
-                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
+                                addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
                                 
-                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-                                
-                                let manager = CoreDataManager.shared
-                                manager.save()
+//                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
+//                               // addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
+//
+//                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
+//
+//                                let manager = CoreDataManager.shared
+//                                manager.save()
                                 needsRefresh.toggle()
                                 gameListVM.getAllGames()
                                 gameListVM.getAllCompetitors()
@@ -196,17 +198,18 @@ struct GameDetailScreen: View {
                         .swipeActions(edge: .leading,allowsFullSwipe: false) {
                             Button {
                                 UpdateCompetitorTeam(competitor: competitor, value: 2)
-                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
-                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
-                                
-                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
-                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
-                                
-                                
-                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-                                
-                                let manager = CoreDataManager.shared
-                                manager.save()
+                                addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
+//                                
+//                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
+//                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
+//                                
+//                                
+//                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
+//                                
+//                                let manager = CoreDataManager.shared
+//                                manager.save()
                                 needsRefresh.toggle()
                                 gameListVM.getAllGames()
                                 gameListVM.getAllCompetitors()

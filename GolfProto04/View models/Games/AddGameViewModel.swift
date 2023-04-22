@@ -47,6 +47,18 @@ class AddGameViewModel: ObservableObject {
     
     
     @Published var newTeeBox: TeeBox = TeeBox()
+    
+    
+    func AssignHandicapsAndShots(game: Game, currentGF: CurrentGameFormat) {
+        AssignPlayingHandicaps(game: game, currentGF: currentGF)
+        AssignTeamPlayingHandicap(game: game, currentGF: currentGF)
+        AssignExtraShots(game: game, currentGF: currentGF)
+        AssignTeamExtraShots(game: game, currentGF: currentGF)
+        AssignShotsReceived(game: game, currentGF: currentGF)
+        let manager = CoreDataManager.shared
+        manager.save()
+    }
+    
 
     func AssignCompetitorTeams(game: Game, currentGF: CurrentGameFormat) {
         switch currentGF.assignTeamGrouping {

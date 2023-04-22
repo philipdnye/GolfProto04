@@ -8,17 +8,163 @@
 
 /* Begin PBXBuildFile section */
 		D482377B29F2F6E20029ECBF /* GolfProto04App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482377A29F2F6E20029ECBF /* GolfProto04App.swift */; };
-		D482377D29F2F6E20029ECBF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482377C29F2F6E20029ECBF /* ContentView.swift */; };
 		D482377F29F2F6E30029ECBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D482377E29F2F6E30029ECBF /* Assets.xcassets */; };
 		D482378229F2F6E30029ECBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D482378129F2F6E30029ECBF /* Preview Assets.xcassets */; };
+		D482378929F2F70C0029ECBF /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482378829F2F70C0029ECBF /* CoreDataManager.swift */; };
+		D482378C29F2F7740029ECBF /* GolfDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D482378A29F2F7740029ECBF /* GolfDataModel.xcdatamodeld */; };
+		D482379029F2F83A0029ECBF /* UIColorTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482378E29F2F83A0029ECBF /* UIColorTransformer.swift */; };
+		D482379129F2F83A0029ECBF /* UIImageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482378F29F2F83A0029ECBF /* UIImageTransformer.swift */; };
+		D482379429F2F8480029ECBF /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379329F2F8480029ECBF /* ImagePicker.swift */; };
+		D482379729F2F85A0029ECBF /* Bespoke colours.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379629F2F85A0029ECBF /* Bespoke colours.swift */; };
+		D482379E29F2F8630029ECBF /* Extensions_TeeBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379929F2F8630029ECBF /* Extensions_TeeBox.swift */; };
+		D482379F29F2F8630029ECBF /* Extensions_Competitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379A29F2F8630029ECBF /* Extensions_Competitor.swift */; };
+		D48237A029F2F8630029ECBF /* Extensions_String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379B29F2F8630029ECBF /* Extensions_String.swift */; };
+		D48237A129F2F8630029ECBF /* Extensions_Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379C29F2F8630029ECBF /* Extensions_Player.swift */; };
+		D48237A229F2F8630029ECBF /* Extensions_Club.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482379D29F2F8630029ECBF /* Extensions_Club.swift */; };
+		D48237A729F31B290029ECBF /* Club+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237A529F31B290029ECBF /* Club+CoreDataClass.swift */; };
+		D48237A829F31B290029ECBF /* Club+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237A629F31B290029ECBF /* Club+CoreDataProperties.swift */; };
+		D48237AB29F31B670029ECBF /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */; };
+		D48237AC29F31B670029ECBF /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */; };
+		D48237AF29F31BA20029ECBF /* TeeBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */; };
+		D48237B029F31BA20029ECBF /* TeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */; };
+		D48237B229F31C2C0029ECBF /* GameFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B129F31C2C0029ECBF /* GameFormats.swift */; };
+		D48237B529F31E420029ECBF /* Extensions_HandicapArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B429F31E420029ECBF /* Extensions_HandicapArray.swift */; };
+		D48237B929F31EE10029ECBF /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B729F31EE10029ECBF /* Game+CoreDataClass.swift */; };
+		D48237BA29F31EE10029ECBF /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B829F31EE10029ECBF /* Game+CoreDataProperties.swift */; };
+		D48237BD29F31F170029ECBF /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */; };
+		D48237BE29F31F170029ECBF /* Course+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237BC29F31F170029ECBF /* Course+CoreDataProperties.swift */; };
+		D48237CE29F3B53F0029ECBF /* EditClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C329F3B53F0029ECBF /* EditClubViewModel.swift */; };
+		D48237CF29F3B53F0029ECBF /* EditTeeBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C429F3B53F0029ECBF /* EditTeeBoxViewModel.swift */; };
+		D48237D029F3B53F0029ECBF /* AddCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C529F3B53F0029ECBF /* AddCourseViewModel.swift */; };
+		D48237D129F3B53F0029ECBF /* CourseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C629F3B53F0029ECBF /* CourseListViewModel.swift */; };
+		D48237D229F3B53F0029ECBF /* ClubListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C729F3B53F0029ECBF /* ClubListViewModel.swift */; };
+		D48237D329F3B53F0029ECBF /* EditCourseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C829F3B53F0029ECBF /* EditCourseViewModel.swift */; };
+		D48237D429F3B53F0029ECBF /* AddTeeBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237C929F3B53F0029ECBF /* AddTeeBoxViewModel.swift */; };
+		D48237D529F3B53F0029ECBF /* AddHoleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237CA29F3B53F0029ECBF /* AddHoleViewModel.swift */; };
+		D48237D629F3B53F0029ECBF /* TeeBoxListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237CB29F3B53F0029ECBF /* TeeBoxListViewModel.swift */; };
+		D48237D729F3B53F0029ECBF /* HoleListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237CC29F3B53F0029ECBF /* HoleListViewModel.swift */; };
+		D48237D829F3B53F0029ECBF /* AddEditClubViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237CD29F3B53F0029ECBF /* AddEditClubViewModel.swift */; };
+		D48237DE29F3B5500029ECBF /* PlayerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237DA29F3B5500029ECBF /* PlayerListViewModel.swift */; };
+		D48237DF29F3B5500029ECBF /* AddHandicapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237DB29F3B5500029ECBF /* AddHandicapViewModel.swift */; };
+		D48237E029F3B5500029ECBF /* AddPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237DC29F3B5500029ECBF /* AddPlayerViewModel.swift */; };
+		D48237E129F3B5500029ECBF /* HandicapListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237DD29F3B5500029ECBF /* HandicapListViewModel.swift */; };
+		D48237F829F3B5850029ECBF /* CourseListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237E429F3B5850029ECBF /* CourseListScreen.swift */; };
+		D48237F929F3B5850029ECBF /* EditCourseScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237E529F3B5850029ECBF /* EditCourseScreen.swift */; };
+		D48237FA29F3B5850029ECBF /* AddCoursesScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237E629F3B5850029ECBF /* AddCoursesScreen.swift */; };
+		D48237FB29F3B5850029ECBF /* CourseListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237E729F3B5850029ECBF /* CourseListRowItem.swift */; };
+		D48237FC29F3B5850029ECBF /* EditTeeBoxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237E929F3B5850029ECBF /* EditTeeBoxScreen.swift */; };
+		D48237FD29F3B5850029ECBF /* TeeBoxListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237EA29F3B5850029ECBF /* TeeBoxListScreen.swift */; };
+		D48237FE29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237EB29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift */; };
+		D48237FF29F3B5850029ECBF /* TeeBoxListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237EC29F3B5850029ECBF /* TeeBoxListRowItem.swift */; };
+		D482380029F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237ED29F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift */; };
+		D482380129F3B5850029ECBF /* AddTeeBoxScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237EE29F3B5850029ECBF /* AddTeeBoxScreen.swift */; };
+		D482380229F3B5850029ECBF /* HolesLayout9.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F029F3B5850029ECBF /* HolesLayout9.swift */; };
+		D482380329F3B5850029ECBF /* HoleListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F129F3B5850029ECBF /* HoleListScreen.swift */; };
+		D482380429F3B5850029ECBF /* HolesLayoutTotals.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F229F3B5850029ECBF /* HolesLayoutTotals.swift */; };
+		D482380529F3B5850029ECBF /* ClubListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F429F3B5850029ECBF /* ClubListRowItem.swift */; };
+		D482380629F3B5850029ECBF /* EditClubScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F529F3B5850029ECBF /* EditClubScreen.swift */; };
+		D482380729F3B5850029ECBF /* ClubListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F629F3B5850029ECBF /* ClubListScreen.swift */; };
+		D482380829F3B5850029ECBF /* AddClubScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237F729F3B5850029ECBF /* AddClubScreen.swift */; };
+		D482380F29F3B5A20029ECBF /* PlayerListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482380A29F3B5A20029ECBF /* PlayerListScreen.swift */; };
+		D482381029F3B5A20029ECBF /* PlayerListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482380B29F3B5A20029ECBF /* PlayerListRowItem.swift */; };
+		D482381129F3B5A20029ECBF /* AddHandicapScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482380C29F3B5A20029ECBF /* AddHandicapScreen.swift */; };
+		D482381229F3B5A20029ECBF /* AddPlayerScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482380D29F3B5A20029ECBF /* AddPlayerScreen.swift */; };
+		D482381329F3B5A20029ECBF /* PlayerDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482380E29F3B5A20029ECBF /* PlayerDetailScreen.swift */; };
+		D482381529F3B5AD0029ECBF /* MainScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381429F3B5AD0029ECBF /* MainScreen.swift */; };
+		D482381929F3B8680029ECBF /* AddGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381829F3B8680029ECBF /* AddGameViewModel.swift */; };
+		D482381B29F3B8E10029ECBF /* Extensions_Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381A29F3B8E10029ECBF /* Extensions_Game.swift */; };
+		D482381D29F3B95A0029ECBF /* GameListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381C29F3B95A0029ECBF /* GameListViewModel.swift */; };
+		D482382729F3B98E0029ECBF /* CourseHandicapCalcScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381E29F3B98D0029ECBF /* CourseHandicapCalcScreen.swift */; };
+		D482382829F3B98E0029ECBF /* ChangeCompetitorTeeBoxSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482381F29F3B98D0029ECBF /* ChangeCompetitorTeeBoxSheet.swift */; };
+		D482382929F3B98E0029ECBF /* AddGameScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382029F3B98D0029ECBF /* AddGameScreen.swift */; };
+		D482382A29F3B98E0029ECBF /* AddGamePlayerRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382129F3B98D0029ECBF /* AddGamePlayerRowItem.swift */; };
+		D482382B29F3B98E0029ECBF /* GameDetailScreen2.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382229F3B98D0029ECBF /* GameDetailScreen2.swift */; };
+		D482382C29F3B98E0029ECBF /* GameListRowItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382329F3B98D0029ECBF /* GameListRowItem.swift */; };
+		D482382D29F3B98E0029ECBF /* GameListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382429F3B98D0029ECBF /* GameListScreen.swift */; };
+		D482382E29F3B98E0029ECBF /* GameSummaryForDetailScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382529F3B98D0029ECBF /* GameSummaryForDetailScreen.swift */; };
+		D482382F29F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482382629F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D482377729F2F6E20029ECBF /* GolfProto04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfProto04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D482377A29F2F6E20029ECBF /* GolfProto04App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfProto04App.swift; sourceTree = "<group>"; };
-		D482377C29F2F6E20029ECBF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D482377E29F2F6E30029ECBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D482378129F2F6E30029ECBF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D482378829F2F70C0029ECBF /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		D482378B29F2F7740029ECBF /* GolfDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GolfDataModel.xcdatamodel; sourceTree = "<group>"; };
+		D482378E29F2F83A0029ECBF /* UIColorTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorTransformer.swift; sourceTree = "<group>"; };
+		D482378F29F2F83A0029ECBF /* UIImageTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageTransformer.swift; sourceTree = "<group>"; };
+		D482379329F2F8480029ECBF /* ImagePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D482379629F2F85A0029ECBF /* Bespoke colours.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bespoke colours.swift"; sourceTree = "<group>"; };
+		D482379929F2F8630029ECBF /* Extensions_TeeBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_TeeBox.swift; sourceTree = "<group>"; };
+		D482379A29F2F8630029ECBF /* Extensions_Competitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_Competitor.swift; sourceTree = "<group>"; };
+		D482379B29F2F8630029ECBF /* Extensions_String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_String.swift; sourceTree = "<group>"; };
+		D482379C29F2F8630029ECBF /* Extensions_Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_Player.swift; sourceTree = "<group>"; };
+		D482379D29F2F8630029ECBF /* Extensions_Club.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_Club.swift; sourceTree = "<group>"; };
+		D48237A329F2FDB50029ECBF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D48237A429F2FDC30029ECBF /* GolfProto04.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = GolfProto04.entitlements; sourceTree = "<group>"; };
+		D48237A529F31B290029ECBF /* Club+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Club+CoreDataClass.swift"; path = "GolfProto04/Models/Club+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D48237A629F31B290029ECBF /* Club+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Club+CoreDataProperties.swift"; path = "GolfProto04/Models/Club+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataClass.swift"; path = "GolfProto04/Models/Player+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataProperties.swift"; path = "GolfProto04/Models/Player+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TeeBox+CoreDataClass.swift"; path = "GolfProto04/Models/TeeBox+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TeeBox+CoreDataProperties.swift"; path = "GolfProto04/Models/TeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D48237B129F31C2C0029ECBF /* GameFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFormats.swift; sourceTree = "<group>"; };
+		D48237B429F31E420029ECBF /* Extensions_HandicapArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_HandicapArray.swift; sourceTree = "<group>"; };
+		D48237B729F31EE10029ECBF /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D48237B829F31EE10029ECBF /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D48237BC29F31F170029ECBF /* Course+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D48237C329F3B53F0029ECBF /* EditClubViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClubViewModel.swift; sourceTree = "<group>"; };
+		D48237C429F3B53F0029ECBF /* EditTeeBoxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTeeBoxViewModel.swift; sourceTree = "<group>"; };
+		D48237C529F3B53F0029ECBF /* AddCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCourseViewModel.swift; sourceTree = "<group>"; };
+		D48237C629F3B53F0029ECBF /* CourseListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListViewModel.swift; sourceTree = "<group>"; };
+		D48237C729F3B53F0029ECBF /* ClubListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubListViewModel.swift; sourceTree = "<group>"; };
+		D48237C829F3B53F0029ECBF /* EditCourseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCourseViewModel.swift; sourceTree = "<group>"; };
+		D48237C929F3B53F0029ECBF /* AddTeeBoxViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeeBoxViewModel.swift; sourceTree = "<group>"; };
+		D48237CA29F3B53F0029ECBF /* AddHoleViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHoleViewModel.swift; sourceTree = "<group>"; };
+		D48237CB29F3B53F0029ECBF /* TeeBoxListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeeBoxListViewModel.swift; sourceTree = "<group>"; };
+		D48237CC29F3B53F0029ECBF /* HoleListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleListViewModel.swift; sourceTree = "<group>"; };
+		D48237CD29F3B53F0029ECBF /* AddEditClubViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddEditClubViewModel.swift; sourceTree = "<group>"; };
+		D48237DA29F3B5500029ECBF /* PlayerListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListViewModel.swift; sourceTree = "<group>"; };
+		D48237DB29F3B5500029ECBF /* AddHandicapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHandicapViewModel.swift; sourceTree = "<group>"; };
+		D48237DC29F3B5500029ECBF /* AddPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerViewModel.swift; sourceTree = "<group>"; };
+		D48237DD29F3B5500029ECBF /* HandicapListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HandicapListViewModel.swift; sourceTree = "<group>"; };
+		D48237E429F3B5850029ECBF /* CourseListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListScreen.swift; sourceTree = "<group>"; };
+		D48237E529F3B5850029ECBF /* EditCourseScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCourseScreen.swift; sourceTree = "<group>"; };
+		D48237E629F3B5850029ECBF /* AddCoursesScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddCoursesScreen.swift; sourceTree = "<group>"; };
+		D48237E729F3B5850029ECBF /* CourseListRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseListRowItem.swift; sourceTree = "<group>"; };
+		D48237E929F3B5850029ECBF /* EditTeeBoxScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTeeBoxScreen.swift; sourceTree = "<group>"; };
+		D48237EA29F3B5850029ECBF /* TeeBoxListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeeBoxListScreen.swift; sourceTree = "<group>"; };
+		D48237EB29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeeBoxListScreen_1Course.swift; sourceTree = "<group>"; };
+		D48237EC29F3B5850029ECBF /* TeeBoxListRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeeBoxListRowItem.swift; sourceTree = "<group>"; };
+		D48237ED29F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TeeBoxDistancesSubScreen.swift; sourceTree = "<group>"; };
+		D48237EE29F3B5850029ECBF /* AddTeeBoxScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTeeBoxScreen.swift; sourceTree = "<group>"; };
+		D48237F029F3B5850029ECBF /* HolesLayout9.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolesLayout9.swift; sourceTree = "<group>"; };
+		D48237F129F3B5850029ECBF /* HoleListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleListScreen.swift; sourceTree = "<group>"; };
+		D48237F229F3B5850029ECBF /* HolesLayoutTotals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HolesLayoutTotals.swift; sourceTree = "<group>"; };
+		D48237F429F3B5850029ECBF /* ClubListRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubListRowItem.swift; sourceTree = "<group>"; };
+		D48237F529F3B5850029ECBF /* EditClubScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditClubScreen.swift; sourceTree = "<group>"; };
+		D48237F629F3B5850029ECBF /* ClubListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClubListScreen.swift; sourceTree = "<group>"; };
+		D48237F729F3B5850029ECBF /* AddClubScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddClubScreen.swift; sourceTree = "<group>"; };
+		D482380A29F3B5A20029ECBF /* PlayerListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListScreen.swift; sourceTree = "<group>"; };
+		D482380B29F3B5A20029ECBF /* PlayerListRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerListRowItem.swift; sourceTree = "<group>"; };
+		D482380C29F3B5A20029ECBF /* AddHandicapScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddHandicapScreen.swift; sourceTree = "<group>"; };
+		D482380D29F3B5A20029ECBF /* AddPlayerScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPlayerScreen.swift; sourceTree = "<group>"; };
+		D482380E29F3B5A20029ECBF /* PlayerDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerDetailScreen.swift; sourceTree = "<group>"; };
+		D482381429F3B5AD0029ECBF /* MainScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainScreen.swift; sourceTree = "<group>"; };
+		D482381829F3B8680029ECBF /* AddGameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGameViewModel.swift; sourceTree = "<group>"; };
+		D482381A29F3B8E10029ECBF /* Extensions_Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions_Game.swift; sourceTree = "<group>"; };
+		D482381C29F3B95A0029ECBF /* GameListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListViewModel.swift; sourceTree = "<group>"; };
+		D482381E29F3B98D0029ECBF /* CourseHandicapCalcScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseHandicapCalcScreen.swift; sourceTree = "<group>"; };
+		D482381F29F3B98D0029ECBF /* ChangeCompetitorTeeBoxSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeCompetitorTeeBoxSheet.swift; sourceTree = "<group>"; };
+		D482382029F3B98D0029ECBF /* AddGameScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGameScreen.swift; sourceTree = "<group>"; };
+		D482382129F3B98D0029ECBF /* AddGamePlayerRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddGamePlayerRowItem.swift; sourceTree = "<group>"; };
+		D482382229F3B98D0029ECBF /* GameDetailScreen2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameDetailScreen2.swift; sourceTree = "<group>"; };
+		D482382329F3B98D0029ECBF /* GameListRowItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListRowItem.swift; sourceTree = "<group>"; };
+		D482382429F3B98D0029ECBF /* GameListScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameListScreen.swift; sourceTree = "<group>"; };
+		D482382529F3B98D0029ECBF /* GameSummaryForDetailScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameSummaryForDetailScreen.swift; sourceTree = "<group>"; };
+		D482382629F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitorRowItem_GameDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,7 +198,18 @@
 			isa = PBXGroup;
 			children = (
 				D482377A29F2F6E20029ECBF /* GolfProto04App.swift */,
-				D482377C29F2F6E20029ECBF /* ContentView.swift */,
+				D48237A429F2FDC30029ECBF /* GolfProto04.entitlements */,
+				D48237A329F2FDB50029ECBF /* Info.plist */,
+				D482378A29F2F7740029ECBF /* GolfDataModel.xcdatamodeld */,
+				D48237C029F3B4EE0029ECBF /* View models */,
+				D48237C129F3B4FD0029ECBF /* Screens */,
+				D48237BF29F31F480029ECBF /* Game formats */,
+				D482379229F2F8480029ECBF /* Image Picker */,
+				D482379829F2F8630029ECBF /* Extensions */,
+				D482379529F2F85A0029ECBF /* Colours */,
+				D48237B329F31C650029ECBF /* Models */,
+				D48237B629F31E720029ECBF /* Managers */,
+				D482378D29F2F83A0029ECBF /* Transformers */,
 				D482377E29F2F6E30029ECBF /* Assets.xcassets */,
 				D482378029F2F6E30029ECBF /* Preview Content */,
 			);
@@ -65,6 +222,221 @@
 				D482378129F2F6E30029ECBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D482378D29F2F83A0029ECBF /* Transformers */ = {
+			isa = PBXGroup;
+			children = (
+				D482378E29F2F83A0029ECBF /* UIColorTransformer.swift */,
+				D482378F29F2F83A0029ECBF /* UIImageTransformer.swift */,
+			);
+			path = Transformers;
+			sourceTree = "<group>";
+		};
+		D482379229F2F8480029ECBF /* Image Picker */ = {
+			isa = PBXGroup;
+			children = (
+				D482379329F2F8480029ECBF /* ImagePicker.swift */,
+			);
+			path = "Image Picker";
+			sourceTree = "<group>";
+		};
+		D482379529F2F85A0029ECBF /* Colours */ = {
+			isa = PBXGroup;
+			children = (
+				D482379629F2F85A0029ECBF /* Bespoke colours.swift */,
+			);
+			path = Colours;
+			sourceTree = "<group>";
+		};
+		D482379829F2F8630029ECBF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				D482381A29F3B8E10029ECBF /* Extensions_Game.swift */,
+				D482379929F2F8630029ECBF /* Extensions_TeeBox.swift */,
+				D482379A29F2F8630029ECBF /* Extensions_Competitor.swift */,
+				D482379B29F2F8630029ECBF /* Extensions_String.swift */,
+				D482379C29F2F8630029ECBF /* Extensions_Player.swift */,
+				D482379D29F2F8630029ECBF /* Extensions_Club.swift */,
+				D48237B429F31E420029ECBF /* Extensions_HandicapArray.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		D48237B329F31C650029ECBF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */,
+				D48237BC29F31F170029ECBF /* Course+CoreDataProperties.swift */,
+				D48237B729F31EE10029ECBF /* Game+CoreDataClass.swift */,
+				D48237B829F31EE10029ECBF /* Game+CoreDataProperties.swift */,
+				D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */,
+				D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */,
+				D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */,
+				D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */,
+				D48237A529F31B290029ECBF /* Club+CoreDataClass.swift */,
+				D48237A629F31B290029ECBF /* Club+CoreDataProperties.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D48237B629F31E720029ECBF /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D482378829F2F70C0029ECBF /* CoreDataManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		D48237BF29F31F480029ECBF /* Game formats */ = {
+			isa = PBXGroup;
+			children = (
+				D48237B129F31C2C0029ECBF /* GameFormats.swift */,
+			);
+			path = "Game formats";
+			sourceTree = "<group>";
+		};
+		D48237C029F3B4EE0029ECBF /* View models */ = {
+			isa = PBXGroup;
+			children = (
+				D482381629F3B81C0029ECBF /* Games */,
+				D48237D929F3B5500029ECBF /* Players */,
+				D48237C229F3B53F0029ECBF /* Clubs */,
+			);
+			path = "View models";
+			sourceTree = "<group>";
+		};
+		D48237C129F3B4FD0029ECBF /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				D482381429F3B5AD0029ECBF /* MainScreen.swift */,
+				D482381729F3B8360029ECBF /* Games */,
+				D482380929F3B5A20029ECBF /* Players */,
+				D48237E229F3B5850029ECBF /* Clubs */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		D48237C229F3B53F0029ECBF /* Clubs */ = {
+			isa = PBXGroup;
+			children = (
+				D48237C329F3B53F0029ECBF /* EditClubViewModel.swift */,
+				D48237C429F3B53F0029ECBF /* EditTeeBoxViewModel.swift */,
+				D48237C529F3B53F0029ECBF /* AddCourseViewModel.swift */,
+				D48237C629F3B53F0029ECBF /* CourseListViewModel.swift */,
+				D48237C729F3B53F0029ECBF /* ClubListViewModel.swift */,
+				D48237C829F3B53F0029ECBF /* EditCourseViewModel.swift */,
+				D48237C929F3B53F0029ECBF /* AddTeeBoxViewModel.swift */,
+				D48237CA29F3B53F0029ECBF /* AddHoleViewModel.swift */,
+				D48237CB29F3B53F0029ECBF /* TeeBoxListViewModel.swift */,
+				D48237CC29F3B53F0029ECBF /* HoleListViewModel.swift */,
+				D48237CD29F3B53F0029ECBF /* AddEditClubViewModel.swift */,
+			);
+			path = Clubs;
+			sourceTree = "<group>";
+		};
+		D48237D929F3B5500029ECBF /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				D48237DA29F3B5500029ECBF /* PlayerListViewModel.swift */,
+				D48237DB29F3B5500029ECBF /* AddHandicapViewModel.swift */,
+				D48237DC29F3B5500029ECBF /* AddPlayerViewModel.swift */,
+				D48237DD29F3B5500029ECBF /* HandicapListViewModel.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		D48237E229F3B5850029ECBF /* Clubs */ = {
+			isa = PBXGroup;
+			children = (
+				D48237E329F3B5850029ECBF /* Course List Screen */,
+				D48237E829F3B5850029ECBF /* TeeBoxListScreen */,
+				D48237EF29F3B5850029ECBF /* HoleList Screen */,
+				D48237F329F3B5850029ECBF /* Club List Screen */,
+			);
+			path = Clubs;
+			sourceTree = "<group>";
+		};
+		D48237E329F3B5850029ECBF /* Course List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D48237E429F3B5850029ECBF /* CourseListScreen.swift */,
+				D48237E529F3B5850029ECBF /* EditCourseScreen.swift */,
+				D48237E629F3B5850029ECBF /* AddCoursesScreen.swift */,
+				D48237E729F3B5850029ECBF /* CourseListRowItem.swift */,
+			);
+			path = "Course List Screen";
+			sourceTree = "<group>";
+		};
+		D48237E829F3B5850029ECBF /* TeeBoxListScreen */ = {
+			isa = PBXGroup;
+			children = (
+				D48237E929F3B5850029ECBF /* EditTeeBoxScreen.swift */,
+				D48237EA29F3B5850029ECBF /* TeeBoxListScreen.swift */,
+				D48237EB29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift */,
+				D48237EC29F3B5850029ECBF /* TeeBoxListRowItem.swift */,
+				D48237ED29F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift */,
+				D48237EE29F3B5850029ECBF /* AddTeeBoxScreen.swift */,
+			);
+			path = TeeBoxListScreen;
+			sourceTree = "<group>";
+		};
+		D48237EF29F3B5850029ECBF /* HoleList Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D48237F029F3B5850029ECBF /* HolesLayout9.swift */,
+				D48237F129F3B5850029ECBF /* HoleListScreen.swift */,
+				D48237F229F3B5850029ECBF /* HolesLayoutTotals.swift */,
+			);
+			path = "HoleList Screen";
+			sourceTree = "<group>";
+		};
+		D48237F329F3B5850029ECBF /* Club List Screen */ = {
+			isa = PBXGroup;
+			children = (
+				D48237F429F3B5850029ECBF /* ClubListRowItem.swift */,
+				D48237F529F3B5850029ECBF /* EditClubScreen.swift */,
+				D48237F629F3B5850029ECBF /* ClubListScreen.swift */,
+				D48237F729F3B5850029ECBF /* AddClubScreen.swift */,
+			);
+			path = "Club List Screen";
+			sourceTree = "<group>";
+		};
+		D482380929F3B5A20029ECBF /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				D482380A29F3B5A20029ECBF /* PlayerListScreen.swift */,
+				D482380B29F3B5A20029ECBF /* PlayerListRowItem.swift */,
+				D482380C29F3B5A20029ECBF /* AddHandicapScreen.swift */,
+				D482380D29F3B5A20029ECBF /* AddPlayerScreen.swift */,
+				D482380E29F3B5A20029ECBF /* PlayerDetailScreen.swift */,
+			);
+			path = Players;
+			sourceTree = "<group>";
+		};
+		D482381629F3B81C0029ECBF /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				D482381829F3B8680029ECBF /* AddGameViewModel.swift */,
+				D482381C29F3B95A0029ECBF /* GameListViewModel.swift */,
+			);
+			path = Games;
+			sourceTree = "<group>";
+		};
+		D482381729F3B8360029ECBF /* Games */ = {
+			isa = PBXGroup;
+			children = (
+				D482382129F3B98D0029ECBF /* AddGamePlayerRowItem.swift */,
+				D482382029F3B98D0029ECBF /* AddGameScreen.swift */,
+				D482381F29F3B98D0029ECBF /* ChangeCompetitorTeeBoxSheet.swift */,
+				D482382629F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift */,
+				D482381E29F3B98D0029ECBF /* CourseHandicapCalcScreen.swift */,
+				D482382229F3B98D0029ECBF /* GameDetailScreen2.swift */,
+				D482382329F3B98D0029ECBF /* GameListRowItem.swift */,
+				D482382429F3B98D0029ECBF /* GameListScreen.swift */,
+				D482382529F3B98D0029ECBF /* GameSummaryForDetailScreen.swift */,
+			);
+			path = Games;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +509,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D482377D29F2F6E20029ECBF /* ContentView.swift in Sources */,
+				D482381929F3B8680029ECBF /* AddGameViewModel.swift in Sources */,
+				D48237DF29F3B5500029ECBF /* AddHandicapViewModel.swift in Sources */,
+				D482382A29F3B98E0029ECBF /* AddGamePlayerRowItem.swift in Sources */,
+				D48237A229F2F8630029ECBF /* Extensions_Club.swift in Sources */,
+				D48237D029F3B53F0029ECBF /* AddCourseViewModel.swift in Sources */,
+				D482380029F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift in Sources */,
+				D482381D29F3B95A0029ECBF /* GameListViewModel.swift in Sources */,
+				D482380429F3B5850029ECBF /* HolesLayoutTotals.swift in Sources */,
+				D482380529F3B5850029ECBF /* ClubListRowItem.swift in Sources */,
+				D48237AC29F31B670029ECBF /* Player+CoreDataProperties.swift in Sources */,
+				D48237AF29F31BA20029ECBF /* TeeBox+CoreDataClass.swift in Sources */,
+				D48237B929F31EE10029ECBF /* Game+CoreDataClass.swift in Sources */,
+				D48237E129F3B5500029ECBF /* HandicapListViewModel.swift in Sources */,
+				D482379729F2F85A0029ECBF /* Bespoke colours.swift in Sources */,
+				D48237F929F3B5850029ECBF /* EditCourseScreen.swift in Sources */,
+				D482380129F3B5850029ECBF /* AddTeeBoxScreen.swift in Sources */,
+				D482381329F3B5A20029ECBF /* PlayerDetailScreen.swift in Sources */,
+				D48237B529F31E420029ECBF /* Extensions_HandicapArray.swift in Sources */,
+				D482381529F3B5AD0029ECBF /* MainScreen.swift in Sources */,
+				D482382B29F3B98E0029ECBF /* GameDetailScreen2.swift in Sources */,
+				D482381029F3B5A20029ECBF /* PlayerListRowItem.swift in Sources */,
+				D48237DE29F3B5500029ECBF /* PlayerListViewModel.swift in Sources */,
+				D48237D729F3B53F0029ECBF /* HoleListViewModel.swift in Sources */,
+				D482379F29F2F8630029ECBF /* Extensions_Competitor.swift in Sources */,
+				D48237CF29F3B53F0029ECBF /* EditTeeBoxViewModel.swift in Sources */,
+				D482381229F3B5A20029ECBF /* AddPlayerScreen.swift in Sources */,
+				D48237FE29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift in Sources */,
+				D482378929F2F70C0029ECBF /* CoreDataManager.swift in Sources */,
+				D482382E29F3B98E0029ECBF /* GameSummaryForDetailScreen.swift in Sources */,
+				D48237D129F3B53F0029ECBF /* CourseListViewModel.swift in Sources */,
+				D482382D29F3B98E0029ECBF /* GameListScreen.swift in Sources */,
+				D48237F829F3B5850029ECBF /* CourseListScreen.swift in Sources */,
+				D482378C29F2F7740029ECBF /* GolfDataModel.xcdatamodeld in Sources */,
+				D48237A729F31B290029ECBF /* Club+CoreDataClass.swift in Sources */,
+				D48237AB29F31B670029ECBF /* Player+CoreDataClass.swift in Sources */,
+				D482380729F3B5850029ECBF /* ClubListScreen.swift in Sources */,
+				D482380229F3B5850029ECBF /* HolesLayout9.swift in Sources */,
+				D48237D429F3B53F0029ECBF /* AddTeeBoxViewModel.swift in Sources */,
+				D482382F29F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift in Sources */,
+				D482379429F2F8480029ECBF /* ImagePicker.swift in Sources */,
+				D482380F29F3B5A20029ECBF /* PlayerListScreen.swift in Sources */,
+				D48237FA29F3B5850029ECBF /* AddCoursesScreen.swift in Sources */,
+				D482379E29F2F8630029ECBF /* Extensions_TeeBox.swift in Sources */,
+				D48237CE29F3B53F0029ECBF /* EditClubViewModel.swift in Sources */,
+				D48237D229F3B53F0029ECBF /* ClubListViewModel.swift in Sources */,
+				D48237FF29F3B5850029ECBF /* TeeBoxListRowItem.swift in Sources */,
+				D48237A829F31B290029ECBF /* Club+CoreDataProperties.swift in Sources */,
+				D48237A029F2F8630029ECBF /* Extensions_String.swift in Sources */,
+				D48237BE29F31F170029ECBF /* Course+CoreDataProperties.swift in Sources */,
+				D48237B229F31C2C0029ECBF /* GameFormats.swift in Sources */,
+				D48237D329F3B53F0029ECBF /* EditCourseViewModel.swift in Sources */,
+				D48237D829F3B53F0029ECBF /* AddEditClubViewModel.swift in Sources */,
+				D482379029F2F83A0029ECBF /* UIColorTransformer.swift in Sources */,
+				D482382829F3B98E0029ECBF /* ChangeCompetitorTeeBoxSheet.swift in Sources */,
+				D482382C29F3B98E0029ECBF /* GameListRowItem.swift in Sources */,
+				D48237FC29F3B5850029ECBF /* EditTeeBoxScreen.swift in Sources */,
+				D482382729F3B98E0029ECBF /* CourseHandicapCalcScreen.swift in Sources */,
+				D48237D529F3B53F0029ECBF /* AddHoleViewModel.swift in Sources */,
+				D48237E029F3B5500029ECBF /* AddPlayerViewModel.swift in Sources */,
+				D48237BD29F31F170029ECBF /* Course+CoreDataClass.swift in Sources */,
 				D482377B29F2F6E20029ECBF /* GolfProto04App.swift in Sources */,
+				D48237BA29F31EE10029ECBF /* Game+CoreDataProperties.swift in Sources */,
+				D482380829F3B5850029ECBF /* AddClubScreen.swift in Sources */,
+				D482380629F3B5850029ECBF /* EditClubScreen.swift in Sources */,
+				D48237A129F2F8630029ECBF /* Extensions_Player.swift in Sources */,
+				D482379129F2F83A0029ECBF /* UIImageTransformer.swift in Sources */,
+				D48237FD29F3B5850029ECBF /* TeeBoxListScreen.swift in Sources */,
+				D48237B029F31BA20029ECBF /* TeeBox+CoreDataProperties.swift in Sources */,
+				D48237FB29F3B5850029ECBF /* CourseListRowItem.swift in Sources */,
+				D48237D629F3B53F0029ECBF /* TeeBoxListViewModel.swift in Sources */,
+				D482380329F3B5850029ECBF /* HoleListScreen.swift in Sources */,
+				D482382929F3B98E0029ECBF /* AddGameScreen.swift in Sources */,
+				D482381129F3B5A20029ECBF /* AddHandicapScreen.swift in Sources */,
+				D482381B29F3B8E10029ECBF /* Extensions_Game.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,12 +708,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GolfProto04/GolfProto04.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GolfProto04/Preview Content\"";
 				DEVELOPMENT_TEAM = X763376P7X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GolfProto04/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -293,12 +739,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = GolfProto04/GolfProto04.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"GolfProto04/Preview Content\"";
 				DEVELOPMENT_TEAM = X763376P7X;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = GolfProto04/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +787,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		D482378A29F2F7740029ECBF /* GolfDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				D482378B29F2F7740029ECBF /* GolfDataModel.xcdatamodel */,
+			);
+			currentVersion = D482378B29F2F7740029ECBF /* GolfDataModel.xcdatamodel */;
+			path = GolfDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D482376F29F2F6E20029ECBF /* Project object */;
 }

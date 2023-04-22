@@ -1,5 +1,5 @@
 //
-//  GameDetailScreen2.swift
+//  GameDetailScreen.swift
 //  GolfProto03
 //
 //  Created by Philip Nye on 17/04/2023.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameDetailScreen2: View {
+struct GameDetailScreen: View {
     @StateObject private var addGameVM = AddGameViewModel()
     @StateObject private var gameListVM = GameListViewModel()
     @EnvironmentObject var currentGF: CurrentGameFormat
@@ -316,10 +316,10 @@ struct GameDetailScreen2: View {
     }
 }
 
-struct GameDetailScreen2_Previews: PreviewProvider {
+struct GameDetailScreen_Previews: PreviewProvider {
     static var previews: some View {
         let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
-        GameDetailScreen2(game:game)
+        GameDetailScreen(game:game)
             .environmentObject(CurrentGameFormat())
     }
 }

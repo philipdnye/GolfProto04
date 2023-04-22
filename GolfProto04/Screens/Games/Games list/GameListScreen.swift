@@ -44,7 +44,7 @@ struct GameListScreen: View {
         }
         
         .navigationDestination(for: GameViewModel.self){game in
-            GameDetailScreen2(game: game)
+            GameDetailScreen(game: game)
         }
         .toolbar {
             

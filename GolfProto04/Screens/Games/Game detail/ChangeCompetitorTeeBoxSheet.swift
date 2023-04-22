@@ -25,7 +25,9 @@ struct ChangeCompetitorTeeBoxSheet: View {
                     ForEach(game.game.defaultTeeBox?.course?.teeBoxArray ?? [], id: \.self){
                         Text($0.wrappedColour)
                             .tag($0)
+                            //.pickerStyle(.segmented)
                     }
+                   
                 }
                 HStack{
                     Spacer()

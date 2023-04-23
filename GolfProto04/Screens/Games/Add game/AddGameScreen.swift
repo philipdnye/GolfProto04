@@ -65,7 +65,7 @@ struct AddGameScreen: View {
            teamShotsB.team = 2
            teamShotsC.team = 3
            
-           teamShotsA.playingHandicap = 37
+           //teamShotsA.playingHandicap = 37
            
            
            manager.save()

@@ -16,7 +16,10 @@ extension Game {
         return NSFetchRequest<Game>(entityName: "Game")
     }
 
+    @NSManaged public var clubName: String?
+    @NSManaged public var courseName: String?
     @NSManaged public var date: Date?
+    @NSManaged public var distMetric: Int16
     @NSManaged public var duration: Int16
     @NSManaged public var finished: Bool
     @NSManaged public var finishTime: Date?
@@ -28,24 +31,12 @@ extension Game {
     @NSManaged public var started: Bool
     @NSManaged public var startingHole: Int16
     @NSManaged public var startTime: Date?
-    @NSManaged public var teamADiffTeesXShots: Double
-    @NSManaged public var teamAPlayingHandicap: Double
-    @NSManaged public var teamAShotsReceived: Double
-    @NSManaged public var teamBDiffTeesXShots: Double
-    @NSManaged public var teamBPlayingHandicap: Double
-    @NSManaged public var teamBShotsReceived: Double
-    @NSManaged public var teamCDiffTeesXShots: Double
-    @NSManaged public var teamCPlayingHandicap: Double
-    @NSManaged public var teamCShotsReceived: Double
-    @NSManaged public var clubName: String?
-    @NSManaged public var courseName: String?
-    @NSManaged public var distMetric: Int16
     @NSManaged public var competitors: NSSet?
     @NSManaged public var defaultTeeBox: TeeBox?
     @NSManaged public var teamScores: NSSet?
     @NSManaged public var teamShots: NSSet?
     @NSManaged public var teamTeeBoxes: NSSet?
-   
+    
     public var competitorArray: [Competitor] {
             let set = competitors as? Set<Competitor> ?? []
             return set.sorted {
@@ -72,7 +63,6 @@ extension Game {
             $0.team < $1.team
         }
     }
-    
 }
 
 // MARK: Generated accessors for competitors

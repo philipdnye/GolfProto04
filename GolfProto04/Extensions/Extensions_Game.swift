@@ -72,34 +72,70 @@ extension Game {
 
 extension Game {
     func TotalPlayingHandicapA () -> Double {
-        let totalPHA = Double (self.teamAPlayingHandicap + self.teamADiffTeesXShots)
-        return totalPHA
+        if !self.teamShotsArray.isEmpty{
+            let totalPHA = Double(self.teamShotsArray[0].playingHandicap + self.teamShotsArray[0].diffTeesXShots)
+            
+            return totalPHA
+        } else {
+            return 0.0
+        }
     }
 }
 extension Game {
     func TotalPlayingHandicapB () -> Double {
-        let totalPHB = Double (self.teamBPlayingHandicap + self.teamBDiffTeesXShots)
-        return totalPHB
+        if !self.teamShotsArray.isEmpty{
+            let totalPHB = Double(self.teamShotsArray[1].playingHandicap + self.teamShotsArray[1].diffTeesXShots)
+            
+            return totalPHB
+        } else {
+            return 0.0
+        }
     }
 }
 extension Game {
     func TotalPlayingHandicapC () -> Double {
-        let totalPHC = Double (self.teamCPlayingHandicap + self.teamCDiffTeesXShots)
-        return totalPHC
+        if !self.teamShotsArray.isEmpty{
+            let totalPHC = Double(self.teamShotsArray[2].playingHandicap + self.teamShotsArray[2].diffTeesXShots)
+            
+            return totalPHC
+        } else {
+            return 0.0
+        }
     }
 }
+//extension Game {
+//    func TotalShotsRecdMatchTeamA () -> Double {
+//        let totalSR = Double(self.teamAShotsReceived + self.teamADiffTeesXShots)
+//        return totalSR
+//    }
+//}
+
+//extension Game {
+//    func TotalShotsRecdMatchTeamB () -> Double {
+//        let totalSR = Double(self.teamBShotsReceived + self.teamBDiffTeesXShots)
+//        return totalSR
+//    }
+//}
 
 extension Game {
     func TotalShotsRecdMatchTeamA () -> Double {
-        let totalSR = Double(self.teamAShotsReceived + self.teamADiffTeesXShots)
-        return totalSR
+        if !self.teamShotsArray.isEmpty{
+            let totalSR = Double(self.teamShotsArray[0].shotsRecd + self.teamShotsArray[0].diffTeesXShots)
+            
+            return totalSR
+        } else {
+            return 0.0
+        }
     }
 }
-
 extension Game {
     func TotalShotsRecdMatchTeamB () -> Double {
-        let totalSR = Double(self.teamBShotsReceived + self.teamBDiffTeesXShots)
-        return totalSR
+        if !self.teamShotsArray.isEmpty{
+            let totalSR = Double(self.teamShotsArray[1].shotsRecd + self.teamShotsArray[1].diffTeesXShots)
+            
+            return totalSR
+        } else {
+            return 0.0
+        }
     }
 }
-

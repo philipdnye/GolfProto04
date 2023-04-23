@@ -119,20 +119,31 @@ struct GameDetailScreen: View {
 //            Text(needsRefresh.description)
             GameSummaryForDetailScreen(game: game)
             HStack{
-                VStack{
-                    Text("Team A: \(game.game.teamAPlayingHandicap.formatted())")
-                    Text("Team B: \(game.game.teamBPlayingHandicap.formatted())")
-                    Text("Team C: \(game.game.teamCPlayingHandicap.formatted())")
-                }
-                VStack{
-                    Text("Team A: \(game.game.teamAShotsReceived.formatted())")
-                    Text("Team B: \(game.game.teamBShotsReceived.formatted())")
-                    Text("Team C: \(game.game.teamCShotsReceived.formatted())")
-                }
-                VStack{
-                    Text(game.game.TeeBoxesAllSame().description)
-                    Text("A ex sh: \(game.game.teamADiffTeesXShots) \(game.game.TotalPlayingHandicapA())")
-                    Text("SR A: \(game.game.TotalShotsRecdMatchTeamA())")
+                if currentGF.assignShotsRecd == Assignment.TeamsAB || currentGF.assignShotsRecd == Assignment.TeamC {
+                    VStack{
+                        //                    Text("Team A: \(game.game.teamAPlayingHandicap.formatted())")
+                        //                    Text("Team B: \(game.game.teamBPlayingHandicap.formatted())")
+                        //                    Text("Team C: \(game.game.teamCPlayingHandicap.formatted())")
+                        
+                        Text("Team A: \(game.game.teamShotsArray[0].playingHandicap.formatted())")
+                        Text("Team B: \(game.game.teamShotsArray[1].playingHandicap.formatted())")
+                        Text("Team C: \(game.game.teamShotsArray[2].playingHandicap.formatted())")
+                        
+                        
+                    }
+                    VStack{
+                        //                    Text("Team A: \(game.game.teamAShotsReceived.formatted())")
+                        //                    Text("Team B: \(game.game.teamBShotsReceived.formatted())")
+                        //                    Text("Team C: \(game.game.teamCShotsReceived.formatted())")
+                        Text("Team A: \(game.game.teamShotsArray[0].shotsRecd.formatted())")
+                        Text("Team B: \(game.game.teamShotsArray[1].shotsRecd.formatted())")
+                        Text("Team C: \(game.game.teamShotsArray[2].shotsRecd.formatted())")
+                    }
+                    VStack{
+                        Text(game.game.TeeBoxesAllSame().description)
+                        Text("A ex sh: \(game.game.teamShotsArray[0].diffTeesXShots) \(game.game.TotalPlayingHandicapA())")//********
+                        Text("SR A: \(game.game.TotalShotsRecdMatchTeamA())")
+                    }
                 }
             }
             Form{

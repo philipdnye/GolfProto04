@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D4409B5E29F55CF100DCC452 /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B5C29F55CF100DCC452 /* Game+CoreDataClass.swift */; };
+		D4409B5F29F55CF100DCC452 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B5D29F55CF100DCC452 /* Game+CoreDataProperties.swift */; };
 		D482377B29F2F6E20029ECBF /* GolfProto04App.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482377A29F2F6E20029ECBF /* GolfProto04App.swift */; };
 		D482377F29F2F6E30029ECBF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D482377E29F2F6E30029ECBF /* Assets.xcassets */; };
 		D482378229F2F6E30029ECBF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D482378129F2F6E30029ECBF /* Preview Assets.xcassets */; };
@@ -89,11 +91,11 @@
 		D482384E29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */; };
 		D482385129F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */; };
 		D482385229F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */; };
-		D482385529F53FD10029ECBF /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482385329F53FD10029ECBF /* Game+CoreDataClass.swift */; };
-		D482385629F53FD10029ECBF /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482385429F53FD10029ECBF /* Game+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D4409B5C29F55CF100DCC452 /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D4409B5D29F55CF100DCC452 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D482377729F2F6E20029ECBF /* GolfProto04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GolfProto04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D482377A29F2F6E20029ECBF /* GolfProto04App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GolfProto04App.swift; sourceTree = "<group>"; };
 		D482377E29F2F6E30029ECBF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -179,8 +181,6 @@
 		D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTeeBoxViewModel.swift; sourceTree = "<group>"; };
 		D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamTeeBox+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamTeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		D482385329F53FD10029ECBF /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		D482385429F53FD10029ECBF /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -282,8 +282,8 @@
 		D48237B329F31C650029ECBF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D482385329F53FD10029ECBF /* Game+CoreDataClass.swift */,
-				D482385429F53FD10029ECBF /* Game+CoreDataProperties.swift */,
+				D4409B5C29F55CF100DCC452 /* Game+CoreDataClass.swift */,
+				D4409B5D29F55CF100DCC452 /* Game+CoreDataProperties.swift */,
 				D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */,
 				D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */,
 				D482383B29F529DF0029ECBF /* Competitor+CoreDataClass.swift */,
@@ -590,7 +590,7 @@
 				D482382E29F3B98E0029ECBF /* GameSummaryForDetailScreen.swift in Sources */,
 				D48237D129F3B53F0029ECBF /* CourseListViewModel.swift in Sources */,
 				D482382D29F3B98E0029ECBF /* GameListScreen.swift in Sources */,
-				D482385629F53FD10029ECBF /* Game+CoreDataProperties.swift in Sources */,
+				D4409B5F29F55CF100DCC452 /* Game+CoreDataProperties.swift in Sources */,
 				D48237F829F3B5850029ECBF /* CourseListScreen.swift in Sources */,
 				D482378C29F2F7740029ECBF /* GolfDataModel.xcdatamodeld in Sources */,
 				D48237A729F31B290029ECBF /* Club+CoreDataClass.swift in Sources */,
@@ -629,7 +629,7 @@
 				D48237A129F2F8630029ECBF /* Extensions_Player.swift in Sources */,
 				D482384829F530B20029ECBF /* CompetitorScoreViewModel.swift in Sources */,
 				D482379129F2F83A0029ECBF /* UIImageTransformer.swift in Sources */,
-				D482385529F53FD10029ECBF /* Game+CoreDataClass.swift in Sources */,
+				D4409B5E29F55CF100DCC452 /* Game+CoreDataClass.swift in Sources */,
 				D48237FD29F3B5850029ECBF /* TeeBoxListScreen.swift in Sources */,
 				D48237B029F31BA20029ECBF /* TeeBox+CoreDataProperties.swift in Sources */,
 				D48237FB29F3B5850029ECBF /* CourseListRowItem.swift in Sources */,

@@ -209,89 +209,85 @@ class AddGameViewModel: ObservableObject {
 
     }
     
+//    func AssignTeamPlayingHandicap(game: Game, currentGF: CurrentGameFormat) {
+//        var totalPlayingHandicap: Double = 0
+//        switch currentGF.assignShotsRecd {
+//
+//        case .Indiv:
+//            //        No change. Each individual gets their playing handicap
+//            totalPlayingHandicap = 0
+//            game.teamAPlayingHandicap = 0
+//            game.teamBPlayingHandicap = 0
+//            game.teamCPlayingHandicap = 0
+//        case .TeamsAB:
+//            for PH in game.competitorArray.filter({$0.team == 1}) {
+//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
+//            }
+//            game.teamAPlayingHandicap = totalPlayingHandicap
+//            totalPlayingHandicap = 0
+//
+//            for PH in game.competitorArray.filter({$0.team == 2}) {
+//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
+//            }
+//            game.teamBPlayingHandicap = totalPlayingHandicap
+//            totalPlayingHandicap = 0
+//
+//        case .TeamC:
+//            for PH in game.competitorArray.filter({$0.team == 3}) {
+//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
+//            }
+//            game.teamCPlayingHandicap = totalPlayingHandicap
+//            game.teamAPlayingHandicap = 0
+//            game.teamBPlayingHandicap = 0
+//            totalPlayingHandicap = 0
+//        }
+//    }
+    
     func AssignTeamPlayingHandicap(game: Game, currentGF: CurrentGameFormat) {
         var totalPlayingHandicap: Double = 0
         switch currentGF.assignShotsRecd {
             
         case .Indiv:
-            //        No change. Each individual gets their playing handicap
-            totalPlayingHandicap = 0
-            game.teamAPlayingHandicap = 0
-            game.teamBPlayingHandicap = 0
-            game.teamCPlayingHandicap = 0
+            break
+
+            
         case .TeamsAB:
             for PH in game.competitorArray.filter({$0.team == 1}) {
                 totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
             }
-            game.teamAPlayingHandicap = totalPlayingHandicap
+            //game.teamAPlayingHandicap = totalPlayingHandicap
+            
+//            game.teamShotsArray.filter({$0.team == 1}) {
+//                
+//            }
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[0].playingHandicap = totalPlayingHandicap
+                game.teamShotsArray[2].playingHandicap = 0
+            }
             totalPlayingHandicap = 0
             
             for PH in game.competitorArray.filter({$0.team == 2}) {
                 totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
             }
-            game.teamBPlayingHandicap = totalPlayingHandicap
+            //game.teamBPlayingHandicap = totalPlayingHandicap
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[1].playingHandicap = totalPlayingHandicap
+                game.teamShotsArray[2].playingHandicap = 0
+            }
             totalPlayingHandicap = 0
             
         case .TeamC:
             for PH in game.competitorArray.filter({$0.team == 3}) {
                 totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
             }
-            game.teamCPlayingHandicap = totalPlayingHandicap
-            game.teamAPlayingHandicap = 0
-            game.teamBPlayingHandicap = 0
-            totalPlayingHandicap = 0
-        }
-    }
-    
-    func AssignTeamPlayingHandicap2(game: Game, currentGF: CurrentGameFormat) {
-        var totalPlayingHandicap: Double = 0
-        switch currentGF.assignShotsRecd {
-            
-        case .Indiv:
-            //        No change. Each individual gets their playing handicap
-            totalPlayingHandicap = 0
-            game.teamAPlayingHandicap = 0
-            game.teamBPlayingHandicap = 0
-            game.teamCPlayingHandicap = 0
-           
-//            let manager = CoreDataManager.shared
-//            let teamShotsA = TeamShots(context: manager.persistentContainer.viewContext)
-//            let teamShotsB = TeamShots(context: manager.persistentContainer.viewContext)
-//            let teamShotsC = TeamShots(context: manager.persistentContainer.viewContext)
-//            teamShotsA.game = game
-//            teamShotsB.game = game
-//            teamShotsC.game = game
-//            teamShotsA.playingHandicap = 0
-//            teamShotsB.playingHandicap = 0
-//            teamShotsC.playingHandicap = 0
-//            teamShotsA.team = 1
-//            teamShotsB.team = 2
-//            teamShotsC.team = 3
-//
-//            manager.save()
-            
-            
-        case .TeamsAB:
-            for PH in game.competitorArray.filter({$0.team == 1}) {
-                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[2].playingHandicap = totalPlayingHandicap
+                game.teamShotsArray[0].playingHandicap = 0
+                game.teamShotsArray[1].playingHandicap = 0
             }
-            game.teamAPlayingHandicap = totalPlayingHandicap
-            totalPlayingHandicap = 0
-            
-            for PH in game.competitorArray.filter({$0.team == 2}) {
-                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
-            }
-            game.teamBPlayingHandicap = totalPlayingHandicap
-            totalPlayingHandicap = 0
-            
-        case .TeamC:
-            for PH in game.competitorArray.filter({$0.team == 3}) {
-                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
-            }
-            game.teamCPlayingHandicap = totalPlayingHandicap
-            game.teamAPlayingHandicap = 0
-            game.teamBPlayingHandicap = 0
-            totalPlayingHandicap = 0
+//            game.teamAPlayingHandicap = 0
+//            game.teamBPlayingHandicap = 0
+//            totalPlayingHandicap = 0
         }
     }
     
@@ -315,8 +311,8 @@ class AddGameViewModel: ObservableObject {
                     game.competitorArray[i].shotsRecdMatch = (game.competitorArray[i].playingHandicap + game.competitorArray[i].diffTeesXShots) - lowPH
                 }
                 
-                game.teamAShotsReceived = 0
-                game.teamBShotsReceived = 0
+//                game.teamAShotsReceived = 0
+//                game.teamBShotsReceived = 0
                 
                 
             case .TeamsAB:
@@ -326,32 +322,49 @@ class AddGameViewModel: ObservableObject {
                     //in grrensomes fourssome chapman pinehurst, you add the EXACT handicaps together, then work out the difference and THEN ROUND
                     
                     
-                    let A = game.teamAPlayingHandicap + game.teamADiffTeesXShots
-                    let B = game.teamBPlayingHandicap + game.teamBDiffTeesXShots
-                    
-                    let lowTeamHandicap = min(A,B)
-                    
-                    let ASR = A - lowTeamHandicap
-                    let BSR = B - lowTeamHandicap
-                    
-                    game.teamAShotsReceived = round(ASR)
-                    game.teamBShotsReceived = round(BSR)
-                    
+//                    let A = game.teamAPlayingHandicap + game.teamADiffTeesXShots
+//                    let B = game.teamBPlayingHandicap + game.teamBDiffTeesXShots
+                    if !game.teamShotsArray.isEmpty {
+                        let A = game.teamShotsArray[0].playingHandicap + game.teamShotsArray[0].diffTeesXShots
+                        let B = game.teamShotsArray[1].playingHandicap + game.teamShotsArray[1].diffTeesXShots
+                        
+                        
+                        
+                        
+                        let lowTeamHandicap = min(A,B)
+                        
+                        let ASR = A - lowTeamHandicap
+                        let BSR = B - lowTeamHandicap
+                        
+//                        game.teamAShotsReceived = round(ASR)
+//                        game.teamBShotsReceived = round(BSR)
+                        
+                        game.teamShotsArray[0].shotsRecd = round(ASR)
+                        game.teamShotsArray[1].shotsRecd = round(BSR)
+                    }
                 case .strokeplay:
                     switch currentGF.noOfPlayersNeeded{
                     case 2:
-                        game.teamAShotsReceived = round(game.teamAPlayingHandicap+game.teamBPlayingHandicap)
-                        
+                        //game.teamAShotsReceived = round(game.teamAPlayingHandicap+game.teamBPlayingHandicap)
+                        if !game.teamShotsArray.isEmpty {
+                            game.teamShotsArray[0].shotsRecd = round(game.teamShotsArray[0].playingHandicap + game.teamShotsArray[1].playingHandicap)
+                            
+                        }
                     default://not sure this is CORRECT. WHat about 4 player foursomes, greensomes etc
-                        game.teamAShotsReceived = 0
-                        game.teamBShotsReceived = 0
+//                        game.teamAShotsReceived = 0
+//                        game.teamBShotsReceived = 0
+                        if !game.teamShotsArray.isEmpty {
+                            game.teamShotsArray[0].shotsRecd = 0
+                            game.teamShotsArray[1].shotsRecd = 0
+                        }
                     }
                   
                 }
                 
             case .TeamC:
-                game.teamAShotsReceived = 0
-                game.teamBShotsReceived = 0
+                break
+//                game.teamAShotsReceived = 0
+//                game.teamBShotsReceived = 0
             }
         }
     }
@@ -395,17 +408,20 @@ class AddGameViewModel: ObservableObject {
             
         case .Indiv:
             //        No change. Each individual gets their playing handincap
-            totalExtraShots = 0
-            game.teamADiffTeesXShots = 0
-            game.teamBDiffTeesXShots = 0
-            game.teamCDiffTeesXShots = 0
+        break
             
         case .TeamsAB:
             //        Add team A extra shots and assign to Game.Team
             for competitor in game.competitorArray.filter({$0.team == 1}) {
                 totalExtraShots += round(competitor.diffTeesXShots*1000)/1000
             }
-            game.teamADiffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+            //game.teamADiffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[0].diffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+                game.teamShotsArray[2].diffTeesXShots = 0
+            }
+            
+            
             totalExtraShots = 0
             
             
@@ -413,7 +429,11 @@ class AddGameViewModel: ObservableObject {
             for competitor in game.competitorArray.filter({$0.team == 2}) {
                 totalExtraShots += round(competitor.diffTeesXShots*1000)/1000
             }
-            game.teamBDiffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+            //game.teamBDiffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[1].diffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+                game.teamShotsArray[2].diffTeesXShots = 0
+            }
             totalExtraShots = 0
             
             
@@ -422,56 +442,16 @@ class AddGameViewModel: ObservableObject {
             for competitor in game.competitorArray.filter({$0.team == 3}) {
                 totalExtraShots += round(competitor.diffTeesXShots*1000)/1000
             }
-            game.teamCDiffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
-           
-            game.teamADiffTeesXShots = 0
-            game.teamBDiffTeesXShots = 0
+            if !game.teamShotsArray.isEmpty {
+                game.teamShotsArray[2].diffTeesXShots = (totalExtraShots*currentGF.extraShotsTeamAdj)
+                game.teamShotsArray[0].diffTeesXShots = 0
+                game.teamShotsArray[1].diffTeesXShots = 0
+            }
             totalExtraShots = 0
         }
         
     }
-    
-    
-//  func CreateGame () {
-//
-//        let manager = CoreDataManager.shared
-//        let game = Game(context: manager.persistentContainer.viewContext)
-//        
-//        game.name = self.name
-//        game.date = self.date
-//        game.defaultTeeBox = clubListVM.clubs2.getElement(at: self.pickedClub)?.courseArray.getElement(at: self.pickedCourse)?.teeBoxArray.getElement(at: self.pickedTeeBox) ?? TeeBox()
-//        game.gameFormat = Int16(self.pickerGameFormat.rawValue)
-//        game.duration = Int16(self.pickerGameDuration)
-//        game.startingHole = Int16(self.pickerStartingHole)
-//        
-//            for player in playerListVM.players.filter({$0.selectedForGame == true}) {
-//                let competitor = Competitor(context: manager.persistentContainer.viewContext)
-//                competitor.player = player.player
-//                competitor.game = game
-//                competitor.teeBox = game.defaultTeeBox
-//                competitor.handicapIndex = player.player.handicapArray.currentHandicapIndex()
-//                competitor.courseHandicap = competitor.CourseHandicap()
-//                player.player.selectedForGame.toggle()
-//            }
-//       
-//        game.scoreFormat = Int16(self.pickerScoringFormat.rawValue)
-//        game.handicapFormat = Int16(self.pickerHandicapFormat.rawValue)
-//       
-//        manager.save()
-//
-//        gameListVM.updateCurrentGameFormat(currentGF: currentGF, game: game)
-//        
-//        
-//        //code here to assign competitor teams
-//        
-//        self.AssignCompetitorTeams(game: game, currentGF: currentGF)
-//       self.AssignHandicapsAndShots(game: game, currentGF: currentGF)
-//  
-//        presentationMode.wrappedValue.dismiss()
-//        
-//     }
-    
-    
+  
     
 }
 

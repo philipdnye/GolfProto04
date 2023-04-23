@@ -112,40 +112,55 @@ struct GameDetailScreen: View {
     }
     
     
+    private var teamPlayingHandicaps: some View {
+        Group{
+            switch currentGF.assignShotsRecd {
+            case .Indiv:
+               EmptyView()
+            case .TeamsAB:
+            TeamsABPlayingHandicaps(needsRefesh: $needsRefresh,game: game)
+            case .TeamC:
+                TeamCPlayingHandicap(needsRefresh: $needsRefresh ,game: game)
+               
+            }
+        }
+    }
+    
+    private var teamShotsReceived: some View {
+        Group{
+            switch currentGF.assignShotsRecd {
+            case .Indiv:
+                EmptyView()
+            case .TeamsAB:
+                TeamsABShotsReceived(needsRefresh: $needsRefresh ,game: game)
+            case .TeamC:
+                EmptyView()
+            }
+        }
+    }
+    
+    
     let game: GameViewModel
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
 //            Text(needsRefresh.description)
             GameSummaryForDetailScreen(game: game)
-            HStack{
-                if currentGF.assignShotsRecd == Assignment.TeamsAB || currentGF.assignShotsRecd == Assignment.TeamC {
-                    VStack{
-                        //                    Text("Team A: \(game.game.teamAPlayingHandicap.formatted())")
-                        //                    Text("Team B: \(game.game.teamBPlayingHandicap.formatted())")
-                        //                    Text("Team C: \(game.game.teamCPlayingHandicap.formatted())")
-                        
-                        Text("Team A: \(game.game.teamShotsArray[0].playingHandicap.formatted())")
-                        Text("Team B: \(game.game.teamShotsArray[1].playingHandicap.formatted())")
-                        Text("Team C: \(game.game.teamShotsArray[2].playingHandicap.formatted())")
-                        
-                        
-                    }
-                    VStack{
-                        //                    Text("Team A: \(game.game.teamAShotsReceived.formatted())")
-                        //                    Text("Team B: \(game.game.teamBShotsReceived.formatted())")
-                        //                    Text("Team C: \(game.game.teamCShotsReceived.formatted())")
-                        Text("Team A: \(game.game.teamShotsArray[0].shotsRecd.formatted())")
-                        Text("Team B: \(game.game.teamShotsArray[1].shotsRecd.formatted())")
-                        Text("Team C: \(game.game.teamShotsArray[2].shotsRecd.formatted())")
-                    }
-                    VStack{
-                        Text(game.game.TeeBoxesAllSame().description)
-                        Text("A ex sh: \(game.game.teamShotsArray[0].diffTeesXShots) \(game.game.TotalPlayingHandicapA())")//********
-                        Text("SR A: \(game.game.TotalShotsRecdMatchTeamA())")
-                    }
-                }
-            }
+          
+            teamPlayingHandicaps
+            teamShotsReceived
+            
+//            HStack{
+//                if currentGF.assignShotsRecd == Assignment.TeamsAB || currentGF.assignShotsRecd == Assignment.TeamC {
+////
+//                   
+//                    VStack{
+//                        Text(game.game.TeeBoxesAllSame().description)
+//                        Text("A ex sh: \(game.game.teamShotsArray[0].diffTeesXShots) \(game.game.TotalPlayingHandicapA())")//********
+//                        Text("SR A: \(game.game.TotalShotsRecdMatchTeamA())")
+//                    }
+//                }
+//            }
             Form{
                 Section {
               
@@ -153,7 +168,7 @@ struct GameDetailScreen: View {
                                                                     {$0.team < $1.team}
                                                                    
                                                                   )), id: \.self){competitor in
-                    CompetitorRowItem_GameDetail(competitor: competitor, needsRefresh: $needsRefresh)
+                        CompetitorRowItem_GameDetail(competitor: competitor,game: game ,needsRefresh: $needsRefresh)
                         .swipeActions(edge: .trailing, allowsFullSwipe: false){
                             Button{
                                 currentGF.swipedCompetitor = competitor
@@ -180,17 +195,7 @@ struct GameDetailScreen: View {
                                 UpdateCompetitorTeam(competitor: competitor, value: 1)
                                 
                                 addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
-                                
-//                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
-//                               // addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
-//
-//                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-//
-//                                let manager = CoreDataManager.shared
-//                                manager.save()
+       
                                 needsRefresh.toggle()
                                 gameListVM.getAllGames()
                                 gameListVM.getAllCompetitors()
@@ -210,17 +215,7 @@ struct GameDetailScreen: View {
                             Button {
                                 UpdateCompetitorTeam(competitor: competitor, value: 2)
                                 addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
-//                                
-//                                addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
-//                                addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
-//                                
-//                                
-//                                addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-//                                
-//                                let manager = CoreDataManager.shared
-//                                manager.save()
+// 
                                 needsRefresh.toggle()
                                 gameListVM.getAllGames()
                                 gameListVM.getAllCompetitors()

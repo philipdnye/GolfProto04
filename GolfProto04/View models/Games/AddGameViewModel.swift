@@ -195,7 +195,7 @@ class AddGameViewModel: ObservableObject {
         switch currentGF.assignShotsRecd {
         case .Indiv:
             for i in 0..<game.competitorArray.count {
-                game.competitorArray[i].playingHandicap = round(round(game.competitorArray[i].courseHandicap) * game.competitorArray[i].handicapAllowance)
+                game.competitorArray[i].playingHandicap = round(game.competitorArray[i].courseHandicap) * game.competitorArray[i].handicapAllowance
             }
         case .TeamsAB:
             for i in 0..<game.competitorArray.count {
@@ -303,12 +303,12 @@ class AddGameViewModel: ObservableObject {
             case .Indiv:
                 var competitorsTotalPH: [Double] = Array(repeating: 0.0, count: game.competitorArray.count)
                 for i in 0..<game.competitorArray.count {
-                    competitorsTotalPH[i] = game.competitorArray[i].playingHandicap + game.competitorArray[i].diffTeesXShots
+                    competitorsTotalPH[i] = round(game.competitorArray[i].playingHandicap) + game.competitorArray[i].diffTeesXShots
                 }
                 let lowPH = competitorsTotalPH.min() ?? 0
                 
                 for i in 0..<game.competitorArray.count {
-                    game.competitorArray[i].shotsRecdMatch = (game.competitorArray[i].playingHandicap + game.competitorArray[i].diffTeesXShots) - lowPH
+                    game.competitorArray[i].shotsRecdMatch = (round(game.competitorArray[i].playingHandicap) + game.competitorArray[i].diffTeesXShots) - lowPH
                 }
                 
 //                game.teamAShotsReceived = 0

@@ -43,15 +43,7 @@ struct ChangeCompetitorTeeBoxSheet: View {
                         
                         //now run code to recalc all playing handicaps THEN SAVE AGAIN
                         addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
-//                        addGameVM.AssignPlayingHandicaps (game: game.game, currentGF: currentGF)
-//                        addGameVM.AssignTeamPlayingHandicap(game: game.game, currentGF: currentGF)
-//
-//                        addGameVM.AssignExtraShots(game: game.game, currentGF: currentGF)
-//                        addGameVM.AssignTeamExtraShots(game: game.game, currentGF: currentGF)
-//
-//                        addGameVM.AssignShotsReceived(game: game.game, currentGF: currentGF)
-//
-//                        manager.save()
+// 
                         isPresented = false
                         neeedsRefresh.toggle()
                     }

@@ -41,13 +41,26 @@ struct GameSummaryForDetailScreen: View {
             }
             .foregroundColor(darkTeal)
             //if game.TeeBoxesAllSame() {
-            HStack{
-                Text("\(game.defaultTeeBoxColour.capitalized) tees")
-                Text("\(String(game.defaultTeeBox.TotalDistance()))")//need to add in distance metric
-                Text("Par: \(game.defaultTeeBox.TotalPar())")
-                Text("SR \(game.defaultTeeBox.slopeRating)")
-                Text("CR \(String(format: "%.1f", game.defaultTeeBox.courseRating))")
-                Spacer()
+            HStack(spacing: 0){
+                Group{
+                    Text("\(game.defaultTeeBoxColour.capitalized) tees")
+                    Spacer()
+                        .frame(width: 4)
+                    Text("\(String(game.defaultTeeBox.TotalDistance()))")//need to add in distance metric
+                    Text(game.game.defaultTeeBox?.course?.club?.dist_metric.stringValueInitial() ?? "y")
+                    Spacer()
+                        .frame(width: 4)
+                }
+                Group{
+                    Text("Par: \(game.defaultTeeBox.TotalPar())")
+                    Spacer()
+                        .frame(width: 4)
+                    Text("SR \(game.defaultTeeBox.slopeRating)")
+                    Spacer()
+                        .frame(width: 4)
+                    Text("CR \(String(format: "%.1f", game.defaultTeeBox.courseRating))")
+                    Spacer()
+                }
                 //                gameStatus
                 //                    .foregroundColor(burntOrange)
                 //                    .padding([.trailing],5)

@@ -76,7 +76,7 @@
         <relationship name="defaultTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="game" inverseEntity="TeeBox"/>
         <relationship name="teamScores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamScore" inverseName="game" inverseEntity="TeamScore"/>
         <relationship name="teamShots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamShots" inverseName="game" inverseEntity="TeamShots"/>
-        <relationship name="teamTeeBoxes" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeamTeeBox" inverseName="game" inverseEntity="TeamTeeBox"/>
+        <relationship name="teamTeeBoxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamTeeBox" inverseName="game" inverseEntity="TeamTeeBox"/>
     </entity>
     <entity name="Handicap" representedClassName="Handicap" syncable="YES" codeGenerationType="class">
         <attribute name="handicapIndex" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>

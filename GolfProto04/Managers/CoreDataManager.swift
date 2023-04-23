@@ -117,6 +117,42 @@ class CoreDataManager {
             return nil
         }
     }
+    func getCompetitorScoreById(id: NSManagedObjectID) -> CompetitorScore? {
+        do {
+            return try
+            persistentContainer.viewContext.existingObject(with: id) as? CompetitorScore
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    func getTeamScoreById(id: NSManagedObjectID) -> TeamScore? {
+        do {
+            return try
+            persistentContainer.viewContext.existingObject(with: id) as? TeamScore
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    func getTeamShotsById(id: NSManagedObjectID) -> TeamShots? {
+        do {
+            return try
+            persistentContainer.viewContext.existingObject(with: id) as? TeamShots
+        } catch {
+            print(error)
+            return nil
+        }
+    }
+    func getTeamTeeBoxById(id: NSManagedObjectID) -> TeamTeeBox? {
+        do {
+            return try
+            persistentContainer.viewContext.existingObject(with: id) as? TeamTeeBox
+        } catch {
+            print(error)
+            return nil
+        }
+    }
     
     func deleteClub(_ club: Club) {
         persistentContainer.viewContext.delete(club)
@@ -191,7 +227,45 @@ class CoreDataManager {
             print("Failed to delete competitor \(error)")
         }
     }
+    func deleteCompetitorScore(_ competitorScore: CompetitorScore) {
+        persistentContainer.viewContext.delete(competitorScore)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete competitorScore \(error)")
+        }
+    }
     
+    func deleteTeamScore(_ teamScore: TeamScore) {
+        persistentContainer.viewContext.delete(teamScore)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete teamScore \(error)")
+        }
+    }
+    
+    func deleteTeamShots(_ teamShots: TeamShots) {
+        persistentContainer.viewContext.delete(teamShots)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete teamShots \(error)")
+        }
+    }
+    
+    func deleteTeamTeeBox(_ teamTeeBox: TeamTeeBox) {
+        persistentContainer.viewContext.delete(teamTeeBox)
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to delete teamTeeBox \(error)")
+        }
+    }
     
     func getAllClubs() -> [Club] {
         

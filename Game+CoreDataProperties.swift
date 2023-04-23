@@ -44,8 +44,8 @@ extension Game {
     @NSManaged public var defaultTeeBox: TeeBox?
     @NSManaged public var teamScores: NSSet?
     @NSManaged public var teamShots: NSSet?
-    @NSManaged public var teamTeeBoxes: TeamTeeBox?
-    
+    @NSManaged public var teamTeeBoxes: NSSet?
+   
     public var competitorArray: [Competitor] {
             let set = competitors as? Set<Competitor> ?? []
             return set.sorted {
@@ -102,6 +102,23 @@ extension Game {
 
     @objc(removeTeamShots:)
     @NSManaged public func removeFromTeamShots(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for teamTeeBoxes
+extension Game {
+
+    @objc(addTeamTeeBoxesObject:)
+    @NSManaged public func addToTeamTeeBoxes(_ value: TeamTeeBox)
+
+    @objc(removeTeamTeeBoxesObject:)
+    @NSManaged public func removeFromTeamTeeBoxes(_ value: TeamTeeBox)
+
+    @objc(addTeamTeeBoxes:)
+    @NSManaged public func addToTeamTeeBoxes(_ values: NSSet)
+
+    @objc(removeTeamTeeBoxes:)
+    @NSManaged public func removeFromTeamTeeBoxes(_ values: NSSet)
 
 }
 

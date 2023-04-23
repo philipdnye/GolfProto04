@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  GolfProto04
 //
-//  Created by Philip Nye on 21/04/2023.
+//  Created by Philip Nye on 23/04/2023.
 //
 //
 
@@ -37,8 +37,14 @@ extension Game {
     @NSManaged public var teamCDiffTeesXShots: Double
     @NSManaged public var teamCPlayingHandicap: Double
     @NSManaged public var teamCShotsReceived: Double
+    @NSManaged public var clubName: String?
+    @NSManaged public var courseName: String?
+    @NSManaged public var distMetric: Int16
     @NSManaged public var competitors: NSSet?
     @NSManaged public var defaultTeeBox: TeeBox?
+    @NSManaged public var teamScores: NSSet?
+    @NSManaged public var teamShots: NSSet?
+    @NSManaged public var teamTeeBoxes: TeamTeeBox?
     
     public var competitorArray: [Competitor] {
             let set = competitors as? Set<Competitor> ?? []
@@ -46,7 +52,6 @@ extension Game {
                 $0.id < $1.id
             }
         }
-    
 }
 
 // MARK: Generated accessors for competitors
@@ -63,6 +68,40 @@ extension Game {
 
     @objc(removeCompetitors:)
     @NSManaged public func removeFromCompetitors(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for teamScores
+extension Game {
+
+    @objc(addTeamScoresObject:)
+    @NSManaged public func addToTeamScores(_ value: TeamScore)
+
+    @objc(removeTeamScoresObject:)
+    @NSManaged public func removeFromTeamScores(_ value: TeamScore)
+
+    @objc(addTeamScores:)
+    @NSManaged public func addToTeamScores(_ values: NSSet)
+
+    @objc(removeTeamScores:)
+    @NSManaged public func removeFromTeamScores(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for teamShots
+extension Game {
+
+    @objc(addTeamShotsObject:)
+    @NSManaged public func addToTeamShots(_ value: TeamShots)
+
+    @objc(removeTeamShotsObject:)
+    @NSManaged public func removeFromTeamShots(_ value: TeamShots)
+
+    @objc(addTeamShots:)
+    @NSManaged public func addToTeamShots(_ values: NSSet)
+
+    @objc(removeTeamShots:)
+    @NSManaged public func removeFromTeamShots(_ values: NSSet)
 
 }
 

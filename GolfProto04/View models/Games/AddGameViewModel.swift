@@ -23,7 +23,9 @@ class AddGameViewModel: ObservableObject {
     @StateObject private var playerListVM = PlayerListViewModel()
     @StateObject private var clubListVM = ClubListViewModel()
     @EnvironmentObject var currentGF: CurrentGameFormat
-   
+    @StateObject private var gameListVM = GameListViewModel()
+    @Environment(\.presentationMode) var presentationMode
+    
     var name: String = ""
     var date: Date = Date()
     var teeBox: TeeBox = TeeBox()
@@ -378,6 +380,46 @@ class AddGameViewModel: ObservableObject {
         }
         
     }
+    
+    
+//  func CreateGame () {
+//
+//        let manager = CoreDataManager.shared
+//        let game = Game(context: manager.persistentContainer.viewContext)
+//        
+//        game.name = self.name
+//        game.date = self.date
+//        game.defaultTeeBox = clubListVM.clubs2.getElement(at: self.pickedClub)?.courseArray.getElement(at: self.pickedCourse)?.teeBoxArray.getElement(at: self.pickedTeeBox) ?? TeeBox()
+//        game.gameFormat = Int16(self.pickerGameFormat.rawValue)
+//        game.duration = Int16(self.pickerGameDuration)
+//        game.startingHole = Int16(self.pickerStartingHole)
+//        
+//            for player in playerListVM.players.filter({$0.selectedForGame == true}) {
+//                let competitor = Competitor(context: manager.persistentContainer.viewContext)
+//                competitor.player = player.player
+//                competitor.game = game
+//                competitor.teeBox = game.defaultTeeBox
+//                competitor.handicapIndex = player.player.handicapArray.currentHandicapIndex()
+//                competitor.courseHandicap = competitor.CourseHandicap()
+//                player.player.selectedForGame.toggle()
+//            }
+//       
+//        game.scoreFormat = Int16(self.pickerScoringFormat.rawValue)
+//        game.handicapFormat = Int16(self.pickerHandicapFormat.rawValue)
+//       
+//        manager.save()
+//
+//        gameListVM.updateCurrentGameFormat(currentGF: currentGF, game: game)
+//        
+//        
+//        //code here to assign competitor teams
+//        
+//        self.AssignCompetitorTeams(game: game, currentGF: currentGF)
+//       self.AssignHandicapsAndShots(game: game, currentGF: currentGF)
+//  
+//        presentationMode.wrappedValue.dismiss()
+//        
+//     }
     
     
     

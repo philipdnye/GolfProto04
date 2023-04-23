@@ -34,6 +34,13 @@ extension Competitor {
     @NSManaged public var player: Player?
     @NSManaged public var teeBox: TeeBox?
     @NSManaged public var scores: NSSet?
+    
+    public var competitorScoresArray: [CompetitorScore]{
+        let set = scores as? Set<CompetitorScore> ?? []
+        return set.sorted {
+            $0.hole < $1.hole
+        }
+    }
 
 }
 

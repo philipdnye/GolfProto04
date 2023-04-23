@@ -46,11 +46,37 @@ struct AddGameScreen: View {
       
        game.scoreFormat = Int16(addGameVM.pickerScoringFormat.rawValue)
        game.handicapFormat = Int16(addGameVM.pickerHandicapFormat.rawValue)
-      
+       
+       
        manager.save()
 
        gameListVM.updateCurrentGameFormat(currentGF: currentGF, game: game)
-       
+       // code here to create an instance of TeamShots, for each team, if handicaps allocated by team
+      
+       if currentGF.assignShotsRecd == .TeamsAB || currentGF.assignShotsRecd == .TeamC {
+           let teamShotsA = TeamShots(context: manager.persistentContainer.viewContext)
+           let teamShotsB = TeamShots(context: manager.persistentContainer.viewContext)
+           let teamShotsC = TeamShots(context: manager.persistentContainer.viewContext)
+           teamShotsA.game = game
+           teamShotsB.game = game
+           teamShotsC.game = game
+           
+           teamShotsA.team = 1
+           teamShotsB.team = 2
+           teamShotsC.team = 3
+           
+           teamShotsA.playingHandicap = 37
+           
+           
+           manager.save()
+           
+           //           if !game.teamShotsArray.isEmpty {
+           //               print(game.teamShotsArray[0].playingHandicap)
+           //               print(game.teamShotsArray[0].team)
+           //           }
+           
+           
+       }
        
        //code here to assign competitor teams
        

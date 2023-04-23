@@ -173,7 +173,7 @@
 		D482382629F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CompetitorRowItem_GameDetail.swift; sourceTree = "<group>"; };
 		D482383B29F529DF0029ECBF /* Competitor+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Competitor+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D482383C29F529DF0029ECBF /* Competitor+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Competitor+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		D482384729F530B20029ECBF /* CompetitorScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitorScoreViewModel.swift; path = "GolfProto04/View models/CompetitorScoreViewModel.swift"; sourceTree = SOURCE_ROOT; };
+		D482384729F530B20029ECBF /* CompetitorScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CompetitorScoreViewModel.swift; path = "GolfProto04/View models/Games/CompetitorScoreViewModel.swift"; sourceTree = SOURCE_ROOT; };
 		D482384929F535FE0029ECBF /* TeamScoreViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoreViewModel.swift; sourceTree = "<group>"; };
 		D482384B29F538590029ECBF /* TeamShotsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamShotsViewModel.swift; sourceTree = "<group>"; };
 		D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamTeeBoxViewModel.swift; sourceTree = "<group>"; };
@@ -319,10 +319,6 @@
 		D48237C029F3B4EE0029ECBF /* View models */ = {
 			isa = PBXGroup;
 			children = (
-				D482384929F535FE0029ECBF /* TeamScoreViewModel.swift */,
-				D482384729F530B20029ECBF /* CompetitorScoreViewModel.swift */,
-				D482384B29F538590029ECBF /* TeamShotsViewModel.swift */,
-				D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */,
 				D482381629F3B81C0029ECBF /* Games */,
 				D48237D929F3B5500029ECBF /* Players */,
 				D48237C229F3B53F0029ECBF /* Clubs */,
@@ -441,6 +437,10 @@
 		D482381629F3B81C0029ECBF /* Games */ = {
 			isa = PBXGroup;
 			children = (
+				D482384929F535FE0029ECBF /* TeamScoreViewModel.swift */,
+				D482384729F530B20029ECBF /* CompetitorScoreViewModel.swift */,
+				D482384B29F538590029ECBF /* TeamShotsViewModel.swift */,
+				D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */,
 				D482381829F3B8680029ECBF /* AddGameViewModel.swift */,
 				D482381C29F3B95A0029ECBF /* GameListViewModel.swift */,
 			);

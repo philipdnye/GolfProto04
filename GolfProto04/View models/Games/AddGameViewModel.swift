@@ -254,7 +254,21 @@ class AddGameViewModel: ObservableObject {
             game.teamBPlayingHandicap = 0
             game.teamCPlayingHandicap = 0
            
-            
+//            let manager = CoreDataManager.shared
+//            let teamShotsA = TeamShots(context: manager.persistentContainer.viewContext)
+//            let teamShotsB = TeamShots(context: manager.persistentContainer.viewContext)
+//            let teamShotsC = TeamShots(context: manager.persistentContainer.viewContext)
+//            teamShotsA.game = game
+//            teamShotsB.game = game
+//            teamShotsC.game = game
+//            teamShotsA.playingHandicap = 0
+//            teamShotsB.playingHandicap = 0
+//            teamShotsC.playingHandicap = 0
+//            teamShotsA.team = 1
+//            teamShotsB.team = 2
+//            teamShotsC.team = 3
+//
+//            manager.save()
             
             
         case .TeamsAB:

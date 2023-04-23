@@ -52,6 +52,27 @@ extension Game {
                 $0.id < $1.id
             }
         }
+    
+    public var teamShotsArray: [TeamShots]{
+        let set = teamShots as? Set<TeamShots> ?? []
+        return set.sorted {
+            $0.team < $1.team
+        }
+    }
+    public var teamScoresArray: [TeamScore]{
+        let set = teamScores as? Set<TeamScore> ?? []
+        return set.sorted {
+            $0.team < $1.team
+        }
+    }
+    
+    public var teamTeeBoxArray: [TeamTeeBox]{
+        let set = teamTeeBoxes as? Set<TeamTeeBox> ?? []
+        return set.sorted {
+            $0.team < $1.team
+        }
+    }
+    
 }
 
 // MARK: Generated accessors for competitors

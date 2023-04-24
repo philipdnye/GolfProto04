@@ -99,7 +99,7 @@ struct CompetitorRowItem_GameDetail: View {
             .font(.caption2)
             .foregroundColor(darkTeal)
             
-            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+            if game.game.TeeBoxesAllSame() == false && competitor.teeBox != game.defaultTeeBox {
                 VStack{
                     Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots))")
                     HStack(spacing: 0){

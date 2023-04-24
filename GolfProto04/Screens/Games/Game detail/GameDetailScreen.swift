@@ -277,7 +277,7 @@ struct GameDetailScreen: View {
                 ) {
                     Button("Start game", role: .destructive) {
                         
-                        startGameVM.StartGame(game: game.game)
+                        startGameVM.StartGame(game: game.game, currentGF: currentGF)
                         
                         print(game.clubName)
                         print(game.courseName)
@@ -294,7 +294,46 @@ struct GameDetailScreen: View {
                         print(game.game.competitorArray[0].playingHandicap)
                         print(game.game.competitorArray[0].diffTeesXShots)
                         print(game.game.competitorArray[0].shotsRecdMatch)
-                    
+                        
+                        
+                        print(game.game.competitorArray[0].competitorScoresArray[0].distance)
+                        print(game.game.competitorArray[0].competitorScoresArray[1].distance)
+                        print(game.game.competitorArray[0].competitorScoresArray[2].distance)
+                        
+                        print(game.game.competitorArray[1].firstName ?? "")
+                        print(game.game.competitorArray[1].lastName ?? "")
+                        print(game.game.competitorArray[1].teeBoxColour ?? "")
+                        print(game.game.competitorArray[1].slopeRating)
+                        print(game.game.competitorArray[1].courseRating)
+                        print(game.game.competitorArray[1].handicapIndex)
+                        print(game.game.competitorArray[1].handicapAllowance)
+                        print(game.game.competitorArray[1].courseHandicap)
+                        print(game.game.competitorArray[1].playingHandicap)
+                        print(game.game.competitorArray[1].diffTeesXShots)
+                        print(game.game.competitorArray[1].shotsRecdMatch)
+                        
+                        
+                        print(game.game.competitorArray[1].competitorScoresArray[0].distance)
+                        print(game.game.competitorArray[1].competitorScoresArray[1].distance)
+                        print(game.game.competitorArray[1].competitorScoresArray[2].distance)
+                        
+                        
+                        print(game.game.competitorArray[2].firstName ?? "")
+                        print(game.game.competitorArray[2].lastName ?? "")
+                        print(game.game.competitorArray[2].teeBoxColour ?? "")
+                        print(game.game.competitorArray[2].slopeRating)
+                        print(game.game.competitorArray[2].courseRating)
+                        print(game.game.competitorArray[2].handicapIndex)
+                        print(game.game.competitorArray[2].handicapAllowance)
+                        print(game.game.competitorArray[2].courseHandicap)
+                        print(game.game.competitorArray[2].playingHandicap)
+                        print(game.game.competitorArray[2].diffTeesXShots)
+                        print(game.game.competitorArray[2].shotsRecdMatch)
+                        
+                        
+                        print(game.game.competitorArray[2].competitorScoresArray[0].distance)
+                        print(game.game.competitorArray[2].competitorScoresArray[1].distance)
+                        print(game.game.competitorArray[2].competitorScoresArray[2].distance)
                         
 //                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
                         //print("STart button \(scoreEntryVar.CGI)")

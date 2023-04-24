@@ -28,7 +28,7 @@ class StartGameViewModel: ObservableObject {
     var gender: Int = 0
     
     
-    func StartGame(game: Game) {
+    func StartGame(game: Game, currentGF: CurrentGameFormat) {
         let manager = CoreDataManager.shared
         
 //        func SaveInfoToCompetitors(competitors: [Competitor]) {
@@ -62,17 +62,53 @@ class StartGameViewModel: ObservableObject {
             game.competitorArray[i].teeBoxColour = game.competitorArray[i].TeeBoxColour()
             game.competitorArray[i].firstName = game.competitorArray[i].FirstName()
             game.competitorArray[i].lastName = game.competitorArray[i].LastName()
-           // game.competitorArray[i].gender = game.competitorArray[i].player?.gender    need to fix gender assignment when creating player
+            game.competitorArray[i].gender = Int16(game.competitorArray[i].player?.pl_gender.rawValue ?? 0)
+         
             // player photo ??
         }
         
-        // competitor shots
+        // if handicap allocated by indiv then COmpetitor Scorecard gets created else team scorecard and team teeBox
         
-        // add in team teeboxes
         
-        // team shots
+        switch currentGF.assignShotsRecd {
+        case .Indiv:
+            //create a scorecard for each competitor
+            
+            for i in 0..<game.competitorArray.count {
+               // let cs = CompetitorScore(context: manager.persistentContainer.viewContext)
+                
+                var holes = game.competitorArray[i].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                
+                for j in 0..<(holes?.count ?? 0) {
+                    let cs = CompetitorScore(context: manager.persistentContainer.viewContext)
+                    cs.competitor = game.competitorArray[i]
+                    cs.hole = Int16(j + 1)
+                    cs.distance = Int16(holes?[j].distance ?? 0)
+                    cs.par = Int16(holes?[j].par ?? 0)
+                    cs.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                    manager.save()
+                }
+                holes = []
+                
+               // game.competitorArray[i]
+                manager.save()
+            }
+        default:
+            // code for added cards and teebox for teams
+            break
+        }
         
-// create scorecard for each competitor OR team
+        
+        
+        
+        // competitor Score
+        
+        
+        // team score
+        
+        
+        //team teebox
+       
         
         
         

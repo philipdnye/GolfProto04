@@ -46,14 +46,18 @@ struct CompetitorRowItem_GameDetail: View {
                 }
                 Spacer()
                     .frame(width: 1)
-                
-                Text(round(competitor.TotalPlayingHandicap()).formatted())
-                    .frame(width: 30, alignment: .trailing)
-                    .foregroundColor(darkTeal)
-                    .font(.title3)
-                //.fontWeight(.semibold)
-                
-                
+                if currentGF.assignShotsRecd != .TeamC {
+                    Text(round(competitor.TotalPlayingHandicap()).formatted())
+                        .frame(width: 30, alignment: .trailing)
+                        .foregroundColor(darkTeal)
+                        .font(.title3)
+                } else {
+                    Text(String(format: "%.2f",competitor.TotalPlayingHandicapUnrounded()))
+                        .frame(width: 70, alignment: .trailing)
+                        .foregroundColor(darkTeal)
+                        .font(.title3)
+                    
+                }
                 Spacer()
                     .frame(width: 5)
                 HStack{

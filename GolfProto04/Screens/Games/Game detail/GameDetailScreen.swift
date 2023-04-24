@@ -151,7 +151,10 @@ struct GameDetailScreen: View {
             teamPlayingHandicaps
             teamShotsReceived
             
-            if currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false{
+            if
+                currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false ||
+                    currentGF.assignTeamGrouping == .TeamC && currentGF.assignShotsRecd == .TeamC && game.game.TeeBoxesAllSame() == false
+            {
                 HStack{
                     Text(game.game.diffTeesTeeBox?.wrappedColour ?? "")
                     Button("Select teeBox"){
@@ -289,75 +292,85 @@ struct GameDetailScreen: View {
                         print(game.courseName)
                         print(game.game.distMetric)
                         
-                        print(game.game.competitorArray[0].firstName ?? "")
-                        print(game.game.competitorArray[0].lastName ?? "")
-                        print(game.game.competitorArray[0].teeBoxColour ?? "")
-                        print(game.game.competitorArray[0].slopeRating)
-                        print(game.game.competitorArray[0].courseRating)
-                        print(game.game.competitorArray[0].handicapIndex)
-                        print(game.game.competitorArray[0].handicapAllowance)
-                        print(game.game.competitorArray[0].courseHandicap)
-                        print(game.game.competitorArray[0].playingHandicap)
-                        print(game.game.competitorArray[0].diffTeesXShots)
-                        print(game.game.competitorArray[0].shotsRecdMatch)
-                        
-                        
-                        print(game.game.competitorArray[0].competitorScoresArray[0].distance)
-                        print(game.game.competitorArray[0].competitorScoresArray[1].distance)
-                        print(game.game.competitorArray[0].competitorScoresArray[2].distance)
-                        
-                        print(game.game.competitorArray[1].firstName ?? "")
-                        print(game.game.competitorArray[1].lastName ?? "")
-                        print(game.game.competitorArray[1].teeBoxColour ?? "")
-                        print(game.game.competitorArray[1].slopeRating)
-                        print(game.game.competitorArray[1].courseRating)
-                        print(game.game.competitorArray[1].handicapIndex)
-                        print(game.game.competitorArray[1].handicapAllowance)
-                        print(game.game.competitorArray[1].courseHandicap)
-                        print(game.game.competitorArray[1].playingHandicap)
-                        print(game.game.competitorArray[1].diffTeesXShots)
-                        print(game.game.competitorArray[1].shotsRecdMatch)
-                        
-                        
-                        print(game.game.competitorArray[1].competitorScoresArray[0].distance)
-                        print(game.game.competitorArray[1].competitorScoresArray[1].distance)
-                        print(game.game.competitorArray[1].competitorScoresArray[2].distance)
-                        
-                        
-                        print(game.game.competitorArray[2].firstName ?? "")
-                        print(game.game.competitorArray[2].lastName ?? "")
-                        print(game.game.competitorArray[2].teeBoxColour ?? "")
-                        print(game.game.competitorArray[2].slopeRating)
-                        print(game.game.competitorArray[2].courseRating)
-                        print(game.game.competitorArray[2].handicapIndex)
-                        print(game.game.competitorArray[2].handicapAllowance)
-                        print(game.game.competitorArray[2].courseHandicap)
-                        print(game.game.competitorArray[2].playingHandicap)
-                        print(game.game.competitorArray[2].diffTeesXShots)
-                        print(game.game.competitorArray[2].shotsRecdMatch)
-                        
-                        
-                        print(game.game.competitorArray[2].competitorScoresArray[0].distance)
-                        print(game.game.competitorArray[2].competitorScoresArray[1].distance)
-                        print(game.game.competitorArray[2].competitorScoresArray[2].distance)
-                        
-                        
-                        
-                        for j in 0..<game.game.competitorArray.count {
-                            print(game.game.competitorArray[j].firstName ?? "")
-                            for i in 0..<18 {
-                                print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleMatch)
+                        if currentGF.assignShotsRecd == .Indiv {
+                            
+                            print(game.game.competitorArray[0].firstName ?? "")
+                            print(game.game.competitorArray[0].lastName ?? "")
+                            print(game.game.competitorArray[0].teeBoxColour ?? "")
+                            print(game.game.competitorArray[0].slopeRating)
+                            print(game.game.competitorArray[0].courseRating)
+                            print(game.game.competitorArray[0].handicapIndex)
+                            print(game.game.competitorArray[0].handicapAllowance)
+                            print(game.game.competitorArray[0].courseHandicap)
+                            print(game.game.competitorArray[0].playingHandicap)
+                            print(game.game.competitorArray[0].diffTeesXShots)
+                            print(game.game.competitorArray[0].shotsRecdMatch)
+                            
+                            
+                            print(game.game.competitorArray[0].competitorScoresArray[0].distance)
+                            print(game.game.competitorArray[0].competitorScoresArray[1].distance)
+                            print(game.game.competitorArray[0].competitorScoresArray[2].distance)
+                            
+                            print(game.game.competitorArray[1].firstName ?? "")
+                            print(game.game.competitorArray[1].lastName ?? "")
+                            print(game.game.competitorArray[1].teeBoxColour ?? "")
+                            print(game.game.competitorArray[1].slopeRating)
+                            print(game.game.competitorArray[1].courseRating)
+                            print(game.game.competitorArray[1].handicapIndex)
+                            print(game.game.competitorArray[1].handicapAllowance)
+                            print(game.game.competitorArray[1].courseHandicap)
+                            print(game.game.competitorArray[1].playingHandicap)
+                            print(game.game.competitorArray[1].diffTeesXShots)
+                            print(game.game.competitorArray[1].shotsRecdMatch)
+                            
+                            
+                            print(game.game.competitorArray[1].competitorScoresArray[0].distance)
+                            print(game.game.competitorArray[1].competitorScoresArray[1].distance)
+                            print(game.game.competitorArray[1].competitorScoresArray[2].distance)
+                            
+                            
+                            print(game.game.competitorArray[2].firstName ?? "")
+                            print(game.game.competitorArray[2].lastName ?? "")
+                            print(game.game.competitorArray[2].teeBoxColour ?? "")
+                            print(game.game.competitorArray[2].slopeRating)
+                            print(game.game.competitorArray[2].courseRating)
+                            print(game.game.competitorArray[2].handicapIndex)
+                            print(game.game.competitorArray[2].handicapAllowance)
+                            print(game.game.competitorArray[2].courseHandicap)
+                            print(game.game.competitorArray[2].playingHandicap)
+                            print(game.game.competitorArray[2].diffTeesXShots)
+                            print(game.game.competitorArray[2].shotsRecdMatch)
+                            
+                            
+                            print(game.game.competitorArray[2].competitorScoresArray[0].distance)
+                            print(game.game.competitorArray[2].competitorScoresArray[1].distance)
+                            print(game.game.competitorArray[2].competitorScoresArray[2].distance)
+                            
+                            
+                            
+                            for j in 0..<game.game.competitorArray.count {
+                                print(game.game.competitorArray[j].firstName ?? "")
+                                for i in 0..<18 {
+                                    print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleMatch)
+                                }
+                                
+                            }
+                            
+                            for j in 0..<game.game.competitorArray.count {
+                                print(game.game.competitorArray[j].firstName ?? "")
+                                for i in 0..<18 {
+                                    print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleStroke)
+                                }
+                                
                             }
                             
                         }
-                        
-                        for j in 0..<game.game.competitorArray.count {
-                            print(game.game.competitorArray[j].firstName ?? "")
-                            for i in 0..<18 {
-                                print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleStroke)
-                            }
-                            
+                        for j in 0..<18 {
+                            print(game.game.teamScoresArray[j].distance)
                         }
+                        
+                        
+                        
                         
 //                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
                         //print("STart button \(scoreEntryVar.CGI)")

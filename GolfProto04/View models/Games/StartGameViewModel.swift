@@ -34,7 +34,7 @@ class StartGameViewModel: ObservableObject {
     func StartGame(game: Game, currentGF: CurrentGameFormat) {
         let manager = CoreDataManager.shared
 
-        
+//        let currentGame = manager.getGameById(id: game.objectID)
         game.clubName = game.defaultTeeBox?.course?.club?.name
         game.courseName = game.defaultTeeBox?.course?.name
         game.distMetric = game.defaultTeeBox?.course?.club?.distMetric ?? 0
@@ -103,6 +103,7 @@ class StartGameViewModel: ObservableObject {
                         
                         for j in 0..<(holes?.count ?? 0){
                             let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                            ts.game = game
                             ts.team = Int16(i)
                             ts.hole = Int16(j + 1)
                             ts.distance = Int16(holes?[j].distance ?? 0)
@@ -119,7 +120,7 @@ class StartGameViewModel: ObservableObject {
                             //ts.shotsRecdMatch = Int16(game)
                             
                             manager.save()
-                            holes = []
+                            
                         }
                     }
                     
@@ -133,6 +134,7 @@ class StartGameViewModel: ObservableObject {
                     
                     for j in 0..<(holes?.count ?? 0){
                         let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                        ts.game = game
                         ts.team = Int16(i)
                         ts.hole = Int16(j + 1)
                         ts.distance = Int16(holes?[j].distance ?? 0)
@@ -149,7 +151,7 @@ class StartGameViewModel: ObservableObject {
                         //ts.shotsRecdMatch = Int16(game)
                         
                         manager.save()
-                        holes = []
+                       
                     }
                 }
                 
@@ -165,27 +167,32 @@ class StartGameViewModel: ObservableObject {
             case true:
                 if !game.competitorArray.isEmpty{
                     var holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
-                    for j in 0..<(holes?.count ?? 0){
-                        let ts = TeamScore(context: manager.persistentContainer.viewContext)
-                        ts.team = Int16(2)
-                        ts.hole = Int16(j + 1)
-                        ts.distance = Int16(holes?[j].distance ?? 0)
-                        ts.par = Int16(holes?[j].par ?? 0)
-                        ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
-                        
-                        //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
-                        
-                        //ts.shotsRecdMatch = Int16(game)
-                        
-                        let shotsStroke = Double(game.teamShotsArray[2].playingHandicap + game.teamShotsArray[2].diffTeesXShots)
-                        let shotsMatch = Double(game.teamShotsArray[2].shotsRecd)
-                        ts.shotsRecdHoleStroke = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsStroke, team: Int16(2)))
-                        ts.shotsRecdHoleMatch = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsMatch, team: Int16(2)))
-                        
-                        manager.save()
-                        holes = []
-                    }
+                    print(holes?.count.formatted() ?? 99)
+                   
                     
+                    if !(holes?.isEmpty ?? false){
+                        for j in 0..<(holes?.count ?? 0){
+                            let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                            ts.game = game
+                            ts.team = Int16(2)
+                            ts.hole = Int16(j + 1)
+                            ts.distance = Int16(holes?[j].distance ?? 0)
+                            ts.par = Int16(holes?[j].par ?? 0)
+                            ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                            
+                            //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
+                            
+                            //ts.shotsRecdMatch = Int16(game)
+                            
+                            let shotsStroke = Double(game.teamShotsArray[2].playingHandicap + game.teamShotsArray[2].diffTeesXShots)
+                            let shotsMatch = Double(game.teamShotsArray[2].shotsRecd)
+                            ts.shotsRecdHoleStroke = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsStroke, team: Int16(2)))
+                            ts.shotsRecdHoleMatch = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsMatch, team: Int16(2)))
+                            
+                            manager.save()
+                           
+                        }
+                    }
                     
                     
                     
@@ -196,6 +203,7 @@ class StartGameViewModel: ObservableObject {
                 
                 for j in 0..<(holes?.count ?? 0){
                     let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                    ts.game = game
                     ts.team = Int16(2)
                     ts.hole = Int16(j + 1)
                     ts.distance = Int16(holes?[j].distance ?? 0)
@@ -207,7 +215,7 @@ class StartGameViewModel: ObservableObject {
                     //ts.shotsRecdMatch = Int16(game)
                     
                     manager.save()
-                    holes = []
+                   
                 }
             }
         }

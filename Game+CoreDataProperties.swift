@@ -59,7 +59,7 @@ extension Game {
         public var teamScoresArray: [TeamScore]{
             let set = teamScores as? Set<TeamScore> ?? []
             return set.sorted {
-                $0.team < $1.team
+                $0.hole < $1.hole
             }
         }
         

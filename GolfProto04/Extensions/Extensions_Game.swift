@@ -103,19 +103,6 @@ extension Game {
         }
     }
 }
-//extension Game {
-//    func TotalShotsRecdMatchTeamA () -> Double {
-//        let totalSR = Double(self.teamAShotsReceived + self.teamADiffTeesXShots)
-//        return totalSR
-//    }
-//}
-
-//extension Game {
-//    func TotalShotsRecdMatchTeamB () -> Double {
-//        let totalSR = Double(self.teamBShotsReceived + self.teamBDiffTeesXShots)
-//        return totalSR
-//    }
-//}
 
 extension Game {
     func TotalShotsRecdMatchTeamA () -> Double {

@@ -89,11 +89,7 @@ extension Competitor {
         if shots36 < 0 {shots36 = 0}
         var shots54 = Int(round(shots - 36))
         if shots54 < 0 {shots54 = 0}
-        
-//        if shots18 >= self.teeBox.holes[holeIndex].strokeIndex {shots18Recd = 1}
-//        if shots36 >= self.teeBox.holes[holeIndex].strokeIndex {shots36Recd = 1}
-//        if shots54 >= self.teeBox.holes[holeIndex].strokeIndex {shots54Recd = 1}
-//        
+     
         if shots18 >= self.competitorScoresArray[holeIndex].strokeIndex {shots18Recd = 1}
         if shots36 >= self.competitorScoresArray[holeIndex].strokeIndex {shots36Recd = 1}
         if shots54 >= self.competitorScoresArray[holeIndex].strokeIndex {shots54Recd = 1}

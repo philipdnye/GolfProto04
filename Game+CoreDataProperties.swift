@@ -21,6 +21,10 @@ extension Game {
     @NSManaged public var courseName: String?
     @NSManaged public var date: Date?
     @NSManaged public var distMetric: Int16
+    @NSManaged public var dTB_Color: String?
+    @NSManaged public var dTB_courseRating: Double
+    @NSManaged public var dTB_slopeRating: Int16
+    @NSManaged public var dTB_teeBoxColour: UIColor?
     @NSManaged public var duration: Int16
     @NSManaged public var finished: Bool
     @NSManaged public var finishTime: Date?
@@ -32,15 +36,12 @@ extension Game {
     @NSManaged public var started: Bool
     @NSManaged public var startingHole: Int16
     @NSManaged public var startTime: Date?
-    @NSManaged public var dTB_teeBoxColour: UIColor?
-    @NSManaged public var dTB_Color: String?
-    @NSManaged public var dTB_slopeRating: Int16
-    @NSManaged public var dTB_courseRating: Double
     @NSManaged public var competitors: NSSet?
     @NSManaged public var defaultTeeBox: TeeBox?
     @NSManaged public var teamScores: NSSet?
     @NSManaged public var teamShots: NSSet?
     @NSManaged public var teamTeeBoxes: NSSet?
+    @NSManaged public var diffTeesTeeBox: TeeBox?
 
     public var competitorArray: [Competitor] {
                 let set = competitors as? Set<Competitor> ?? []

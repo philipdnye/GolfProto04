@@ -17,7 +17,7 @@ extension TeamTeeBox {
         return NSFetchRequest<TeamTeeBox>(entityName: "TeamTeeBox")
     }
 
-    @NSManaged public var courseRating: Int16
+    @NSManaged public var courseRating: Double
     @NSManaged public var slopeRating: Int16
     @NSManaged public var color: UIColor?
     @NSManaged public var team: Int16

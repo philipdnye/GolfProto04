@@ -39,7 +39,7 @@ struct TeamTeeBoxViewModel: Hashable {
     var teamTeeBoxId: NSManagedObjectID {
         return teamTeeBox.objectID
     }
-    var courseRating: Int16 {
+    var courseRating: Double {
         return teamTeeBox.courseRating
     }
     

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D400309629F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400309529F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift */; };
+		D400309929F6C32B00FD8A0B /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400309729F6C32B00FD8A0B /* Game+CoreDataClass.swift */; };
+		D400309A29F6C32B00FD8A0B /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400309829F6C32B00FD8A0B /* Game+CoreDataProperties.swift */; };
+		D400309D29F6C34E00FD8A0B /* TeeBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400309B29F6C34E00FD8A0B /* TeeBox+CoreDataClass.swift */; };
+		D400309E29F6C34E00FD8A0B /* TeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D400309C29F6C34E00FD8A0B /* TeeBox+CoreDataProperties.swift */; };
 		D422FD6A29F5855A007009FC /* TeamsABShotsReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422FD6929F5855A007009FC /* TeamsABShotsReceived.swift */; };
 		D4409B6129F5811700DCC452 /* TeamsABPlayingHandicaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B6029F5811700DCC452 /* TeamsABPlayingHandicaps.swift */; };
 		D4409B6329F581C300DCC452 /* TeamCPlayingHandicap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B6229F581C300DCC452 /* TeamCPlayingHandicap.swift */; };
@@ -29,8 +34,6 @@
 		D48237A829F31B290029ECBF /* Club+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237A629F31B290029ECBF /* Club+CoreDataProperties.swift */; };
 		D48237AB29F31B670029ECBF /* Player+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */; };
 		D48237AC29F31B670029ECBF /* Player+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */; };
-		D48237AF29F31BA20029ECBF /* TeeBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */; };
-		D48237B029F31BA20029ECBF /* TeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */; };
 		D48237B229F31C2C0029ECBF /* GameFormats.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B129F31C2C0029ECBF /* GameFormats.swift */; };
 		D48237B529F31E420029ECBF /* Extensions_HandicapArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237B429F31E420029ECBF /* Extensions_HandicapArray.swift */; };
 		D48237BD29F31F170029ECBF /* Course+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */; };
@@ -94,12 +97,15 @@
 		D482385129F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */; };
 		D482385229F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */; };
 		D496FD2129F58B480045454C /* TeamsABExtraShots.swift in Sources */ = {isa = PBXBuildFile; fileRef = D496FD2029F58B480045454C /* TeamsABExtraShots.swift */; };
-		D4A90A2829F6733A00BAD830 /* Game+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A90A2629F6733A00BAD830 /* Game+CoreDataClass.swift */; };
-		D4A90A2929F6733A00BAD830 /* Game+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A90A2729F6733A00BAD830 /* Game+CoreDataProperties.swift */; };
 		D4F953C629F65AD0002A00BD /* StartGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4F953C529F65AD0002A00BD /* StartGameViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D400309529F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeMatchTeeBoxSheet.swift; sourceTree = "<group>"; };
+		D400309729F6C32B00FD8A0B /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D400309829F6C32B00FD8A0B /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		D400309B29F6C34E00FD8A0B /* TeeBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeeBox+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		D400309C29F6C34E00FD8A0B /* TeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D422FD6929F5855A007009FC /* TeamsABShotsReceived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsABShotsReceived.swift; sourceTree = "<group>"; };
 		D4409B6029F5811700DCC452 /* TeamsABPlayingHandicaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsABPlayingHandicaps.swift; sourceTree = "<group>"; };
 		D4409B6229F581C300DCC452 /* TeamCPlayingHandicap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCPlayingHandicap.swift; sourceTree = "<group>"; };
@@ -125,8 +131,6 @@
 		D48237A629F31B290029ECBF /* Club+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Club+CoreDataProperties.swift"; path = "GolfProto04/Models/Club+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataClass.swift"; path = "GolfProto04/Models/Player+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Player+CoreDataProperties.swift"; path = "GolfProto04/Models/Player+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TeeBox+CoreDataClass.swift"; path = "GolfProto04/Models/TeeBox+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "TeeBox+CoreDataProperties.swift"; path = "GolfProto04/Models/TeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D48237B129F31C2C0029ECBF /* GameFormats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameFormats.swift; sourceTree = "<group>"; };
 		D48237B429F31E420029ECBF /* Extensions_HandicapArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_HandicapArray.swift; sourceTree = "<group>"; };
 		D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Course+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
@@ -190,8 +194,6 @@
 		D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamTeeBox+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
 		D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeamTeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D496FD2029F58B480045454C /* TeamsABExtraShots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsABExtraShots.swift; sourceTree = "<group>"; };
-		D4A90A2629F6733A00BAD830 /* Game+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		D4A90A2729F6733A00BAD830 /* Game+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Game+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D4F953C529F65AD0002A00BD /* StartGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartGameViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -295,16 +297,16 @@
 		D48237B329F31C650029ECBF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D4A90A2629F6733A00BAD830 /* Game+CoreDataClass.swift */,
-				D4A90A2729F6733A00BAD830 /* Game+CoreDataProperties.swift */,
+				D400309B29F6C34E00FD8A0B /* TeeBox+CoreDataClass.swift */,
+				D400309C29F6C34E00FD8A0B /* TeeBox+CoreDataProperties.swift */,
+				D400309729F6C32B00FD8A0B /* Game+CoreDataClass.swift */,
+				D400309829F6C32B00FD8A0B /* Game+CoreDataProperties.swift */,
 				D482384F29F53FA90029ECBF /* TeamTeeBox+CoreDataClass.swift */,
 				D482385029F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift */,
 				D482383B29F529DF0029ECBF /* Competitor+CoreDataClass.swift */,
 				D482383C29F529DF0029ECBF /* Competitor+CoreDataProperties.swift */,
 				D48237BB29F31F170029ECBF /* Course+CoreDataClass.swift */,
 				D48237BC29F31F170029ECBF /* Course+CoreDataProperties.swift */,
-				D48237AD29F31BA20029ECBF /* TeeBox+CoreDataClass.swift */,
-				D48237AE29F31BA20029ECBF /* TeeBox+CoreDataProperties.swift */,
 				D48237A929F31B670029ECBF /* Player+CoreDataClass.swift */,
 				D48237AA29F31B670029ECBF /* Player+CoreDataProperties.swift */,
 				D48237A529F31B290029ECBF /* Club+CoreDataClass.swift */,
@@ -491,6 +493,7 @@
 				D482382629F3B98E0029ECBF /* CompetitorRowItem_GameDetail.swift */,
 				D482382529F3B98D0029ECBF /* GameSummaryForDetailScreen.swift */,
 				D482381F29F3B98D0029ECBF /* ChangeCompetitorTeeBoxSheet.swift */,
+				D400309529F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift */,
 				D482381E29F3B98D0029ECBF /* CourseHandicapCalcScreen.swift */,
 			);
 			path = "Game detail";
@@ -580,19 +583,19 @@
 				D482382A29F3B98E0029ECBF /* AddGamePlayerRowItem.swift in Sources */,
 				D48237A229F2F8630029ECBF /* Extensions_Club.swift in Sources */,
 				D48237D029F3B53F0029ECBF /* AddCourseViewModel.swift in Sources */,
-				D4A90A2929F6733A00BAD830 /* Game+CoreDataProperties.swift in Sources */,
 				D482380029F3B5850029ECBF /* TeeBoxDistancesSubScreen.swift in Sources */,
 				D482381D29F3B95A0029ECBF /* GameListViewModel.swift in Sources */,
 				D482380429F3B5850029ECBF /* HolesLayoutTotals.swift in Sources */,
 				D482380529F3B5850029ECBF /* ClubListRowItem.swift in Sources */,
 				D48237AC29F31B670029ECBF /* Player+CoreDataProperties.swift in Sources */,
-				D48237AF29F31BA20029ECBF /* TeeBox+CoreDataClass.swift in Sources */,
 				D48237E129F3B5500029ECBF /* HandicapListViewModel.swift in Sources */,
 				D482379729F2F85A0029ECBF /* Bespoke colours.swift in Sources */,
 				D48237F929F3B5850029ECBF /* EditCourseScreen.swift in Sources */,
 				D482380129F3B5850029ECBF /* AddTeeBoxScreen.swift in Sources */,
 				D482381329F3B5A20029ECBF /* PlayerDetailScreen.swift in Sources */,
+				D400309E29F6C34E00FD8A0B /* TeeBox+CoreDataProperties.swift in Sources */,
 				D496FD2129F58B480045454C /* TeamsABExtraShots.swift in Sources */,
+				D400309D29F6C34E00FD8A0B /* TeeBox+CoreDataClass.swift in Sources */,
 				D48237B529F31E420029ECBF /* Extensions_HandicapArray.swift in Sources */,
 				D482381529F3B5AD0029ECBF /* MainScreen.swift in Sources */,
 				D482382B29F3B98E0029ECBF /* GameDetailScreen.swift in Sources */,
@@ -600,9 +603,9 @@
 				D48237DE29F3B5500029ECBF /* PlayerListViewModel.swift in Sources */,
 				D48237D729F3B53F0029ECBF /* HoleListViewModel.swift in Sources */,
 				D482379F29F2F8630029ECBF /* Extensions_Competitor.swift in Sources */,
+				D400309A29F6C32B00FD8A0B /* Game+CoreDataProperties.swift in Sources */,
 				D48237CF29F3B53F0029ECBF /* EditTeeBoxViewModel.swift in Sources */,
 				D482384E29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift in Sources */,
-				D4A90A2829F6733A00BAD830 /* Game+CoreDataClass.swift in Sources */,
 				D482381229F3B5A20029ECBF /* AddPlayerScreen.swift in Sources */,
 				D48237FE29F3B5850029ECBF /* TeeBoxListScreen_1Course.swift in Sources */,
 				D482378929F2F70C0029ECBF /* CoreDataManager.swift in Sources */,
@@ -637,6 +640,7 @@
 				D48237D329F3B53F0029ECBF /* EditCourseViewModel.swift in Sources */,
 				D48237D829F3B53F0029ECBF /* AddEditClubViewModel.swift in Sources */,
 				D482379029F2F83A0029ECBF /* UIColorTransformer.swift in Sources */,
+				D400309929F6C32B00FD8A0B /* Game+CoreDataClass.swift in Sources */,
 				D482382829F3B98E0029ECBF /* ChangeCompetitorTeeBoxSheet.swift in Sources */,
 				D482382C29F3B98E0029ECBF /* GameListRowItem.swift in Sources */,
 				D4F953C629F65AD0002A00BD /* StartGameViewModel.swift in Sources */,
@@ -654,12 +658,12 @@
 				D482384829F530B20029ECBF /* CompetitorScoreViewModel.swift in Sources */,
 				D482379129F2F83A0029ECBF /* UIImageTransformer.swift in Sources */,
 				D48237FD29F3B5850029ECBF /* TeeBoxListScreen.swift in Sources */,
-				D48237B029F31BA20029ECBF /* TeeBox+CoreDataProperties.swift in Sources */,
 				D48237FB29F3B5850029ECBF /* CourseListRowItem.swift in Sources */,
 				D48237D629F3B53F0029ECBF /* TeeBoxListViewModel.swift in Sources */,
 				D482380329F3B5850029ECBF /* HoleListScreen.swift in Sources */,
 				D482382929F3B98E0029ECBF /* AddGameScreen.swift in Sources */,
 				D482381129F3B5A20029ECBF /* AddHandicapScreen.swift in Sources */,
+				D400309629F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift in Sources */,
 				D482381B29F3B8E10029ECBF /* Extensions_Game.swift in Sources */,
 				D422FD6A29F5855A007009FC /* TeamsABShotsReceived.swift in Sources */,
 				D482385229F53FA90029ECBF /* TeamTeeBox+CoreDataProperties.swift in Sources */,

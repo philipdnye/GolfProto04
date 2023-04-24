@@ -2,13 +2,14 @@
 //  TeeBox+CoreDataProperties.swift
 //  GolfProto04
 //
-//  Created by Philip Nye on 21/04/2023.
+//  Created by Philip Nye on 24/04/2023.
 //
 //
 
 import Foundation
 import CoreData
 import UIKit
+
 
 extension TeeBox {
 
@@ -24,18 +25,19 @@ extension TeeBox {
     @NSManaged public var course: Course?
     @NSManaged public var game: NSSet?
     @NSManaged public var holes: NSSet?
+    @NSManaged public var gameForDiffTees: NSSet?
 
-    
     public var holesArray: [Hole] {
-        let set = holes as? Set<Hole> ?? []
-        return set.sorted {
-            $0.number < $1.number
+            let set = holes as? Set<Hole> ?? []
+            return set.sorted {
+                $0.number < $1.number
+            }
         }
-    }
+        
+        public var wrappedColour: String {
+            colour ?? "Unknown colour"
+        }
     
-    public var wrappedColour: String {
-        colour ?? "Unknown colour"
-    }
 }
 
 // MARK: Generated accessors for competitors
@@ -86,6 +88,23 @@ extension TeeBox {
 
     @objc(removeHoles:)
     @NSManaged public func removeFromHoles(_ values: NSSet)
+
+}
+
+// MARK: Generated accessors for gameForDiffTees
+extension TeeBox {
+
+    @objc(addGameForDiffTeesObject:)
+    @NSManaged public func addToGameForDiffTees(_ value: Game)
+
+    @objc(removeGameForDiffTeesObject:)
+    @NSManaged public func removeFromGameForDiffTees(_ value: Game)
+
+    @objc(addGameForDiffTees:)
+    @NSManaged public func addToGameForDiffTees(_ values: NSSet)
+
+    @objc(removeGameForDiffTees:)
+    @NSManaged public func removeFromGameForDiffTees(_ values: NSSet)
 
 }
 

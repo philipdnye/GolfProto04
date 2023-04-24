@@ -46,7 +46,9 @@ struct AddGameScreen: View {
       
        game.scoreFormat = Int16(addGameVM.pickerScoringFormat.rawValue)
        game.handicapFormat = Int16(addGameVM.pickerHandicapFormat.rawValue)
+       // put a placeholer teebox as the default teebox where teams need to manually select the teebox when playing off different tees
        
+       game.diffTeesTeeBox = game.defaultTeeBox
        
        manager.save()
 

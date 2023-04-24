@@ -50,6 +50,7 @@ class AddGameViewModel: ObservableObject {
     
     @Published var newTeeBox: TeeBox = TeeBox()
     
+    @Published var newTeeBoxForGame: TeeBox = TeeBox()
     
     func AssignHandicapsAndShots(game: Game, currentGF: CurrentGameFormat) {
         AssignPlayingHandicaps(game: game, currentGF: currentGF)
@@ -416,6 +417,44 @@ class AddGameViewModel: ObservableObject {
         
     }
   
+    
+    func AssignTeamTeeBox(game: Game, currentGF: CurrentGameFormat) {
+        switch currentGF.assignShotsRecd {
+        case .Indiv:
+            break
+        case .TeamsAB:
+            let manager = CoreDataManager.shared
+            let teamTeeBox_A = TeamTeeBox(context: manager.persistentContainer.viewContext)
+            let teamTeeBox_B = TeamTeeBox(context: manager.persistentContainer.viewContext)
+            teamTeeBox_A.game = game
+            teamTeeBox_B.game = game
+            teamTeeBox_A.courseRating = game.defaultTeeBox?.courseRating ?? 0.0
+            teamTeeBox_A.slopeRating = game.defaultTeeBox?.slopeRating ?? 0
+            teamTeeBox_A.teeBoxColour = game.defaultTeeBox?.wrappedColour
+            teamTeeBox_A.color = game.defaultTeeBox?.teeBoxColor
+            teamTeeBox_B.courseRating = game.defaultTeeBox?.courseRating ?? 0.0
+            teamTeeBox_B.slopeRating = game.defaultTeeBox?.slopeRating ?? 0
+            teamTeeBox_B.teeBoxColour = game.defaultTeeBox?.wrappedColour
+            teamTeeBox_B.color = game.defaultTeeBox?.teeBoxColor
+            
+            manager.save()
+            
+        case .TeamC:
+            let manager = CoreDataManager.shared
+            let teamTeeBox_C = TeamTeeBox(context: manager.persistentContainer.viewContext)
+            
+            teamTeeBox_C.game = game
+            
+            teamTeeBox_C.courseRating = game.defaultTeeBox?.courseRating ?? 0.0
+            teamTeeBox_C.slopeRating = game.defaultTeeBox?.slopeRating ?? 0
+            teamTeeBox_C.teeBoxColour = game.defaultTeeBox?.wrappedColour
+            teamTeeBox_C.color = game.defaultTeeBox?.teeBoxColor
+            
+            
+            manager.save()
+        }
+    }
+    
     
 }
 

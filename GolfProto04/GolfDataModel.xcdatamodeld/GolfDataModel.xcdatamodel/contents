@@ -69,6 +69,7 @@
         <attribute name="startTime" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="competitors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Competitor" inverseName="game" inverseEntity="Competitor"/>
         <relationship name="defaultTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="game" inverseEntity="TeeBox"/>
+        <relationship name="diffTeesTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="gameForDiffTees" inverseEntity="TeeBox"/>
         <relationship name="teamScores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamScore" inverseName="game" inverseEntity="TeamScore"/>
         <relationship name="teamShots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamShots" inverseName="game" inverseEntity="TeamShots"/>
         <relationship name="teamTeeBoxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamTeeBox" inverseName="game" inverseEntity="TeamTeeBox"/>
@@ -118,7 +119,7 @@
     </entity>
     <entity name="TeamTeeBox" representedClassName="TeamTeeBox" syncable="YES">
         <attribute name="color" optional="YES" attributeType="Transformable" valueTransformerName="UIColorTransformer" customClassName="UIColor"/>
-        <attribute name="courseRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="courseRating" optional="YES" attributeType="Double" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="slopeRating" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="team" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="teeBoxColour" optional="YES" attributeType="String"/>
@@ -132,6 +133,7 @@
         <relationship name="competitors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Competitor" inverseName="teeBox" inverseEntity="Competitor"/>
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="teeBoxes" inverseEntity="Course"/>
         <relationship name="game" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="defaultTeeBox" inverseEntity="Game"/>
+        <relationship name="gameForDiffTees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="diffTeesTeeBox" inverseEntity="Game"/>
         <relationship name="holes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hole" inverseName="teeBox" inverseEntity="Hole"/>
     </entity>
 </model>

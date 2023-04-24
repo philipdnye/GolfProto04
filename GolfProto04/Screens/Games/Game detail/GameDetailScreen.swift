@@ -23,7 +23,7 @@ struct GameDetailScreen: View {
     @State private var showingSheetScorecard: Bool = false
     @State private var gotoScoreEntry: Bool = false
     @State private var showingSheetHandicapCalc: Bool = false
-   
+    @State private var isPresentedGameTeeBox: Bool = false
     func OnAppear() {
         gameListVM.getAllGames()
 
@@ -147,21 +147,19 @@ struct GameDetailScreen: View {
         VStack(alignment: .leading, spacing: 0){
 //            Text(needsRefresh.description)
             GameSummaryForDetailScreen(game: game)
-          
+           
             teamPlayingHandicaps
             teamShotsReceived
             
-//            HStack{
-//                if currentGF.assignShotsRecd == Assignment.TeamsAB || currentGF.assignShotsRecd == Assignment.TeamC {
-////
-//                   
-//                    VStack{
-//                        Text(game.game.TeeBoxesAllSame().description)
-//                        Text("A ex sh: \(game.game.teamShotsArray[0].diffTeesXShots) \(game.game.TotalPlayingHandicapA())")//********
-//                        Text("SR A: \(game.game.TotalShotsRecdMatchTeamA())")
-//                    }
-//                }
-//            }
+            if currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false{
+                HStack{
+                    Text(game.game.diffTeesTeeBox?.wrappedColour ?? "")
+                    Button("Select teeBox"){
+                        isPresentedGameTeeBox.toggle()
+                    }
+                }
+            }
+
             Form{
                 Section {
               
@@ -264,6 +262,14 @@ struct GameDetailScreen: View {
                 }, content: {
                     CourseHandicapCalcScreen(isPresentedHcap: $isPresentedHcap, competitor: currentGF.swipedCompetitor)
                         .presentationDetents([.fraction(0.4)])
+                })
+        
+                .sheet(isPresented: $isPresentedGameTeeBox, onDismiss: {
+                    gameListVM.getAllGames()
+                    
+                }, content: {
+                    ChangeMatchTeeBoxSheet(game: game, isPresentedGameTeeBox: $isPresentedGameTeeBox, neeedsRefresh: $needsRefresh)
+                        .presentationDetents([.fraction(0.25)])
                 })
         
         

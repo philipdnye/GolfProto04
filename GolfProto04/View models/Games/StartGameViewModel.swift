@@ -100,8 +100,26 @@ class StartGameViewModel: ObservableObject {
                // game.competitorArray[i]
                 manager.save()
             }
-        default:
+        case .TeamsAB:
             // code for added cards and teebox for teams
+            //if currentGF.assignShotsRecd == .TeamsAB || currentGF.assignShotsRecd == .TeamC {
+            
+            //create a scorecard for Each team. TeamScore
+            for i in 0..<2 { //just for 0 and 1 team a and b
+                var holes = game
+                
+                
+                
+                
+            }
+            
+            
+            
+            break
+            
+            
+            
+        case .TeamC:
             break
         }
         

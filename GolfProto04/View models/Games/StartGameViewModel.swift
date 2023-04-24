@@ -108,10 +108,11 @@ class StartGameViewModel: ObservableObject {
                             ts.distance = Int16(holes?[j].distance ?? 0)
                             ts.par = Int16(holes?[j].par ?? 0)
                             ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
-                            var shotsStroke = Int16(game.teamShotsArray[i].playingHandicap + game.teamShotsArray[i].diffTeesXShots)
-                            var shotsMatch = Int16(game.teamShotsArray[i].shotsRecd)
-                            
-                            
+                           
+                            let shotsStroke = Double(game.teamShotsArray[i].playingHandicap + game.teamShotsArray[i].diffTeesXShots)
+                            let shotsMatch = Double(game.teamShotsArray[i].shotsRecd)
+                            ts.shotsRecdHoleStroke = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsStroke, team: Int16(i)))
+                            ts.shotsRecdHoleMatch = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsMatch, team: Int16(i)))
                             
                             //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
                             
@@ -138,6 +139,11 @@ class StartGameViewModel: ObservableObject {
                         ts.par = Int16(holes?[j].par ?? 0)
                         ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
                         
+                        
+                        let shotsStroke = Double(game.teamShotsArray[i].playingHandicap + game.teamShotsArray[i].diffTeesXShots)
+                        let shotsMatch = Double(game.teamShotsArray[i].shotsRecd)
+                        ts.shotsRecdHoleStroke = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsStroke, team: Int16(i)))
+                        ts.shotsRecdHoleMatch = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsMatch, team: Int16(i)))
                         //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
                         
                         //ts.shotsRecdMatch = Int16(game)
@@ -170,6 +176,11 @@ class StartGameViewModel: ObservableObject {
                         //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
                         
                         //ts.shotsRecdMatch = Int16(game)
+                        
+                        let shotsStroke = Double(game.teamShotsArray[2].playingHandicap + game.teamShotsArray[2].diffTeesXShots)
+                        let shotsMatch = Double(game.teamShotsArray[2].shotsRecd)
+                        ts.shotsRecdHoleStroke = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsStroke, team: Int16(2)))
+                        ts.shotsRecdHoleMatch = Int16(game.ShotsReceivedByTeam(holeIndex: j, shots: shotsMatch, team: Int16(2)))
                         
                         manager.save()
                         holes = []

@@ -10,6 +10,7 @@ import SwiftUI
 struct GameDetailScreen: View {
     @StateObject private var addGameVM = AddGameViewModel()
     @StateObject private var gameListVM = GameListViewModel()
+    @StateObject private var startGameVM = StartGameViewModel()
     @EnvironmentObject var currentGF: CurrentGameFormat
     @Environment(\.presentationMode) var presentationMode
     
@@ -275,6 +276,26 @@ struct GameDetailScreen: View {
                     isPresented: $isShowingDialogueScoreEntry
                 ) {
                     Button("Start game", role: .destructive) {
+                        
+                        startGameVM.StartGame(game: game.game)
+                        
+                        print(game.clubName)
+                        print(game.courseName)
+                        print(game.game.distMetric)
+                        
+                        print(game.game.competitorArray[0].firstName ?? "")
+                        print(game.game.competitorArray[0].lastName ?? "")
+                        print(game.game.competitorArray[0].teeBoxColour ?? "")
+                        print(game.game.competitorArray[0].slopeRating)
+                        print(game.game.competitorArray[0].courseRating)
+                        print(game.game.competitorArray[0].handicapIndex)
+                        print(game.game.competitorArray[0].handicapAllowance)
+                        print(game.game.competitorArray[0].courseHandicap)
+                        print(game.game.competitorArray[0].playingHandicap)
+                        print(game.game.competitorArray[0].diffTeesXShots)
+                        print(game.game.competitorArray[0].shotsRecdMatch)
+                    
+                        
 //                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
                         //print("STart button \(scoreEntryVar.CGI)")
                         

@@ -2,12 +2,13 @@
 //  Game+CoreDataProperties.swift
 //  GolfProto04
 //
-//  Created by Philip Nye on 23/04/2023.
+//  Created by Philip Nye on 24/04/2023.
 //
 //
 
 import Foundation
 import CoreData
+import UIKit
 
 
 extension Game {
@@ -31,38 +32,43 @@ extension Game {
     @NSManaged public var started: Bool
     @NSManaged public var startingHole: Int16
     @NSManaged public var startTime: Date?
+    @NSManaged public var dTB_teeBoxColour: UIColor?
+    @NSManaged public var dTB_Color: String?
+    @NSManaged public var dTB_slopeRating: Int16
+    @NSManaged public var dTB_courseRating: Double
     @NSManaged public var competitors: NSSet?
     @NSManaged public var defaultTeeBox: TeeBox?
     @NSManaged public var teamScores: NSSet?
     @NSManaged public var teamShots: NSSet?
     @NSManaged public var teamTeeBoxes: NSSet?
-    
+
     public var competitorArray: [Competitor] {
-            let set = competitors as? Set<Competitor> ?? []
+                let set = competitors as? Set<Competitor> ?? []
+                return set.sorted {
+                    $0.id < $1.id
+                }
+            }
+        
+        public var teamShotsArray: [TeamShots]{
+            let set = teamShots as? Set<TeamShots> ?? []
             return set.sorted {
-                $0.id < $1.id
+                $0.team < $1.team
+            }
+        }
+        public var teamScoresArray: [TeamScore]{
+            let set = teamScores as? Set<TeamScore> ?? []
+            return set.sorted {
+                $0.team < $1.team
+            }
+        }
+        
+        public var teamTeeBoxArray: [TeamTeeBox]{
+            let set = teamTeeBoxes as? Set<TeamTeeBox> ?? []
+            return set.sorted {
+                $0.team < $1.team
             }
         }
     
-    public var teamShotsArray: [TeamShots]{
-        let set = teamShots as? Set<TeamShots> ?? []
-        return set.sorted {
-            $0.team < $1.team
-        }
-    }
-    public var teamScoresArray: [TeamScore]{
-        let set = teamScores as? Set<TeamScore> ?? []
-        return set.sorted {
-            $0.team < $1.team
-        }
-    }
-    
-    public var teamTeeBoxArray: [TeamTeeBox]{
-        let set = teamTeeBoxes as? Set<TeamTeeBox> ?? []
-        return set.sorted {
-            $0.team < $1.team
-        }
-    }
 }
 
 // MARK: Generated accessors for competitors

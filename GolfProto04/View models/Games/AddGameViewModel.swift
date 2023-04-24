@@ -209,39 +209,7 @@ class AddGameViewModel: ObservableObject {
 
     }
     
-//    func AssignTeamPlayingHandicap(game: Game, currentGF: CurrentGameFormat) {
-//        var totalPlayingHandicap: Double = 0
-//        switch currentGF.assignShotsRecd {
-//
-//        case .Indiv:
-//            //        No change. Each individual gets their playing handicap
-//            totalPlayingHandicap = 0
-//            game.teamAPlayingHandicap = 0
-//            game.teamBPlayingHandicap = 0
-//            game.teamCPlayingHandicap = 0
-//        case .TeamsAB:
-//            for PH in game.competitorArray.filter({$0.team == 1}) {
-//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
-//            }
-//            game.teamAPlayingHandicap = totalPlayingHandicap
-//            totalPlayingHandicap = 0
-//
-//            for PH in game.competitorArray.filter({$0.team == 2}) {
-//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
-//            }
-//            game.teamBPlayingHandicap = totalPlayingHandicap
-//            totalPlayingHandicap = 0
-//
-//        case .TeamC:
-//            for PH in game.competitorArray.filter({$0.team == 3}) {
-//                totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
-//            }
-//            game.teamCPlayingHandicap = totalPlayingHandicap
-//            game.teamAPlayingHandicap = 0
-//            game.teamBPlayingHandicap = 0
-//            totalPlayingHandicap = 0
-//        }
-//    }
+
     
     func AssignTeamPlayingHandicap(game: Game, currentGF: CurrentGameFormat) {
         var totalPlayingHandicap: Double = 0
@@ -255,11 +223,7 @@ class AddGameViewModel: ObservableObject {
             for PH in game.competitorArray.filter({$0.team == 1}) {
                 totalPlayingHandicap += round(PH.playingHandicap*1000)/1000
             }
-            //game.teamAPlayingHandicap = totalPlayingHandicap
-            
-//            game.teamShotsArray.filter({$0.team == 1}) {
-//                
-//            }
+ 
             if !game.teamShotsArray.isEmpty {
                 game.teamShotsArray[0].playingHandicap = totalPlayingHandicap
                 game.teamShotsArray[2].playingHandicap = 0

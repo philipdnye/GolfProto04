@@ -29,25 +29,7 @@ struct CompetitorRowItem_GameDetail: View {
                     Text(competitor.LastName())
                     Spacer()
                         .frame(width: 5)
-                    //                VStack{
-                    //                    Text("(\(competitor.handicapAllowance.formatted()))")
-                    //                        .font(.caption2)
-                    //                    Text(String(format: "%.1f", competitor.playingHandicap))
-                    //                        .font(.caption2)
-                    //                        .frame(width:35)
-                    //                    Text(String(format: "%.2f", competitor.shotsRecdMatch))
-                    //                        .font(.caption2)
-                    //                        .frame(width:35)
-                    //                    Text(String(format: "%.2f", competitor.diffTeesXShots))
-                    //                        .font(.caption2)
-                    //                        .frame(width:35)
-                    //                }
-                    //                VStack{
-                    //                    Text(competitor.CourseRating().formatted())
-                    //                    Text(competitor.TotalPlayingHandicap().formatted())
-                    //                    Text(competitor.TotalShotsRecdMatch().formatted())
-                    //                }
-                    //                .font(.caption2)
+      
                     
                     
                 }
@@ -57,15 +39,15 @@ struct CompetitorRowItem_GameDetail: View {
                 .font(.title3)
                 //Text(competitor.TeeBoxColour())
                 Spacer()
-                
-                Text("(\(competitor.handicapIndex.formatted()))")
-                    .foregroundColor(burntOrange)
-                    .font(.title3)
-                
+                if competitor.shotsRecdMatch != 0 {
+                    Text("(\(competitor.shotsRecdMatch.formatted()))")
+                        .foregroundColor(burntOrange)
+                        .font(.title3)
+                }
                 Spacer()
                     .frame(width: 1)
                 
-                Text(round(competitor.courseHandicap).formatted())
+                Text(round(competitor.playingHandicap).formatted())
                     .frame(width: 30, alignment: .trailing)
                     .foregroundColor(darkTeal)
                     .font(.title3)
@@ -98,6 +80,14 @@ struct CompetitorRowItem_GameDetail: View {
                     .border(.black.opacity(0.2))
             }
             HStack{
+                Text("Handicap index: (\(competitor.handicapIndex.formatted()))")
+                   
+                Text("Course handicap: \(round(competitor.courseHandicap).formatted())")
+            }
+            .foregroundColor(burntOrange)
+            .font(.caption2)
+            HStack{
+                
                 if currentGF.assignShotsRecd != Assignment.TeamC {
                     Text("Playing handicap: \((competitor.handicapAllowance as NSNumber).getPercentage()) * \(String(format: "%.1f", round(competitor.courseHandicap))) = \(String(format: "%.2f", competitor.playingHandicap)) (\(String(format: "%.0f", round(competitor.playingHandicap))))")
                 } else {
@@ -134,7 +124,7 @@ struct CompetitorRowItem_GameDetail: View {
             }
             
             
-            if competitor.shotsRecdMatch != 0 {
+            if competitor.shotsRecdMatch > 1 {
                 Text("Shots received: \(competitor.shotsRecdMatch.formatted()) shots")
                     .font(.caption)
                     .foregroundColor(darkTeal)

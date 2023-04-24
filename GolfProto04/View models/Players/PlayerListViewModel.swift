@@ -9,6 +9,21 @@ import Foundation
 import CoreData
 import SwiftUI
 
+enum PlayerGender: Int, CaseIterable {
+    case male = 0
+    case female = 1
+    
+    func stringValue() -> String {
+        switch(self){
+        case .male:
+            return "Male"
+        case .female:
+            return "Female"
+        }
+    }
+}
+
+
 class PlayerListViewModel: NSObject, ObservableObject {
   
     @Published var players = [PlayerViewModel]()
@@ -57,8 +72,8 @@ struct PlayerViewModel: Hashable {
     var dateOfBirth: Date {
         return player.dateOfBirth ?? Date()
     }
-    var gender: String {
-        return player.gender ?? ""
+    var gender: String{
+        return player.pl_gender.stringValue()
     }
     var email: String {
         return player.email ?? ""

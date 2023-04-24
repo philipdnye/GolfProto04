@@ -46,9 +46,13 @@ class StartGameViewModel: ObservableObject {
 //        }
         
         
-        game.clubName = clubName
-        game.courseName = courseName
+        game.clubName = game.defaultTeeBox?.course?.club?.name
+        game.courseName = game.defaultTeeBox?.course?.name
         game.distMetric = game.defaultTeeBox?.course?.club?.distMetric ?? 0
+        game.dTB_slopeRating = Int16(game.defaultTeeBox?.slopeRating ?? 0)
+        game.dTB_courseRating = game.defaultTeeBox?.courseRating ?? 0.0
+        game.dTB_Color = game.defaultTeeBox?.wrappedColour
+        game.dTB_teeBoxColour = game.defaultTeeBox?.teeBoxColor
         
         
         for i in 0..<game.competitorArray.count {
@@ -59,9 +63,18 @@ class StartGameViewModel: ObservableObject {
             game.competitorArray[i].firstName = game.competitorArray[i].FirstName()
             game.competitorArray[i].lastName = game.competitorArray[i].LastName()
            // game.competitorArray[i].gender = game.competitorArray[i].player?.gender    need to fix gender assignment when creating player
+            // player photo ??
         }
         
-
+        // competitor shots
+        
+        // add in team teeboxes
+        
+        // team shots
+        
+// create scorecard for each competitor OR team
+        
+        
         
         manager.save()
     }

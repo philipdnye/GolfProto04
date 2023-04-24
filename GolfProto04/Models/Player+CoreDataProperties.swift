@@ -20,7 +20,7 @@ extension Player {
     @NSManaged public var email: String?
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
-    @NSManaged public var gender: String?
+    @NSManaged public var gender: Int16
     @NSManaged public var mobile: String?
     @NSManaged public var photo: UIImage?
     @NSManaged public var selectedForGame: Bool

@@ -29,7 +29,7 @@ struct CompetitorRowItem_GameDetail: View {
                     Text(competitor.LastName())
                     Spacer()
                         .frame(width: 5)
-      
+                   
                     
                     
                 }

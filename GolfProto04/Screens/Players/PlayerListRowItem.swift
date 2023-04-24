@@ -18,6 +18,7 @@ struct PlayerListRowItem: View {
             HStack{
                 Text(player.firstName)
                 Text(player.lastName)
+                Text(player.player.pl_genderInitial())
                 Text(player.player.handicapArray.currentHandicapIndex().formatted())
             }
                         .font(.title2)

@@ -21,7 +21,21 @@ struct AddPlayerScreen: View {
                 Text("Date of birth:")
             }
 //            TextField("Date of birth", text: $addPlayerVM.dateOfBirth)
-            TextField("Gender", text: $addPlayerVM.gender)
+            //TextField("Gender", text: $addPlayerVM.gender)
+            
+           // let filteredGameFormats = GameFormatType.allCases.filter({$0.NoOfPlayers() == playerCount})
+            
+            
+            Picker("Gender", selection: $addPlayerVM.pickerGender){
+                ForEach(PlayerGender.allCases, id: \.self) {
+                    Text($0.stringValue())
+                        .tag($0.rawValue)
+                }
+            }
+
+            
+            
+            
             TextField("e-mail address", text: $addPlayerVM.email)
             TextField("Mobile", text: $addPlayerVM.mobile)
             TextField("Current handicap index", text:$addPlayerVM.currentHandicap)

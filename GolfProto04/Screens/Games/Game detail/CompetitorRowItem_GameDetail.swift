@@ -47,7 +47,7 @@ struct CompetitorRowItem_GameDetail: View {
                 Spacer()
                     .frame(width: 1)
                 
-                Text(round(competitor.playingHandicap).formatted())
+                Text(round(competitor.TotalPlayingHandicap()).formatted())
                     .frame(width: 30, alignment: .trailing)
                     .foregroundColor(darkTeal)
                     .font(.title3)
@@ -99,9 +99,19 @@ struct CompetitorRowItem_GameDetail: View {
             .font(.caption2)
             .foregroundColor(darkTeal)
             
+            
+            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+                Group{
+                Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots))")
+                    
+                    Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap()))")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(burntOrange)
+            }
+            
             if game.game.TeeBoxesAllSame() == false && competitor.teeBox != game.defaultTeeBox {
-                VStack{
-                    Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots))")
+                
                     HStack(spacing: 0){
                         Text("\(competitor.TeeBoxColour()) tees ")
                         Text(String(competitor.teeBox?.TotalDistance() ?? 0))
@@ -118,7 +128,7 @@ struct CompetitorRowItem_GameDetail: View {
                         
                        
                     }
-                }
+                
                     .font(.caption2)
                     .foregroundColor(darkTeal)
             }

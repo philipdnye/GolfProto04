@@ -335,6 +335,24 @@ struct GameDetailScreen: View {
                         print(game.game.competitorArray[2].competitorScoresArray[1].distance)
                         print(game.game.competitorArray[2].competitorScoresArray[2].distance)
                         
+                        
+                        
+                        for j in 0..<game.game.competitorArray.count {
+                            print(game.game.competitorArray[j].firstName ?? "")
+                            for i in 0..<18 {
+                                print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleMatch)
+                            }
+                            
+                        }
+                        
+                        for j in 0..<game.game.competitorArray.count {
+                            print(game.game.competitorArray[j].firstName ?? "")
+                            for i in 0..<18 {
+                                print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleStroke)
+                            }
+                            
+                        }
+                        
 //                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
                         //print("STart button \(scoreEntryVar.CGI)")
                         

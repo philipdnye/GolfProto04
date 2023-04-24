@@ -28,6 +28,9 @@ class StartGameViewModel: ObservableObject {
     var gender: Int = 0
     
     
+    
+    
+    
     func StartGame(game: Game, currentGF: CurrentGameFormat) {
         let manager = CoreDataManager.shared
         
@@ -81,11 +84,15 @@ class StartGameViewModel: ObservableObject {
                 
                 for j in 0..<(holes?.count ?? 0) {
                     let cs = CompetitorScore(context: manager.persistentContainer.viewContext)
+                    
                     cs.competitor = game.competitorArray[i]
                     cs.hole = Int16(j + 1)
                     cs.distance = Int16(holes?[j].distance ?? 0)
                     cs.par = Int16(holes?[j].par ?? 0)
                     cs.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                    
+                    cs.shotsRecdHoleMatch = Int16(game.competitorArray[i].ShotsReceived(holeIndex: j, shots: game.competitorArray[i].shotsRecdMatch))
+                    cs.shotsRecdHoleStroke = Int16(game.competitorArray[i].ShotsReceived(holeIndex: j, shots: game.competitorArray[i].TotalPlayingHandicap()))
                     manager.save()
                 }
                 holes = []
@@ -101,7 +108,7 @@ class StartGameViewModel: ObservableObject {
         
         
         
-        // competitor Score
+        // competitor shots received by hole - this is added into the CompetitorScore instances
         
         
         // team score

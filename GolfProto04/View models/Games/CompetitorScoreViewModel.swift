@@ -54,10 +54,10 @@ struct CompetitorScoreViewModel: Hashable {
     }
     
     var shotsRecdMatch: Int16 {
-        return competitorScore.shotsRecdMatch
+        return competitorScore.shotsRecdHoleMatch
     }
     var shotsRecdStroke: Int16 {
-        return competitorScore.shotsRecdStroke
+        return competitorScore.shotsRecdHoleStroke
     }
     var strokeIndex: Int16 {
         return competitorScore.strokeIndex

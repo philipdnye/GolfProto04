@@ -126,3 +126,26 @@ extension Game {
         }
     }
 }
+
+
+extension Game {
+    func ShotsReceivedByTeam(holeIndex: Int, shots: Double, team: Int16) -> Int {
+        
+        var shots18Recd: Int = 0
+        var shots36Recd: Int = 0
+        var shots54Recd: Int = 0
+      
+        let shots18 = Int(round(shots))
+        var shots36 = Int(round(shots - 18))
+        if shots36 < 0 {shots36 = 0}
+        var shots54 = Int(round(shots - 36))
+        if shots54 < 0 {shots54 = 0}
+     
+        if shots18 >= self.teamScoresArray.filter({$0.team == team})[holeIndex].strokeIndex {shots18Recd = 1}
+        if shots36 >= self.teamScoresArray.filter({$0.team == team})[holeIndex].strokeIndex {shots36Recd = 1}
+        if shots54 >= self.teamScoresArray.filter({$0.team == team})[holeIndex].strokeIndex {shots54Recd = 1}
+        
+        let shotsReceived = shots18Recd + shots36Recd + shots54Recd
+        return shotsReceived
+    }
+}

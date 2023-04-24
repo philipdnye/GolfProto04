@@ -55,10 +55,10 @@ struct TeamScoreViewModel: Hashable {
     }
     
     var shotsRecdMatch: Int16 {
-        return teamScore.shotsRecdMatch
+        return teamScore.shotsRecdHoleMatch
     }
     var shotsRecdStroke: Int16 {
-        return teamScore.shotsRecdStroke
+        return teamScore.shotsRecdHoleStroke
     }
     var strokeIndex: Int16 {
         return teamScore.strokeIndex

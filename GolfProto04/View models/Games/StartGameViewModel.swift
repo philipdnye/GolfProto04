@@ -33,21 +33,7 @@ class StartGameViewModel: ObservableObject {
     
     func StartGame(game: Game, currentGF: CurrentGameFormat) {
         let manager = CoreDataManager.shared
-        
-//        func SaveInfoToCompetitors(competitors: [Competitor]) {
-//
-//            ForEach(competitors, id: \.self){cc in
-//
-//                //cc.color = cc.teeBox?.teeBoxColor ?? UIColor(.clear)
-//                cc.courseRating = cc.teeBox?.courseRating ?? 0.0
-//                cc.slopeRating = Int16(cc.SlopeRating())
-//                cc.teeBoxColour = cc.TeeBoxColour()
-//                cc.firstName = cc.FirstName()
-//                cc.lastName = cc.LastName()
-//                cc.gender = cc.gender
-//            }
-//        }
-        
+
         
         game.clubName = game.defaultTeeBox?.course?.club?.name
         game.courseName = game.defaultTeeBox?.course?.name
@@ -122,6 +108,10 @@ class StartGameViewModel: ObservableObject {
                             ts.distance = Int16(holes?[j].distance ?? 0)
                             ts.par = Int16(holes?[j].par ?? 0)
                             ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                            var shotsStroke = Int16(game.teamShotsArray[i].playingHandicap + game.teamShotsArray[i].diffTeesXShots)
+                            var shotsMatch = Int16(game.teamShotsArray[i].shotsRecd)
+                            
+                            
                             
                             //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
                             

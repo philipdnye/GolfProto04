@@ -98,3 +98,6 @@ extension Competitor {
         return shotsReceived
     }
 }
+
+
+

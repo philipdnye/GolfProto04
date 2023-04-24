@@ -101,26 +101,114 @@ class StartGameViewModel: ObservableObject {
                 manager.save()
             }
         case .TeamsAB:
-            // code for added cards and teebox for teams
-            //if currentGF.assignShotsRecd == .TeamsAB || currentGF.assignShotsRecd == .TeamC {
             
-            //create a scorecard for Each team. TeamScore
-            for i in 0..<2 { //just for 0 and 1 team a and b
-                var holes = game
+            //IF THE TEEBOXES ARE THE SAME, THEN USE THE FIRST COMPETITORS.
+            
+            //IF THE TEEBOXES ARE NOT THE SAME, THEN USE THE GAME.DIFFTEES TEEBOX
+                
+                
+//            }
+            switch game.TeeBoxesAllSame(){
+            case true:
+                if !game.competitorArray.isEmpty{
+                    var holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                   
+                    for i in 0..<2 {
+                        
+                        for j in 0..<(holes?.count ?? 0){
+                            let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                            ts.team = Int16(i)
+                            ts.hole = Int16(j + 1)
+                            ts.distance = Int16(holes?[j].distance ?? 0)
+                            ts.par = Int16(holes?[j].par ?? 0)
+                            ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                            
+                            //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
+                            
+                            //ts.shotsRecdMatch = Int16(game)
+                            
+                            manager.save()
+                            holes = []
+                        }
+                    }
+                    
+                    
+                    
+                }
+            case false:
+                var holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                
+                for i in 0..<2 {
+                    
+                    for j in 0..<(holes?.count ?? 0){
+                        let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                        ts.team = Int16(i)
+                        ts.hole = Int16(j + 1)
+                        ts.distance = Int16(holes?[j].distance ?? 0)
+                        ts.par = Int16(holes?[j].par ?? 0)
+                        ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                        
+                        //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
+                        
+                        //ts.shotsRecdMatch = Int16(game)
+                        
+                        manager.save()
+                        holes = []
+                    }
+                }
+                
+                
                 
                 
                 
                 
             }
             
-            
-            
-            break
-            
-            
-            
         case .TeamC:
-            break
+            switch game.TeeBoxesAllSame(){
+            case true:
+                if !game.competitorArray.isEmpty{
+                    var holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                    for j in 0..<(holes?.count ?? 0){
+                        let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                        ts.team = Int16(2)
+                        ts.hole = Int16(j + 1)
+                        ts.distance = Int16(holes?[j].distance ?? 0)
+                        ts.par = Int16(holes?[j].par ?? 0)
+                        ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                        
+                        //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
+                        
+                        //ts.shotsRecdMatch = Int16(game)
+                        
+                        manager.save()
+                        holes = []
+                    }
+                    
+                    
+                    
+                    
+                    
+                }
+            case false:
+                var holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                
+                for j in 0..<(holes?.count ?? 0){
+                    let ts = TeamScore(context: manager.persistentContainer.viewContext)
+                    ts.team = Int16(2)
+                    ts.hole = Int16(j + 1)
+                    ts.distance = Int16(holes?[j].distance ?? 0)
+                    ts.par = Int16(holes?[j].par ?? 0)
+                    ts.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
+                    
+                    //CODE HERE FOR ADDING IN SHOTS RECEIVED MATCH AND STROKEPLAY
+                    
+                    //ts.shotsRecdMatch = Int16(game)
+                    
+                    manager.save()
+                    holes = []
+                }
+            }
         }
         
         

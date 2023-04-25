@@ -358,9 +358,45 @@ class AddGameViewModel: ObservableObject {
                 
                 
             case 1: //stableford
-                break
+//                The number of stableford points required to play to Handicap is calculated for each set of tees and rounded to the nearest whole number.
+//
+//                Points required to play to Handicap   =    36   -   [ Course Rating  -  Par ]
+//
+//                A player competing from a set of tees requiring a lower number of points to play to Handicap will receive additional strokes equal to the difference in the number of points required to play to Handicap.
+//
+//                Playing Handicap  =  [Course Handicap  X  Handicap Allowance]
+//                                                               +  Difference in points required to play to handicap
+                
+//                print("Stableford")
+                var SPR: [Double] = []
+                for i in 0..<game.competitorArray.count {
+                    SPR.append(36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0)))
+//                    print("\(game.competitorArray[i].TeeBoxColour()) \(36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0)))")
+//                    print(game.competitorArray[i].CourseRating())
+//                    print(game.competitorArray[i].teeBox?.TotalPar() ?? 0)
+                }
+                let highSPR = SPR.max()!*1000/1000
+                var SPRAdj: [Double] = []
+                for i in 0..<game.competitorArray.count {
+                    SPRAdj.append(highSPR - (36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0))))
+                    game.competitorArray[i].diffTeesXShots = SPRAdj[i]
+                }
+                
+               
             default: //bogey
-                break
+                var SPR: [Double] = []
+                for i in 0..<game.competitorArray.count {
+                    SPR.append(36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0)))
+//                    print("\(game.competitorArray[i].TeeBoxColour()) \(36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0)))")
+//                    print(game.competitorArray[i].CourseRating())
+//                    print(game.competitorArray[i].teeBox?.TotalPar() ?? 0)
+                }
+                let highSPR = SPR.max()!*1000/1000
+                var SPRAdj: [Double] = []
+                for i in 0..<game.competitorArray.count {
+                    SPRAdj.append(highSPR - (36 - (game.competitorArray[i].CourseRating() - Double(game.competitorArray[i].teeBox?.TotalPar() ?? 0))))
+                    game.competitorArray[i].diffTeesXShots = SPRAdj[i]
+                }
             }
         }
     }

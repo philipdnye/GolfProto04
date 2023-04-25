@@ -16,10 +16,15 @@ struct MainScreen: View {
     }
     var body: some View {
         TabView{
-            
-            
-            
-            
+            NavigationStack{
+                HomeView()
+                
+                    .navigationBarTitle("Home")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem{
+                Label("Home", systemImage:"house.fill")
+            }
             
             NavigationStack{
                 ClubListScreen()
@@ -60,7 +65,15 @@ struct MainScreen: View {
                 .tabItem{
                     Label("Games", systemImage:"figure.golf")
                 }
-
+            NavigationStack{
+                SettingsScreen()
+                
+                    .navigationBarTitle("Home")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .tabItem{
+                Label("Settings", systemImage:"gear")
+            }
             
         }
         .accentColor(.orange)

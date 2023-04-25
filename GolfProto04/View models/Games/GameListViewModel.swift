@@ -16,6 +16,7 @@ class GameListViewModel: NSObject, ObservableObject {
     
     private var fetchedResultsController: NSFetchedResultsController<Game>!
     private var fetchedResultsControllerCompetitor: NSFetchedResultsController<Competitor>!
+    
     func deleteGame(game: GameViewModel){
         let game = CoreDataManager.shared.getGameById(id: game.id)
         if let game = game {

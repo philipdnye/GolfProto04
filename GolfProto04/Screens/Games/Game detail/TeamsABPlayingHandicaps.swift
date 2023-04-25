@@ -13,6 +13,8 @@ struct TeamsABPlayingHandicaps: View {
     var body: some View {
         HStack{
             Text("Team playing handicaps  A: \(game.game.teamShotsArray[0].playingHandicap.formatted())   B: \(game.game.teamShotsArray[1].playingHandicap.formatted())")
+            Text(String(format: "%.2f",game.game.TotalPlayingHandicapA()))
+            Text(String(format: "%.2f",game.game.TotalPlayingHandicapB()))
 //            Text("Team A PH: \(game.game.teamShotsArray[0].playingHandicap.formatted())")
 //            Text("Team B PH: \(game.game.teamShotsArray[1].playingHandicap.formatted())")
             Text(needsRefesh.description)

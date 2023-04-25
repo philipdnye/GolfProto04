@@ -13,7 +13,9 @@ struct TeamCPlayingHandicap: View {
     var body: some View {
         if !game.game.teamShotsArray.isEmpty {
             HStack{
-                Text("Team C playing handicap: \(game.game.teamShotsArray[2].playingHandicap.formatted())")
+                Text("Team C playing handicap: \(game.game.teamShotsArray[2].playingHandicap.formatted()) +")
+                Text(String(format: "%.2f",game.game.teamShotsArray[2].diffTeesXShots))
+                Text(String(format: "%.2f", game.game.TotalPlayingHandicapC()))
                 Text(needsRefresh.description)
                     .opacity(0)
                     .frame(width:0, height: 0)

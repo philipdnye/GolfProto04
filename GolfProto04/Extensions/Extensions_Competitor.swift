@@ -57,15 +57,23 @@ extension Competitor {
 }
 
 extension Competitor {
-    func TotalPlayingHandicap () -> Double {
-       let totalPH = Double(round(self.playingHandicap) + round(self.diffTeesXShots))
+    func TotalPlayingHandicap (currentGF: CurrentGameFormat) -> Double {
+        let totalPH = Double(round(self.playingHandicap) + (round(self.diffTeesXShots)*currentGF.extraShotsTeamAdj))
         return totalPH
     }
 }
 extension Competitor {
-    func TotalPlayingHandicapUnrounded () -> Double {
-       let totalPH = Double(self.playingHandicap + self.diffTeesXShots)
+    func TotalPlayingHandicapUnrounded (currentGF: CurrentGameFormat) -> Double {
+        let totalPH = Double(self.playingHandicap + (self.diffTeesXShots * currentGF.extraShotsTeamAdj))
         return totalPH
+    }
+}
+
+
+extension Competitor {
+    func TotalAdjustedExtraShotsUnrounded (currentGF: CurrentGameFormat) -> Double {
+        let total = Double(self.diffTeesXShots * currentGF.extraShotsTeamAdj)
+        return total
     }
 }
 

@@ -365,11 +365,17 @@ struct GameDetailScreen: View {
                             }
                             
                         }
+                        
+                        
                         for j in 0..<18 {
                             print(game.game.teamScoresArray[j].distance)
                         }
-                        
-                        
+                        for j in 0..<18 {
+                            print(game.game.teamScoresArray[j].shotsRecdHoleStroke)
+                        }
+                        for j in 0..<18 {
+                            print(game.game.teamScoresArray.filter({$0.team == 0})[j].distance)
+                        }
                         
                         
 //                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0

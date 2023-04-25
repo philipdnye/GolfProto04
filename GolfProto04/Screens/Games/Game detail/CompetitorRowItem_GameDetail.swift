@@ -47,12 +47,12 @@ struct CompetitorRowItem_GameDetail: View {
                 Spacer()
                     .frame(width: 1)
                 if currentGF.assignShotsRecd != .TeamC {
-                    Text(round(competitor.TotalPlayingHandicap()).formatted())
+                    Text(round(competitor.TotalPlayingHandicap(currentGF: currentGF)).formatted())
                         .frame(width: 30, alignment: .trailing)
                         .foregroundColor(darkTeal)
                         .font(.title3)
                 } else {
-                    Text(String(format: "%.2f",competitor.TotalPlayingHandicapUnrounded()))
+                    Text(String(format: "%.2f",competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))
                         .frame(width: 70, alignment: .trailing)
                         .foregroundColor(darkTeal)
                         .font(.title3)
@@ -104,15 +104,56 @@ struct CompetitorRowItem_GameDetail: View {
             .foregroundColor(darkTeal)
             
             
+            
+//            if currentGF.assignShotsRecd != .TeamC {
+//                Text(round(competitor.TotalPlayingHandicap()).formatted())
+//                    .frame(width: 30, alignment: .trailing)
+//                    .foregroundColor(darkTeal)
+//                    .font(.title3)
+//            } else {
+//                Text(String(format: "%.2f",competitor.TotalPlayingHandicapUnrounded()))
+//                    .frame(width: 70, alignment: .trailing)
+//                    .foregroundColor(darkTeal)
+//                    .font(.title3)
+                
+            
+            
+            
+            
+            
+            
+            
+        if currentGF.assignShotsRecd != .TeamC {
+            
             if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
                 Group{
-                Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots))")
+                    Text("Extra shots: \(String(format: "%.0f", competitor.diffTeesXShots))")
                     
-                    Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap()))")
-                    }
-                    .font(.caption2)
-                    .foregroundColor(burntOrange)
+                    Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap(currentGF: currentGF)))")
+                }
+                .font(.caption2)
+                .foregroundColor(burntOrange)
             }
+            
+            
+        } else {
+            
+            
+            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+                Group{
+                    Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots)) * \(String(format: "%.2f", currentGF.extraShotsTeamAdj)) = \(String(format: "%.2f",competitor.TotalAdjustedExtraShotsUnrounded(currentGF: currentGF)))")
+                    
+                    Text("Adjusted playing handicap: \(String(format: "%.2f" ,competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))")
+                }
+                .font(.caption2)
+                .foregroundColor(burntOrange)
+            }
+            
+            
+        }
+            
+            
+            
             
             if game.game.TeeBoxesAllSame() == false && competitor.teeBox != game.defaultTeeBox {
                 
@@ -158,9 +199,14 @@ struct CompetitorRowItem_GameDetail: View {
 struct CompetitorRowItem_GameDetail_Previews: PreviewProvider {
     static var previews: some View {
         let competitor = CompetitorViewModel(competitor: Competitor(context: CoreDataManager.shared.viewContext)).competitor
+       
+        
+        
+        
         let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
 //        competitor.player?.firstName = "Philip"
 //        competitor.player?.lastName = "Birkenstock"
+        
         CompetitorRowItem_GameDetail(competitor: competitor,game: game, needsRefresh: .constant(false))
             .environmentObject(CurrentGameFormat())
     }

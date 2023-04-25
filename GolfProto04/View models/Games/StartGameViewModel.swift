@@ -78,7 +78,7 @@ class StartGameViewModel: ObservableObject {
                     cs.strokeIndex = Int16(holes?[j].strokeIndex ?? 0)
                     
                     cs.shotsRecdHoleMatch = Int16(game.competitorArray[i].ShotsReceived(holeIndex: j, shots: game.competitorArray[i].shotsRecdMatch))
-                    cs.shotsRecdHoleStroke = Int16(game.competitorArray[i].ShotsReceived(holeIndex: j, shots: game.competitorArray[i].TotalPlayingHandicap()))
+                    cs.shotsRecdHoleStroke = Int16(game.competitorArray[i].ShotsReceived(holeIndex: j, shots: game.competitorArray[i].TotalPlayingHandicap(currentGF: currentGF)))
                     manager.save()
                 }
                 holes = []
@@ -97,7 +97,7 @@ class StartGameViewModel: ObservableObject {
             switch game.TeeBoxesAllSame(){
             case true:
                 if !game.competitorArray.isEmpty{
-                    var holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                    let holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
                    
                     for i in 0..<2 {
                         
@@ -128,7 +128,7 @@ class StartGameViewModel: ObservableObject {
                     
                 }
             case false:
-                var holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                let holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
                 
                 for i in 0..<2 {
                     
@@ -166,7 +166,7 @@ class StartGameViewModel: ObservableObject {
             switch game.TeeBoxesAllSame(){
             case true:
                 if !game.competitorArray.isEmpty{
-                    var holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                    let holes = game.competitorArray[0].teeBox?.holesArray.sorted(by: {$0.number < $1.number})
                     print(holes?.count.formatted() ?? 99)
                    
                     
@@ -199,7 +199,7 @@ class StartGameViewModel: ObservableObject {
                     
                 }
             case false:
-                var holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
+                let holes = game.diffTeesTeeBox?.holesArray.sorted(by: {$0.number < $1.number})
                 
                 for j in 0..<(holes?.count ?? 0){
                     let ts = TeamScore(context: manager.persistentContainer.viewContext)

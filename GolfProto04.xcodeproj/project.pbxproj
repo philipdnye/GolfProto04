@@ -15,6 +15,7 @@
 		D422FD6A29F5855A007009FC /* TeamsABShotsReceived.swift in Sources */ = {isa = PBXBuildFile; fileRef = D422FD6929F5855A007009FC /* TeamsABShotsReceived.swift */; };
 		D4409B6129F5811700DCC452 /* TeamsABPlayingHandicaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B6029F5811700DCC452 /* TeamsABPlayingHandicaps.swift */; };
 		D4409B6329F581C300DCC452 /* TeamCPlayingHandicap.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4409B6229F581C300DCC452 /* TeamCPlayingHandicap.swift */; };
+		D46C8BBF29F86CA70059F26E /* HoleNavigatorPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */; };
 		D46CB01C29F595A20078169B /* EXtension_NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */; };
 		D4804E8129F827D4004A0F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4804E8029F827D3004A0F0B /* HomeView.swift */; };
 		D4804E8329F828EE004A0F0B /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4804E8229F828EE004A0F0B /* SettingsScreen.swift */; };
@@ -113,6 +114,7 @@
 		D422FD6929F5855A007009FC /* TeamsABShotsReceived.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsABShotsReceived.swift; sourceTree = "<group>"; };
 		D4409B6029F5811700DCC452 /* TeamsABPlayingHandicaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsABPlayingHandicaps.swift; sourceTree = "<group>"; };
 		D4409B6229F581C300DCC452 /* TeamCPlayingHandicap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamCPlayingHandicap.swift; sourceTree = "<group>"; };
+		D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleNavigatorPopUp.swift; sourceTree = "<group>"; };
 		D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXtension_NSNumber.swift; sourceTree = "<group>"; };
 		D4804E8029F827D3004A0F0B /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		D4804E8229F828EE004A0F0B /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 			isa = PBXGroup;
 			children = (
 				D4804E8629F83114004A0F0B /* ScoreEntryScreen.swift */,
+				D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */,
 			);
 			path = "Score entry";
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				D48237A029F2F8630029ECBF /* Extensions_String.swift in Sources */,
 				D48237BE29F31F170029ECBF /* Course+CoreDataProperties.swift in Sources */,
 				D48237B229F31C2C0029ECBF /* GameFormats.swift in Sources */,
+				D46C8BBF29F86CA70059F26E /* HoleNavigatorPopUp.swift in Sources */,
 				D48237D329F3B53F0029ECBF /* EditCourseViewModel.swift in Sources */,
 				D48237D829F3B53F0029ECBF /* AddEditClubViewModel.swift in Sources */,
 				D482379029F2F83A0029ECBF /* UIColorTransformer.swift in Sources */,

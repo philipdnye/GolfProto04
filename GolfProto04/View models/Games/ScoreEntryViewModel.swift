@@ -15,7 +15,7 @@ class ScoreEntryViewModel: ObservableObject {
     
     @Published var holeIndex: Int = 0
     
-    var grossScore: Int = 0
+    @Published var grossScore: Int = 0
     
     
     func saveCompetitorScore(competitor: Competitor, hole: Int) {

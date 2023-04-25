@@ -23,7 +23,7 @@ struct CompetitorRowItem_GameDetail: View {
                 
                 Group{
                     Text(competitor.FirstName())
-                        .frame(height: 50)
+                        .frame(height: 30)
                     Spacer()
                         .frame(width: 5)
                     Text(competitor.LastName())
@@ -92,67 +92,96 @@ struct CompetitorRowItem_GameDetail: View {
             .font(.caption2)
             HStack{
                 
-                if currentGF.assignShotsRecd != Assignment.TeamC {
-                    Text("Playing handicap: \((competitor.handicapAllowance as NSNumber).getPercentage()) * \(String(format: "%.1f", round(competitor.courseHandicap))) = \(String(format: "%.2f", competitor.playingHandicap)) (\(String(format: "%.0f", round(competitor.playingHandicap))))")
-                } else {
+                
+                switch currentGF.assignShotsRecd {
+                case .TeamC:
                     Text("Playing handicap: \((competitor.handicapAllowance as NSNumber).getPercentage()) * \(String(format: "%.1f", round(competitor.courseHandicap))) = \(String(format: "%.2f", competitor.playingHandicap))")
+                case .Indiv:
+                    Text("Playing handicap: \((competitor.handicapAllowance as NSNumber).getPercentage()) * \(String(format: "%.1f", round(competitor.courseHandicap))) = \(String(format: "%.2f", competitor.playingHandicap)) (\(String(format: "%.0f", round(competitor.playingHandicap))))")
+                case .TeamsAB:
+                    Text("Playing handicap: \((competitor.handicapAllowance as NSNumber).getPercentage()) * \(String(format: "%.1f", round(competitor.courseHandicap))) = \(String(format: "%.2f", competitor.playingHandicap))")
+                    
+                    
                 }
-//                Text("Handicap allowance: \(competitor.handicapAllowance.formatted())")
-//                Text("Playing handicap: \(competitor.playingHandicap.formatted())")
+        
             }
             .font(.caption2)
             .foregroundColor(darkTeal)
             
+          
+       //******REWORK THIS AS A SWITCH STATEENT***************
             
-            
-//            if currentGF.assignShotsRecd != .TeamC {
-//                Text(round(competitor.TotalPlayingHandicap()).formatted())
-//                    .frame(width: 30, alignment: .trailing)
-//                    .foregroundColor(darkTeal)
-//                    .font(.title3)
-//            } else {
-//                Text(String(format: "%.2f",competitor.TotalPlayingHandicapUnrounded()))
-//                    .frame(width: 70, alignment: .trailing)
-//                    .foregroundColor(darkTeal)
-//                    .font(.title3)
-                
-            
-            
-            
-            
-            
-            
-            
-        if currentGF.assignShotsRecd != .TeamC {
-            
-            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
-                Group{
-                    Text("Extra shots: \(String(format: "%.0f", competitor.diffTeesXShots))")
-                    
-                    Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap(currentGF: currentGF)))")
+            switch currentGF.assignShotsRecd {
+            case .TeamC:
+                if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+                    Group{
+                        Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots)) * \(String(format: "%.2f", currentGF.extraShotsTeamAdj)) = \(String(format: "%.2f",competitor.TotalAdjustedExtraShotsUnrounded(currentGF: currentGF)))")
+                        
+                        Text("Adjusted playing handicap: \(String(format: "%.2f" ,competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(burntOrange)
                 }
-                .font(.caption2)
-                .foregroundColor(burntOrange)
+            case .TeamsAB:
+                if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+                    Group{
+                       // Text("Extra shots: \(String(format: "%.0f", competitor.diffTeesXShots))")
+                        Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots)) * \(String(format: "%.2f", currentGF.extraShotsTeamAdj)) = \(String(format: "%.2f",competitor.TotalAdjustedExtraShotsUnrounded(currentGF: currentGF)))")
+                        
+                        Text("Adjusted playing handicap: \(String(format: "%.2f" ,competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(burntOrange)
+                }
+            case .Indiv:
+                if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+                    Group{
+                        Text("Extra shots: \(String(format: "%.0f", competitor.diffTeesXShots))")
+                        
+                        Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap(currentGF: currentGF)))")
+                    }
+                    .font(.caption2)
+                    .foregroundColor(burntOrange)
+                }
             }
             
             
-        } else {
             
             
-            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
-                Group{
-                    Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots)) * \(String(format: "%.2f", currentGF.extraShotsTeamAdj)) = \(String(format: "%.2f",competitor.TotalAdjustedExtraShotsUnrounded(currentGF: currentGF)))")
-                    
-                    Text("Adjusted playing handicap: \(String(format: "%.2f" ,competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))")
-                }
-                .font(.caption2)
-                .foregroundColor(burntOrange)
-            }
             
             
-        }
             
             
+//        if currentGF.assignShotsRecd != .TeamC {
+//
+//            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+//                Group{
+//                    Text("Extra shots: \(String(format: "%.0f", competitor.diffTeesXShots))")
+//
+//                    Text("Adjusted playing handicap: \(String(format: "%.0f" ,competitor.TotalPlayingHandicap(currentGF: currentGF)))")
+//                }
+//                .font(.caption2)
+//                .foregroundColor(burntOrange)
+//            }
+//
+//
+//        } else {
+//
+//
+//            if game.game.TeeBoxesAllSame() == false && competitor.diffTeesXShots != 0 {
+//                Group{
+//                    Text("Extra shots: \(String(format: "%.2f", competitor.diffTeesXShots)) * \(String(format: "%.2f", currentGF.extraShotsTeamAdj)) = \(String(format: "%.2f",competitor.TotalAdjustedExtraShotsUnrounded(currentGF: currentGF)))")
+//
+//                    Text("Adjusted playing handicap: \(String(format: "%.2f" ,competitor.TotalPlayingHandicapUnrounded(currentGF: currentGF)))")
+//                }
+//                .font(.caption2)
+//                .foregroundColor(burntOrange)
+//            }
+//
+//
+//        }
+            
+          //********REWORK ABOVE AS SWITCH STATEMENT************
             
             
             if game.game.TeeBoxesAllSame() == false && competitor.teeBox != game.defaultTeeBox {

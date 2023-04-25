@@ -13,7 +13,7 @@ struct GameListScreen: View {
     @State private var isPresented: Bool = false
     @State private var needsRefresh: Bool = false
     @StateObject private var playerListVM = PlayerListViewModel()
-    
+   
     private func deleteGame(at indexSet: IndexSet) {
         indexSet.forEach { index in
             let game = gameListVM.games[index]
@@ -44,6 +44,7 @@ struct GameListScreen: View {
         }
         
         .navigationDestination(for: GameViewModel.self){game in
+            
             GameDetailScreen(game: game)
         }
         .toolbar {

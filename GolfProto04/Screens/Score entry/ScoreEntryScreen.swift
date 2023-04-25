@@ -26,7 +26,14 @@ struct ScoreEntryScreen: View {
                     }
                     .font(.title2)
                     .foregroundColor(darkTeal)
-                    Text("White tees  6043y Par 71 C.R. 69.5 ")
+                
+                HStack(spacing: 0){
+                    Text("White tees 6043y Par 71")
+                        .frame(width:geo.size.width * 0.64, alignment: .leading)
+                    Text("Old course")
+                        .frame(width:geo.size.width * 0.32, alignment: .trailing)
+                    
+                }
                         .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.058)
                         .foregroundColor(darkTeal)
                     HStack(spacing:0){

@@ -19,8 +19,7 @@ struct MainScreen: View {
             NavigationStack{
                 HomeView()
                 
-                    .navigationBarTitle("Home")
-                    .navigationBarTitleDisplayMode(.inline)
+                    
             }
             .tabItem{
                 Label("Home", systemImage:"house.fill")
@@ -68,7 +67,7 @@ struct MainScreen: View {
             NavigationStack{
                 SettingsScreen()
                 
-                    .navigationBarTitle("Home")
+                    .navigationBarTitle("Settings")
                     .navigationBarTitleDisplayMode(.inline)
             }
             .tabItem{

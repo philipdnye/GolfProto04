@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HoleNavigatorPopUp: View {
-    @EnvironmentObject var ScoreEntryVM: ScoreEntryViewModel
+    @StateObject var scoreEntryVM: ScoreEntryViewModel
     @Binding var showHoleNavigator:Bool
 //    init (show:Binding<Bool>){
 //        self._show = show
@@ -20,7 +20,7 @@ struct HoleNavigatorPopUp: View {
                     HStack(spacing:15){
                         ForEach(1..<7) {i in
                             Button {
-                                ScoreEntryVM.holeIndex = Int((i+(j*6))-1)
+                                scoreEntryVM.holeIndex = Int((i+(j*6))-1)
                                 showHoleNavigator.toggle()
 
                             }
@@ -52,7 +52,7 @@ struct HoleNavigatorPopUp: View {
 
 struct HoleNavigatorPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        HoleNavigatorPopUp(showHoleNavigator: .constant(true))
-            .environmentObject(ScoreEntryViewModel())
+        HoleNavigatorPopUp(scoreEntryVM: ScoreEntryViewModel(), showHoleNavigator: .constant(true))
+            
     }
 }

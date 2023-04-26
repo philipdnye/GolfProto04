@@ -46,7 +46,7 @@ struct CompetitorRowItem_GameDetail: View {
                 }
                 Spacer()
                     .frame(width: 1)
-                if currentGF.assignShotsRecd != .TeamC {
+                if currentGF.assignShotsRecd != .TeamC && currentGF.assignShotsRecd != .TeamsAB  {
                     Text(round(competitor.TotalPlayingHandicap(currentGF: currentGF)).formatted())
                         .frame(width: 30, alignment: .trailing)
                         .foregroundColor(darkTeal)

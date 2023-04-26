@@ -11,12 +11,15 @@ struct ScoreEntryScreen: View {
     @StateObject var scoreEntryVM: ScoreEntryViewModel
     @State private var showHoleNavigator: Bool = false
     var body: some View {
-        VStack{
+        ZStack{
             GeometryReader { geo in
-               
-                    HStack(spacing: 0){
-//                        HoleNavigatorPopUp(showHoleNavigator: $showHoleNavigator)
-//                            .zIndex(1)
+                HoleNavigatorPopUp(scoreEntryVM: scoreEntryVM, showHoleNavigator: $showHoleNavigator)
+                             .zIndex(1)
+                             .offset(x:geo.size.width * 0.1, y: geo.size.height * 0.195)
+                
+                
+                HStack(spacing: 0){
+
                         Text("Sunday roll up")
                             .frame(width: geo.size.width * 0.48, alignment: .leading)
                             .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.02)
@@ -26,33 +29,37 @@ struct ScoreEntryScreen: View {
                     }
                     .font(.title2)
                     .foregroundColor(darkTeal)
+                    .zIndex(0)
                 
                 HStack(spacing: 0){
-                    Text("White tees 6043y Par 71")
+                    Text("White tees 6043y Par 71") //teeBox for game
                         .frame(width:geo.size.width * 0.64, alignment: .leading)
                     Text("Old course")
                         .frame(width:geo.size.width * 0.32, alignment: .trailing)
                     
                 }
+                .zIndex(0)
                         .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.058)
                         .foregroundColor(darkTeal)
                     HStack(spacing:0){
                         Text("4ball better ball")
-                            .frame(width: geo.size.width * 0.4, alignment: .leading)
+                            .frame(width: geo.size.width * 0.37, alignment: .leading)
                             .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.088)
                         Text("MatchPlay")
-                            .frame(width: geo.size.width * 0.2, alignment: .center)
+                            .frame(width: geo.size.width * 0.21, alignment: .center)
                             .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
                         Text("Stableford")
-                            .frame(width: geo.size.width * 0.2, alignment: .center)
+                            .frame(width: geo.size.width * 0.21, alignment: .center)
                             .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
                         Text("Handicap")
-                            .frame(width: geo.size.width * 0.2, alignment: .center)
+                            .frame(width: geo.size.width * 0.21, alignment: .center)
                         
                         
                             .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
                     }
+                    .font(.subheadline)
                     .foregroundColor(darkTeal)
+                    .zIndex(0)
                     HStack(spacing: 0){
                         Text("Hole ")
                         Text(String(scoreEntryVM.holeIndex + 1))
@@ -93,6 +100,7 @@ struct ScoreEntryScreen: View {
                     .background(burntOrange)
                     .foregroundColor(.white)
                     .offset(x:0, y: geo.size.height * 0.13)
+                    .zIndex(0)
                     
                     
                     
@@ -107,7 +115,8 @@ struct ScoreEntryScreen: View {
                     .font(.title2)
                     .background(gold)
                     .foregroundColor(darkTeal)
-                    .offset(x:0, y: geo.size.height * 0.2)
+                    .offset(x:0, y: geo.size.height * 0.21)
+                    .zIndex(0)
                     
                     
                     
@@ -125,6 +134,7 @@ struct ScoreEntryScreen: View {
                         .offset(x:geo.size.width * 0.05, y: geo.size.height * 0.13)
                         //.padding([.leading], 25)
                         .disabled(scoreEntryVM.holeIndex == 0)
+                        .zIndex(0)
                     }
                     
                     if scoreEntryVM.holeIndex != 17 {
@@ -142,9 +152,10 @@ struct ScoreEntryScreen: View {
                         .offset(x:geo.size.width * 0.68, y: geo.size.height * 0.13)
                         //.padding([.leading], 25)
                         .disabled(scoreEntryVM.holeIndex == 17)
+                        .zIndex(0)
                         
                     }
-                    HStack(spacing:25){
+                    HStack(spacing:0){
                         
                         HStack(spacing: 5){
                             Text("Geoffrey")
@@ -153,58 +164,64 @@ struct ScoreEntryScreen: View {
                         .font(.title)
                         .font(.footnote.weight(.semibold))
                         .foregroundColor(darkTeal)
-                        .frame(height: 75,alignment: .leading)
+                        .frame(width: geo.size.width * 0.4, height: 75,alignment: .leading)
                         .padding([.leading],10)
                         Spacer()
-                        Button(action: {
-                            //          code here
+                        
+                        HStack(spacing:25){
+                            Button(action: {
+                                //          code here
+                                
+                                scoreEntryVM.grossScore -= 1
+                                
+                                //                    score -= 1
+                                //                    scoreCommitted = true
+                                //                    games.allGames[scoreEntryVar.CGI].CompetitorsCurrentResult(competitorsNetScoresToPar: &scoreEntryVar.competitorsNetScoreToPar)
+                                //                    games.saveGamesFM()
+                                
+                                //            scoreEntryVar.minusTapCount -= 1
+                            }) {
+                                Image(systemName: "minus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(gold)
+                            }
+                            //.disabled(score < 1)
                             
-                            scoreEntryVM.grossScore -= 1
+                            Text(scoreEntryVM.grossScore.formatted())
                             
-                            //                    score -= 1
-                            //                    scoreCommitted = true
-                            //                    games.allGames[scoreEntryVar.CGI].CompetitorsCurrentResult(competitorsNetScoresToPar: &scoreEntryVar.competitorsNetScoreToPar)
-                            //                    games.saveGamesFM()
+                                .frame(width: 32, height: 32)
+                                .padding()
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .stroke(darkTeal, lineWidth: 2)
+                                )
                             
-                            //            scoreEntryVar.minusTapCount -= 1
-                        }) {
-                            Image(systemName: "minus.circle.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(gold)
+                                .font(.title)
+                                .font(.footnote.weight(.bold))
+                                .foregroundColor(.brown)
+                                .opacity(0.6)
+                            
+                            
+                            
+                            Button(action: {
+                                //code here
+                                scoreEntryVM.grossScore += 1
+                                
+                            }) {
+                                Image(systemName: "plus.circle.fill")
+                                    .resizable()
+                                    .frame(width: 40, height: 40)
+                                    .foregroundColor(gold)
+                            }
                         }
-                        //.disabled(score < 1)
-                        
-                        Text(scoreEntryVM.grossScore.formatted())
-                        
-                            .frame(width: 32, height: 32)
-                            .padding()
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 16)
-                                    .stroke(darkTeal, lineWidth: 2)
-                            )
-                        
-                            .font(.title)
-                            .font(.footnote.weight(.bold))
-                            .foregroundColor(.brown)
-                            .opacity(0.6)
-                        
-                        
-                        
-                        Button(action: {
-                            //code here
-                            scoreEntryVM.grossScore += 1
-                            
-                        }) {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 40, height: 40)
-                                .foregroundColor(gold)
-                        }
+                        .frame(width: geo.size.width * 0.5)
                     }
+                        
                     .frame(width: geo.size.width * 0.95, height:70, alignment: .trailing)
                     //.background(.blue)
                     .offset(x:geo.size.width * 0, y: geo.size.height * 0.33)
+                    .zIndex(0)
                 
                 }//geo
             

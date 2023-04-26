@@ -18,14 +18,27 @@ struct TeamsABPlayingHandicaps: View {
             
         case 2:
             
-            HStack{
-                Text("Team playing handicap  \(String(format: "%.2f",game.game.TotalPlayingHandicapA()))")
+            HStack(spacing: 0){
+                Text("Team playing handicap ")
+                    .font(.subheadline)
+                    .foregroundColor(darkTeal)
+                Text(String(format: "%.2f",game.game.TotalPlayingHandicapA()))
+                    .font(.title2)
+                    .foregroundColor(burntOrange)
+                    .fontWeight(.semibold)
+                
+                Text(" (\(String(format: "%.0f",round(game.game.TotalPlayingHandicapA()))))")
+                    .font(.title2)
+                    .foregroundColor(burntOrange)
+                    .fontWeight(.semibold)
+                
                 Text(needsRefesh.description)
                     .opacity(0)
                     .frame(width:0, height: 0)
             }
-            .font(.subheadline)
-            .foregroundColor(darkTeal)
+            .font(.title2)
+            .foregroundColor(burntOrange)
+            .fontWeight(.semibold)
             
             
         default:

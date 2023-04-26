@@ -24,6 +24,8 @@ struct GameDetailScreen: View {
     @State private var gotoScoreEntry: Bool = false
     @State private var showingSheetHandicapCalc: Bool = false
     @State private var isPresentedGameTeeBox: Bool = false
+    @State private var isShowingDetailView: Bool = false
+    
     func OnAppear() {
         gameListVM.getAllGames()
 
@@ -144,288 +146,313 @@ struct GameDetailScreen: View {
     let game: GameViewModel
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0){
-//            Text(needsRefresh.description)
-            GameSummaryForDetailScreen(game: game)
-           
-            teamPlayingHandicaps
-            teamShotsReceived
+    
+            VStack(alignment: .leading, spacing: 0){
+                //            Text(needsRefresh.description)
+                GameSummaryForDetailScreen(game: game)
+                
+                teamPlayingHandicaps
+                teamShotsReceived
+                Button {
+                    startGameVM.StartGame(game: game.game, currentGF: currentGF)
+                    isShowingDetailView = true
+                              } label: {
+                                  Text("Navigate Button")
+                              }
+                
+                
+                
+                
+                if
+                    currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false ||
+                        currentGF.assignTeamGrouping == .TeamC && currentGF.assignShotsRecd == .TeamC && game.game.TeeBoxesAllSame() == false
+                {
+                    HStack{
+                        Text(game.game.diffTeesTeeBox?.wrappedColour ?? "")
+                        Button("Select teeBox"){
+                            isPresentedGameTeeBox.toggle()
+                        }
+                    }
+                }
+                
+                Form{
+                    Section {
+                        
+                        ForEach(Array(game.game.competitorArray.sorted(by:
+                                                                        {$0.team < $1.team}
+                                                                       
+                                                                      )), id: \.self){competitor in
+                            CompetitorRowItem_GameDetail(competitor: competitor,game: game ,needsRefresh: $needsRefresh)
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                    Button{
+                                        currentGF.swipedCompetitor = competitor
+                                        onAdd()
+                                    } label: {
+                                        Text("TeeBox")
+                                    }
+                                    .tint(.mint)
+                                }
+                            
+                                .swipeActions(edge: .trailing, allowsFullSwipe: false){
+                                    Button{
+                                        currentGF.swipedCompetitor = competitor
+                                        onAddHcap()
+                                    } label: {
+                                        Label("Handicap calculation",systemImage: "h.circle")
+                                    }
+                                    .tint(darkTeal)
+                                }
+                            
+                            
+                                .swipeActions(edge: .leading,allowsFullSwipe: false) {
+                                    Button {
+                                        UpdateCompetitorTeam(competitor: competitor, value: 1)
+                                        
+                                        addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
+                                        
+                                        needsRefresh.toggle()
+                                        gameListVM.getAllGames()
+                                        gameListVM.getAllCompetitors()
+                                        
+                                        
+                                        
+                                        print(game.game.competitorArray.filter{$0.team == 1}.count)
+                                    } label: {
+                                        Label("Swap team",systemImage: "a.circle")
+                                    }
+                                    .tint(.gray)
+                                    
+                                    .disabled(competitor.team == TeamAssignment.teamA.rawValue || currentGF.assignTeamGrouping != Assignment.TeamsAB || game.game.competitorArray.filter{$0.team == 1}.count > 2 || game.gameStarted)
+                                    
+                                }
+                                .swipeActions(edge: .leading,allowsFullSwipe: false) {
+                                    Button {
+                                        UpdateCompetitorTeam(competitor: competitor, value: 2)
+                                        addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
+                                        //
+                                        needsRefresh.toggle()
+                                        gameListVM.getAllGames()
+                                        gameListVM.getAllCompetitors()
+                                        
+                                        
+                                        print(game.game.competitorArray.filter{$0.team == 2}.count)
+                                    } label: {
+                                        Label("Swap team",systemImage: "b.circle")
+                                    }
+                                    .tint(.blue)
+                                    
+                                    .disabled(competitor.team == TeamAssignment.teamB.rawValue || currentGF.assignTeamGrouping != Assignment.TeamsAB || game.game.competitorArray.filter{$0.team == 2}.count > 2 || game.gameStarted)
+                                    
+                                }
+                            
+                            
+                            
+                            
+                            
+                        }
+                    } //section
+                header: {
+                    
+                    Text("Players in this game")
+                } footer: {
+                    VStack{
+                        Text("Swipe LEFT to change the players teebox")
+                        Text("Swipe RIGHT to assign TEAMS")
+                    }
+                }
+                }
+                
+            }//vstack
             
-            if
-                currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false ||
-                    currentGF.assignTeamGrouping == .TeamC && currentGF.assignShotsRecd == .TeamC && game.game.TeeBoxesAllSame() == false
-            {
-                HStack{
-                    Text(game.game.diffTeesTeeBox?.wrappedColour ?? "")
-                    Button("Select teeBox"){
-                        isPresentedGameTeeBox.toggle()
-                    }
-                }
-            }
-
-            Form{
-                Section {
-              
-                    ForEach(Array(game.game.competitorArray.sorted(by:
-                                                                    {$0.team < $1.team}
-                                                                   
-                                                                  )), id: \.self){competitor in
-                        CompetitorRowItem_GameDetail(competitor: competitor,game: game ,needsRefresh: $needsRefresh)
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                            Button{
-                                currentGF.swipedCompetitor = competitor
-                                onAdd()
-                            } label: {
-                                Text("TeeBox")
-                            }
-                            .tint(.mint)
-                        }
+            .navigationTitle("Navigation")
+                       .navigationDestination(isPresented: $isShowingDetailView) {
+                           ScoreEntryScreen(game: game)
+                      }
+        
+            .sheet(isPresented: $isPresented, onDismiss: {
+                gameListVM.getAllGames()
+                
+            }, content: {
+                ChangeCompetitorTeeBoxSheet(competitor: currentGF.swipedCompetitor, game: game, isPresented: $isPresented, neeedsRefresh: $needsRefresh)
+                    .presentationDetents([.fraction(0.25)])
+            })
+            
+            .sheet(isPresented: $isPresentedHcap, onDismiss: {
+                
+            }, content: {
+                CourseHandicapCalcScreen(isPresentedHcap: $isPresentedHcap, competitor: currentGF.swipedCompetitor)
+                    .presentationDetents([.fraction(0.4)])
+            })
+            
+            .sheet(isPresented: $isPresentedGameTeeBox, onDismiss: {
+                gameListVM.getAllGames()
+                
+            }, content: {
+                ChangeMatchTeeBoxSheet(game: game, isPresentedGameTeeBox: $isPresentedGameTeeBox, neeedsRefresh: $needsRefresh)
+                    .presentationDetents([.fraction(0.25)])
+            })
+            
+            
+            .onAppear(perform: {
+                OnAppear()
+            })
+            
+//            .confirmationDialog(
+//                "If you start this game, you will not be able to amend any settings. Are you sure you want to continue?",
+//                isPresented: $isShowingDialogueScoreEntry
+//            ) {
+//                // Button("Start game", role: .destructive) {
+//                Button {
+//
+//
+//
+//
+//                    startGameVM.StartGame(game: game.game, currentGF: currentGF)
+//
+//
+//                    self.isShowingDetailView = true
+//                    presentationMode.wrappedValue.dismiss()
+//                } label: {
+//                    Text("Start game1")
+//                }
+                
+                
                     
-                        .swipeActions(edge: .trailing, allowsFullSwipe: false){
-                            Button{
-                                currentGF.swipedCompetitor = competitor
-                               onAddHcap()
-                            } label: {
-                                Label("Handicap calculation",systemImage: "h.circle")
-                            }
-                            .tint(darkTeal)
-                        }
-                    
-                    
-                        .swipeActions(edge: .leading,allowsFullSwipe: false) {
-                            Button {
-                                UpdateCompetitorTeam(competitor: competitor, value: 1)
-                                
-                                addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
-       
-                                needsRefresh.toggle()
-                                gameListVM.getAllGames()
-                                gameListVM.getAllCompetitors()
-                                
-                                
-                                
-                                print(game.game.competitorArray.filter{$0.team == 1}.count)
-                            } label: {
-                                Label("Swap team",systemImage: "a.circle")
-                            }
-                            .tint(.gray)
-                           
-                            .disabled(competitor.team == TeamAssignment.teamA.rawValue || currentGF.assignTeamGrouping != Assignment.TeamsAB || game.game.competitorArray.filter{$0.team == 1}.count > 2 || game.gameStarted)
-                            
-                        }
-                        .swipeActions(edge: .leading,allowsFullSwipe: false) {
-                            Button {
-                                UpdateCompetitorTeam(competitor: competitor, value: 2)
-                                addGameVM.AssignHandicapsAndShots(game: game.game, currentGF: currentGF)
-// 
-                                needsRefresh.toggle()
-                                gameListVM.getAllGames()
-                                gameListVM.getAllCompetitors()
-                                
-                                
-                                    print(game.game.competitorArray.filter{$0.team == 2}.count)
-                            } label: {
-                                Label("Swap team",systemImage: "b.circle")
-                            }
-                            .tint(.blue)
-                           
-                            .disabled(competitor.team == TeamAssignment.teamB.rawValue || currentGF.assignTeamGrouping != Assignment.TeamsAB || game.game.competitorArray.filter{$0.team == 2}.count > 2 || game.gameStarted)
-                            
-                        }
-                    
-                    
-                    
-                    
-                    
-                }
-            } //section
-            header: {
-                         
-                         Text("Players in this game")
-                     } footer: {
-                         VStack{
-                             Text("Swipe LEFT to change the players teebox")
-                             Text("Swipe RIGHT to assign TEAMS")
-                         }
-                     }
-            }
-           
+//                }
+//            .navigationDestination(isPresented: $isShowingDetailView){
+//                ScoreEntryScreen(game: game))
+                
+                //                print(game.clubName)
+                //                print(game.courseName)
+                //                print(game.game.distMetric)
+                //
+                //                if currentGF.assignShotsRecd == .Indiv {
+                //
+                //                    print(game.game.competitorArray[0].firstName ?? "")
+                //                    print(game.game.competitorArray[0].lastName ?? "")
+                //                    print(game.game.competitorArray[0].teeBoxColour ?? "")
+                //                    print(game.game.competitorArray[0].slopeRating)
+                //                    print(game.game.competitorArray[0].courseRating)
+                //                    print(game.game.competitorArray[0].handicapIndex)
+                //                    print(game.game.competitorArray[0].handicapAllowance)
+                //                    print(game.game.competitorArray[0].courseHandicap)
+                //                    print(game.game.competitorArray[0].playingHandicap)
+                //                    print(game.game.competitorArray[0].diffTeesXShots)
+                //                    print(game.game.competitorArray[0].shotsRecdMatch)
+                //
+                //
+                //                    print(game.game.competitorArray[0].competitorScoresArray[0].distance)
+                //                    print(game.game.competitorArray[0].competitorScoresArray[1].distance)
+                //                    print(game.game.competitorArray[0].competitorScoresArray[2].distance)
+                //
+                //                    print(game.game.competitorArray[1].firstName ?? "")
+                //                    print(game.game.competitorArray[1].lastName ?? "")
+                //                    print(game.game.competitorArray[1].teeBoxColour ?? "")
+                //                    print(game.game.competitorArray[1].slopeRating)
+                //                    print(game.game.competitorArray[1].courseRating)
+                //                    print(game.game.competitorArray[1].handicapIndex)
+                //                    print(game.game.competitorArray[1].handicapAllowance)
+                //                    print(game.game.competitorArray[1].courseHandicap)
+                //                    print(game.game.competitorArray[1].playingHandicap)
+                //                    print(game.game.competitorArray[1].diffTeesXShots)
+                //                    print(game.game.competitorArray[1].shotsRecdMatch)
+                //
+                //
+                //                    print(game.game.competitorArray[1].competitorScoresArray[0].distance)
+                //                    print(game.game.competitorArray[1].competitorScoresArray[1].distance)
+                //                    print(game.game.competitorArray[1].competitorScoresArray[2].distance)
+                //
+                //
+                //                    print(game.game.competitorArray[2].firstName ?? "")
+                //                    print(game.game.competitorArray[2].lastName ?? "")
+                //                    print(game.game.competitorArray[2].teeBoxColour ?? "")
+                //                    print(game.game.competitorArray[2].slopeRating)
+                //                    print(game.game.competitorArray[2].courseRating)
+                //                    print(game.game.competitorArray[2].handicapIndex)
+                //                    print(game.game.competitorArray[2].handicapAllowance)
+                //                    print(game.game.competitorArray[2].courseHandicap)
+                //                    print(game.game.competitorArray[2].playingHandicap)
+                //                    print(game.game.competitorArray[2].diffTeesXShots)
+                //                    print(game.game.competitorArray[2].shotsRecdMatch)
+                //
+                //
+                //                    print(game.game.competitorArray[2].competitorScoresArray[0].distance)
+                //                    print(game.game.competitorArray[2].competitorScoresArray[1].distance)
+                //                    print(game.game.competitorArray[2].competitorScoresArray[2].distance)
+                //
+                //
+                //
+                //                    for j in 0..<game.game.competitorArray.count {
+                //                        print(game.game.competitorArray[j].firstName ?? "")
+                //                        for i in 0..<18 {
+                //                            print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleMatch)
+                //                        }
+                //
+                //                    }
+                //
+                //                    for j in 0..<game.game.competitorArray.count {
+                //                        print(game.game.competitorArray[j].firstName ?? "")
+                //                        for i in 0..<18 {
+                //                            print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleStroke)
+                //                        }
+                //
+                //                    }
+                //
+                //                }
+                //
+                //
+                //                for j in 0..<18 {
+                //                    print(game.game.teamScoresArray[j].distance)
+                //                }
+                //                for j in 0..<18 {
+                //                    print(game.game.teamScoresArray[j].shotsRecdHoleStroke)
+                //                }
+                //                for j in 0..<18 {
+                //                    print(game.game.teamScoresArray.filter({$0.team == 0})[j].distance)
+                //                }
+                
+                
+                //gotoScoreEntry.toggle()
+                //}
+                
+                
+                
+                
+                
+                
+//            } message: {
+//                Text("If you start this game, you will not be able to amend any settings. Are you sure you want to continue?")
+//            }
+            
+//            .confirmationDialog(
+//                "Permanently delete this game?",
+//                isPresented: $isShowingDialogueTrash
+//            ) {
+//                Button("Delete game", role: .destructive) {
+//                    //                            let index = games.allGames.firstIndex(where: {$0 == game}) ?? 0
+//                    //                                games.allGames[scoreEntryVar.CGI].deleted = true
+//                    //                                games.saveGamesFM()
+//
+//                    self.presentationMode.wrappedValue.dismiss()
+//                }
+//            } message: {
+//                Text("You cannot undo this action.")
+//            }
+            
+            
+            
+//            .navigationBarItems(
+//                leading:trashButton,
+//                trailing: HStack{
+//                    handicapCalcButton
+//                    scoreEntryButton
+//                }
+//            )
+            
+            
+            
         }
-        
-                .sheet(isPresented: $isPresented, onDismiss: {
-                    gameListVM.getAllGames()
-                    
-                }, content: {
-                    ChangeCompetitorTeeBoxSheet(competitor: currentGF.swipedCompetitor, game: game, isPresented: $isPresented, neeedsRefresh: $needsRefresh)
-                        .presentationDetents([.fraction(0.25)])
-                })
-        
-                .sheet(isPresented: $isPresentedHcap, onDismiss: {
-                    
-                }, content: {
-                    CourseHandicapCalcScreen(isPresentedHcap: $isPresentedHcap, competitor: currentGF.swipedCompetitor)
-                        .presentationDetents([.fraction(0.4)])
-                })
-        
-                .sheet(isPresented: $isPresentedGameTeeBox, onDismiss: {
-                    gameListVM.getAllGames()
-                    
-                }, content: {
-                    ChangeMatchTeeBoxSheet(game: game, isPresentedGameTeeBox: $isPresentedGameTeeBox, neeedsRefresh: $needsRefresh)
-                        .presentationDetents([.fraction(0.25)])
-                })
-        
-        
-        .onAppear(perform: {
-           OnAppear()
-        })
-        
-        .confirmationDialog(
-                    "If you start this game, you will not be able to amend any settings. Are you sure you want to continue?",
-                    isPresented: $isShowingDialogueScoreEntry
-                ) {
-                    Button("Start game", role: .destructive) {
-                        
-                        startGameVM.StartGame(game: game.game, currentGF: currentGF)
-                        
-                        print(game.clubName)
-                        print(game.courseName)
-                        print(game.game.distMetric)
-                        
-                        if currentGF.assignShotsRecd == .Indiv {
-                            
-                            print(game.game.competitorArray[0].firstName ?? "")
-                            print(game.game.competitorArray[0].lastName ?? "")
-                            print(game.game.competitorArray[0].teeBoxColour ?? "")
-                            print(game.game.competitorArray[0].slopeRating)
-                            print(game.game.competitorArray[0].courseRating)
-                            print(game.game.competitorArray[0].handicapIndex)
-                            print(game.game.competitorArray[0].handicapAllowance)
-                            print(game.game.competitorArray[0].courseHandicap)
-                            print(game.game.competitorArray[0].playingHandicap)
-                            print(game.game.competitorArray[0].diffTeesXShots)
-                            print(game.game.competitorArray[0].shotsRecdMatch)
-                            
-                            
-                            print(game.game.competitorArray[0].competitorScoresArray[0].distance)
-                            print(game.game.competitorArray[0].competitorScoresArray[1].distance)
-                            print(game.game.competitorArray[0].competitorScoresArray[2].distance)
-                            
-                            print(game.game.competitorArray[1].firstName ?? "")
-                            print(game.game.competitorArray[1].lastName ?? "")
-                            print(game.game.competitorArray[1].teeBoxColour ?? "")
-                            print(game.game.competitorArray[1].slopeRating)
-                            print(game.game.competitorArray[1].courseRating)
-                            print(game.game.competitorArray[1].handicapIndex)
-                            print(game.game.competitorArray[1].handicapAllowance)
-                            print(game.game.competitorArray[1].courseHandicap)
-                            print(game.game.competitorArray[1].playingHandicap)
-                            print(game.game.competitorArray[1].diffTeesXShots)
-                            print(game.game.competitorArray[1].shotsRecdMatch)
-                            
-                            
-                            print(game.game.competitorArray[1].competitorScoresArray[0].distance)
-                            print(game.game.competitorArray[1].competitorScoresArray[1].distance)
-                            print(game.game.competitorArray[1].competitorScoresArray[2].distance)
-                            
-                            
-                            print(game.game.competitorArray[2].firstName ?? "")
-                            print(game.game.competitorArray[2].lastName ?? "")
-                            print(game.game.competitorArray[2].teeBoxColour ?? "")
-                            print(game.game.competitorArray[2].slopeRating)
-                            print(game.game.competitorArray[2].courseRating)
-                            print(game.game.competitorArray[2].handicapIndex)
-                            print(game.game.competitorArray[2].handicapAllowance)
-                            print(game.game.competitorArray[2].courseHandicap)
-                            print(game.game.competitorArray[2].playingHandicap)
-                            print(game.game.competitorArray[2].diffTeesXShots)
-                            print(game.game.competitorArray[2].shotsRecdMatch)
-                            
-                            
-                            print(game.game.competitorArray[2].competitorScoresArray[0].distance)
-                            print(game.game.competitorArray[2].competitorScoresArray[1].distance)
-                            print(game.game.competitorArray[2].competitorScoresArray[2].distance)
-                            
-                            
-                            
-                            for j in 0..<game.game.competitorArray.count {
-                                print(game.game.competitorArray[j].firstName ?? "")
-                                for i in 0..<18 {
-                                    print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleMatch)
-                                }
-                                
-                            }
-                            
-                            for j in 0..<game.game.competitorArray.count {
-                                print(game.game.competitorArray[j].firstName ?? "")
-                                for i in 0..<18 {
-                                    print(game.game.competitorArray[j].competitorScoresArray[i].shotsRecdHoleStroke)
-                                }
-                                
-                            }
-                            
-                        }
-                        
-                        
-                        for j in 0..<18 {
-                            print(game.game.teamScoresArray[j].distance)
-                        }
-                        for j in 0..<18 {
-                            print(game.game.teamScoresArray[j].shotsRecdHoleStroke)
-                        }
-                        for j in 0..<18 {
-                            print(game.game.teamScoresArray.filter({$0.team == 0})[j].distance)
-                        }
-                        
-                        
-//                            scoreEntryVar.CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
-                        //print("STart button \(scoreEntryVar.CGI)")
-                        
-//                            games.AssignTeamPlayingHandicap(game: &games.allGames[CGI])
-//                            games.AssignExtraShots(game: &games.allGames[CGI])
-//                            games.AssignTeamExtraShots(game: &games.allGames[CGI])
-//                            games.AssignShotsReceived(game: &games.allGames[CGI])
-//                            games.AssignTeamsTeeBox(game: &games.allGames[CGI])
-//                            games.saveGamesFM()
-                        
-                        
-//                            games.saveGamesFM()
-
-//                            self.presentationMode.wrappedValue.dismiss()
-                        gotoScoreEntry.toggle()
-                    }
-                } message: {
-                    Text("If you start this game, you will not be able to amend any settings. Are you sure you want to continue?")
-                }
-        
-                .confirmationDialog(
-                            "Permanently delete this game?",
-                            isPresented: $isShowingDialogueTrash
-                        ) {
-                            Button("Delete game", role: .destructive) {
-    //                            let index = games.allGames.firstIndex(where: {$0 == game}) ?? 0
-//                                games.allGames[scoreEntryVar.CGI].deleted = true
-//                                games.saveGamesFM()
-        
-                                self.presentationMode.wrappedValue.dismiss()
-                            }
-                        } message: {
-                            Text("You cannot undo this action.")
-                        }
-        
-        
-        
-                .navigationBarItems(
-                                    leading:trashButton,
-                                    trailing: HStack{
-                                        handicapCalcButton
-                                        scoreEntryButton
-                                        }
-                )
-        
-        
-        
-    }
+    
 }
 
 struct GameDetailScreen_Previews: PreviewProvider {

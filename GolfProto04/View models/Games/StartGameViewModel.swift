@@ -220,7 +220,20 @@ class StartGameViewModel: ObservableObject {
             }
         }
         
-        
+        switch currentGF.assignShotsRecd {
+            
+            // need to assign a value to the for the teebox that will be used on the score entry screen
+        case .Indiv:
+            game.scoreEntryTeeBox = game.defaultTeeBox
+        default:
+            switch game.TeeBoxesAllSame(){
+            case true:
+                game.scoreEntryTeeBox = game.defaultTeeBox
+                
+            case false:
+                game.scoreEntryTeeBox = game.diffTeesTeeBox
+            }
+        }
         
         
         // competitor shots received by hole - this is added into the CompetitorScore instances
@@ -231,10 +244,13 @@ class StartGameViewModel: ObservableObject {
         
         //team teebox
        
-        
+    
         
         
         manager.save()
+        
+        
+        
     }
     
    

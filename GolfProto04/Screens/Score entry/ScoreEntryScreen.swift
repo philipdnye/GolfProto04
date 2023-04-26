@@ -8,22 +8,23 @@
 import SwiftUI
 
 struct ScoreEntryScreen: View {
-    @StateObject var scoreEntryVM: ScoreEntryViewModel
+    @StateObject var scoreEntryVM: ScoreEntryViewModel = ScoreEntryViewModel()
     @State private var showHoleNavigator: Bool = false
+    var game: GameViewModel
     var body: some View {
         ZStack{
             GeometryReader { geo in
-                HoleNavigatorPopUp(scoreEntryVM: scoreEntryVM, showHoleNavigator: $showHoleNavigator)
+                HoleNavigatorPopUp(showHoleNavigator: $showHoleNavigator)
                              .zIndex(1)
                              .offset(x:geo.size.width * 0.1, y: geo.size.height * 0.195)
                 
                 
                 HStack(spacing: 0){
 
-                        Text("Sunday roll up")
+                    Text(game.name)
                             .frame(width: geo.size.width * 0.48, alignment: .leading)
                             .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.02)
-                        Text("North Hants")
+                    Text(game.game.scoreEntryTeeBox?.course?.club?.wrappedName ?? "")
                             .frame(width: geo.size.width * 0.48, alignment: .trailing)
                             .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.02)
                     }
@@ -32,9 +33,18 @@ struct ScoreEntryScreen: View {
                     .zIndex(0)
                 
                 HStack(spacing: 0){
-                    Text("White tees 6043y Par 71") //teeBox for game
-                        .frame(width:geo.size.width * 0.64, alignment: .leading)
-                    Text("Old course")
+                    Text("\(game.game.scoreEntryTeeBox?.wrappedColour.capitalizingFirstLetter() ?? "no teebox found") tees") //teeBox for game
+                        .frame(width:geo.size.width * 0.26, alignment: .leading)
+                    
+                        Text(String(game.game.scoreEntryTeeBox?.TotalDistance() ?? 0) + (game.game.scoreEntryTeeBox?.course?.club?.dist_metric.stringValueInitial() ?? ""))
+                            .frame(width:geo.size.width * 0.18, alignment: .leading)
+                    
+                    Text("Par: \(game.game.scoreEntryTeeBox?.TotalPar() ?? 0)")
+                        .frame(width:geo.size.width * 0.2, alignment: .leading)
+                    
+                    
+                    
+                    Text(game.game.scoreEntryTeeBox?.course?.name ?? "")
                         .frame(width:geo.size.width * 0.32, alignment: .trailing)
                     
                 }
@@ -42,16 +52,16 @@ struct ScoreEntryScreen: View {
                         .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.058)
                         .foregroundColor(darkTeal)
                     HStack(spacing:0){
-                        Text("4ball better ball")
+                        Text(game.game.game_format.stringValue())
                             .frame(width: geo.size.width * 0.37, alignment: .leading)
                             .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.088)
-                        Text("MatchPlay")
+                        Text(game.game.play_format.stringValue())
                             .frame(width: geo.size.width * 0.21, alignment: .center)
                             .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
-                        Text("Stableford")
+                        Text(game.game.sc_format.stringValue())
                             .frame(width: geo.size.width * 0.21, alignment: .center)
                             .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
-                        Text("Handicap")
+                        Text(game.game.hcap_format.stringValue())
                             .frame(width: geo.size.width * 0.21, alignment: .center)
                         
                         
@@ -107,9 +117,9 @@ struct ScoreEntryScreen: View {
                     
                     
                     HStack{
-                        Text("436 yards")
-                        Text("Par 4")
-                        Text("S.I. 15")
+                        Text(String(game.game.scoreEntryTeeBox?.holesArray[scoreEntryVM.holeIndex].distance ?? 0))
+                        Text("Par \(game.game.scoreEntryTeeBox?.holesArray[scoreEntryVM.holeIndex].par ?? 0)")
+                        Text("S.I. \(game.game.scoreEntryTeeBox?.holesArray[scoreEntryVM.holeIndex].strokeIndex ?? 0)")
                     }
                     .frame(width: geo.size.width * 1, height: 50)
                     .font(.title2)
@@ -223,6 +233,8 @@ struct ScoreEntryScreen: View {
                     .offset(x:geo.size.width * 0, y: geo.size.height * 0.33)
                     .zIndex(0)
                 
+                
+                
                 }//geo
             
         }
@@ -234,8 +246,8 @@ struct ScoreEntryScreen: View {
 
 struct ScoreEntryScreen_Previews: PreviewProvider {
     static var previews: some View {
-       
-        ScoreEntryScreen(scoreEntryVM: ScoreEntryViewModel())
+        let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
+        ScoreEntryScreen(game: game)
             
     }
 }

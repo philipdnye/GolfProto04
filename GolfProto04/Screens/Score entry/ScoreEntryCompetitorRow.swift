@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct ScoreEntryCompetitorRow: View {
-    var competitor: Competitor
-    @StateObject var scoreEntryVM: ScoreEntryViewModel
-    @State private var competitorScore: Int = 0
+    var competitorIndex: Int
     
+    //@StateObject var scoreEntryVM: ScoreEntryViewModel
+//    @Binding var competitorScore: Int
+    @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
     var body: some View {
         
         HStack(spacing:0){
-            
             HStack(spacing: 5){
-                Text(competitor.FirstName())
-                Text(competitor.LastName().prefix(1).capitalized)
+                Text(scoreEntryVM.currentGame.game.competitorArray[competitorIndex].FirstName())
+                Text(scoreEntryVM.currentGame.game.competitorArray[competitorIndex].LastName().prefix(1).capitalized)
             }
             .font(.title)
             .font(.footnote.weight(.semibold))
             .foregroundColor(darkTeal)
             //                .frame(width: geo.size.width * 0.4, height: 75,alignment: .leading)
             .padding([.leading],10)
+            
             Spacer()
             
             
@@ -37,12 +38,12 @@ struct ScoreEntryCompetitorRow: View {
             
             HStack(spacing:25){
                 Button(action: {
-                    
-                    competitorScore -= 1
-                    let manager = CoreDataManager.shared
-                    let CC = manager.getCompetitorById(id: competitor.objectID)
-                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
-                    manager.save()
+                    scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] -= 1
+//                    competitorScore -= 1
+//                    let manager = CoreDataManager.shared
+//                    let CC = manager.getCompetitorById(id: competitor.objectID)
+//                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
+//                    manager.save()
                     
                     //                    scoreCommitted = true
                     //                    games.allGames[scoreEntryVar.CGI].CompetitorsCurrentResult(competitorsNetScoresToPar: &scoreEntryVar.competitorsNetScoreToPar)
@@ -57,7 +58,7 @@ struct ScoreEntryCompetitorRow: View {
                 }
                 //.disabled(score < 1)
                 
-                Text(competitorScore.formatted())
+                Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
                 
                     .frame(width: 32, height: 32)
                     .padding()
@@ -74,12 +75,12 @@ struct ScoreEntryCompetitorRow: View {
                 
                 
                 Button(action: {
-                    //code here
-                    competitorScore += 1
-                    let manager = CoreDataManager.shared
-                    let CC = manager.getCompetitorById(id: competitor.objectID)
-                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
-                    manager.save()
+                    scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] += 1
+//                    competitorScore += 1
+//                    let manager = CoreDataManager.shared
+//                    let CC = manager.getCompetitorById(id: competitor.objectID)
+//                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
+//                    manager.save()
                 }) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -87,18 +88,20 @@ struct ScoreEntryCompetitorRow: View {
                         .foregroundColor(gold)
                 }
             }
+            //Text(scoreEntryVM.holeIndex.formatted())
             //            .frame(width: geo.size.width * 0.5)
             //            .offset(x:geo.size.width * 0.5, y: geo.size.height * 0.33)
             //            .zIndex(0)
         }
         .onAppear(perform: {
-            competitorScore = Int(competitor.competitorScoresArray[scoreEntryVM.holeIndex].grossScore)
+           // competitorScore = Int(competitor.competitorScoresArray[scoreEntryVM.holeIndex].grossScore)
         })
         
     }
 }
 struct ScoreEntryCompetitorRow_Previews: PreviewProvider {
     static var previews: some View {
-        ScoreEntryCompetitorRow(competitor: Competitor(), scoreEntryVM: ScoreEntryViewModel())
+        ScoreEntryCompetitorRow(competitorIndex: 0)
+            .environmentObject(ScoreEntryViewModel())
     }
 }

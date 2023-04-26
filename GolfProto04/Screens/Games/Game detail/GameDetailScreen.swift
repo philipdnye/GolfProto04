@@ -13,7 +13,7 @@ struct GameDetailScreen: View {
     @StateObject private var startGameVM = StartGameViewModel()
     @EnvironmentObject var currentGF: CurrentGameFormat
     @Environment(\.presentationMode) var presentationMode
-    
+    @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
     @State private var isPresented: Bool = false
     @State private var isPresentedHcap: Bool = false
     @State private var needsRefresh: Bool = false
@@ -157,8 +157,12 @@ struct GameDetailScreen: View {
                     
                     if game.game.started == false {
                         startGameVM.StartGame(game: game.game, currentGF: currentGF)
+                        scoreEntryVM.currentGame = game // this is used in score entry screen
+                        scoreEntryVM.loadCompetitorsScore()
                         isShowingDetailView = true
                     } else {
+                        scoreEntryVM.currentGame = game
+                        scoreEntryVM.loadCompetitorsScore()
                         isShowingDetailView = true
                     }
                               } label: {
@@ -469,5 +473,6 @@ struct GameDetailScreen_Previews: PreviewProvider {
         let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
         GameDetailScreen(game:game)
             .environmentObject(CurrentGameFormat())
+            .environmentObject(ScoreEntryViewModel())
     }
 }

@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct ScoreEntryScreen: View {
-    @StateObject var scoreEntryVM: ScoreEntryViewModel = ScoreEntryViewModel()
+    @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
     @State private var showHoleNavigator: Bool = false
+    
     var game: GameViewModel
     var body: some View {
         ZStack{
@@ -93,16 +94,7 @@ struct ScoreEntryScreen: View {
                     
                     .foregroundColor(.white)
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                     
                     
                 }
                 .frame(width: geo.size.width * 1, height: 50)
@@ -167,8 +159,8 @@ struct ScoreEntryScreen: View {
                 }
                
                 ForEach(0..<game.game.competitorArray.count, id: \.self){ i in
-                    
-                    ScoreEntryCompetitorRow(competitor:  game.game.competitorArray[i],scoreEntryVM: scoreEntryVM)
+        
+                    ScoreEntryCompetitorRow(competitorIndex:  i)
                         .frame(width: geo.size.width * 0.95, height: 75)
                         .offset(x: 0, y: geo.size.height * CGFloat(((Double(i)+1)*0.15)+0.2))
                 }
@@ -180,7 +172,9 @@ struct ScoreEntryScreen: View {
                     ForEach(0..<game.game.competitorArray.count, id: \.self) {i in
                         Text(game.game.competitorArray[i].competitorScoresArray.count.formatted())
                     }
-                   
+                    Button("Save scores"){
+                        scoreEntryVM.saveCompetitorsScore()
+                    }
                 }
                 
                 
@@ -198,6 +192,7 @@ struct ScoreEntryScreen_Previews: PreviewProvider {
     static var previews: some View {
         let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
         ScoreEntryScreen(game: game)
+            .environmentObject(ScoreEntryViewModel())
             
     }
 }

@@ -16,16 +16,35 @@ class ScoreEntryViewModel: ObservableObject {
     @Published var holeIndex: Int = 0
     
     @Published var grossScore: Int = 0
+    @Published var competitorsScores: [[Int]] = Array(repeating: [0,0,0,0], count: 18)
+    @Published var currentGame: GameViewModel = GameViewModel(game: Game())
     
-    
-    func saveCompetitorScore(competitor: Competitor, hole: Int) {
+    func loadCompetitorsScore() {
         let manager = CoreDataManager.shared
-        // get the CompetitorScore for the current competitor and current hole and add the grossScore
+        let game = manager.getGameById(id: self.currentGame.id)
+        for i in 0..<(game?.competitorArray.count ?? 0) {
+            for j in 0..<18 {
+                self.competitorsScores[j][i] = Int(game?.competitorArray[i].competitorScoresArray[j].grossScore ?? 0)
+            }
+        }
         
-        let currentCS = competitor.competitorScoresArray.filter({$0.hole == hole})
         
-        let CS = manager.getCompetitorScoreById(id: currentCS.first!.objectID)
-        CS?.grossScore = Int16(grossScore)
+    }
+    
+    
+    
+    func saveCompetitorsScore() {
+        let manager = CoreDataManager.shared
+        let game = manager.getGameById(id: self.currentGame.id)
+        
+        for i in 0..<(game?.competitorArray.count ?? 0) {
+            for j in 0..<18 {
+                game?.competitorArray[i].competitorScoresArray[j].grossScore = Int16(self.competitorsScores[j][i])
+            }
+        }
+        
+        
+        
         manager.save()
     }
     

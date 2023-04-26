@@ -10,6 +10,8 @@ import SwiftUI
 struct ScoreEntryCompetitorRow: View {
     var competitor: Competitor
     @StateObject var scoreEntryVM: ScoreEntryViewModel
+    @State private var competitorScore: Int = 0
+    
     var body: some View {
         
         HStack(spacing:0){
@@ -36,8 +38,11 @@ struct ScoreEntryCompetitorRow: View {
             HStack(spacing:25){
                 Button(action: {
                     
-                    scoreEntryVM.grossScore -= 1
-                    
+                    competitorScore -= 1
+                    let manager = CoreDataManager.shared
+                    let CC = manager.getCompetitorById(id: competitor.objectID)
+                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
+                    manager.save()
                     
                     //                    scoreCommitted = true
                     //                    games.allGames[scoreEntryVar.CGI].CompetitorsCurrentResult(competitorsNetScoresToPar: &scoreEntryVar.competitorsNetScoreToPar)
@@ -52,7 +57,7 @@ struct ScoreEntryCompetitorRow: View {
                 }
                 //.disabled(score < 1)
                 
-                Text(scoreEntryVM.grossScore.formatted())
+                Text(competitorScore.formatted())
                 
                     .frame(width: 32, height: 32)
                     .padding()
@@ -70,8 +75,11 @@ struct ScoreEntryCompetitorRow: View {
                 
                 Button(action: {
                     //code here
-                    scoreEntryVM.grossScore += 1
-                    
+                    competitorScore += 1
+                    let manager = CoreDataManager.shared
+                    let CC = manager.getCompetitorById(id: competitor.objectID)
+                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
+                    manager.save()
                 }) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -83,7 +91,9 @@ struct ScoreEntryCompetitorRow: View {
             //            .offset(x:geo.size.width * 0.5, y: geo.size.height * 0.33)
             //            .zIndex(0)
         }
-        
+        .onAppear(perform: {
+            competitorScore = Int(competitor.competitorScoresArray[scoreEntryVM.holeIndex].grossScore)
+        })
         
     }
 }

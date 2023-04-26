@@ -154,10 +154,19 @@ struct GameDetailScreen: View {
                 teamPlayingHandicaps
                 teamShotsReceived
                 Button {
-                    startGameVM.StartGame(game: game.game, currentGF: currentGF)
-                    isShowingDetailView = true
+                    
+                    if game.game.started == false {
+                        startGameVM.StartGame(game: game.game, currentGF: currentGF)
+                        isShowingDetailView = true
+                    } else {
+                        isShowingDetailView = true
+                    }
                               } label: {
-                                  Text("Navigate Button")
+                                  if game.game.started == false {
+                                      Text("Start game")
+                                  } else {
+                                      Text("Resume game")
+                                  }
                               }
                 
                 

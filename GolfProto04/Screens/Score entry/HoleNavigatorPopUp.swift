@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HoleNavigatorPopUp: View {
-    @StateObject var scoreEntryVM: ScoreEntryViewModel = ScoreEntryViewModel()
+    @StateObject var scoreEntryVM: ScoreEntryViewModel
     @Binding var showHoleNavigator:Bool
 //    init (show:Binding<Bool>){
 //        self._show = show
@@ -52,7 +52,7 @@ struct HoleNavigatorPopUp: View {
 
 struct HoleNavigatorPopUp_Previews: PreviewProvider {
     static var previews: some View {
-        HoleNavigatorPopUp(showHoleNavigator: .constant(true))
+        HoleNavigatorPopUp(scoreEntryVM: ScoreEntryViewModel(),showHoleNavigator: .constant(true))
             
     }
 }

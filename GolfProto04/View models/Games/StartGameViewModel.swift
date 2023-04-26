@@ -27,7 +27,9 @@ class StartGameViewModel: ObservableObject {
     var lastName: String = ""
     var gender: Int = 0
     
-    
+    func ResumeGame() {
+        
+    }
     
     
     
@@ -246,7 +248,7 @@ class StartGameViewModel: ObservableObject {
        
     
         
-        
+        game.started = true
         manager.save()
         
         

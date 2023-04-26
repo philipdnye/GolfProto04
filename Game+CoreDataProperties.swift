@@ -2,7 +2,7 @@
 //  Game+CoreDataProperties.swift
 //  GolfProto04
 //
-//  Created by Philip Nye on 24/04/2023.
+//  Created by Philip Nye on 26/04/2023.
 //
 //
 
@@ -38,10 +38,11 @@ extension Game {
     @NSManaged public var startTime: Date?
     @NSManaged public var competitors: NSSet?
     @NSManaged public var defaultTeeBox: TeeBox?
+    @NSManaged public var diffTeesTeeBox: TeeBox?
     @NSManaged public var teamScores: NSSet?
     @NSManaged public var teamShots: NSSet?
     @NSManaged public var teamTeeBoxes: NSSet?
-    @NSManaged public var diffTeesTeeBox: TeeBox?
+    @NSManaged public var scoreEntryTeeBox: TeeBox?
 
     public var competitorArray: [Competitor] {
                 let set = competitors as? Set<Competitor> ?? []
@@ -59,7 +60,7 @@ extension Game {
         public var teamScoresArray: [TeamScore]{
             let set = teamScores as? Set<TeamScore> ?? []
             return set.sorted {
-                $0.hole < $1.hole
+                $0.team < $1.team
             }
         }
         
@@ -69,6 +70,7 @@ extension Game {
                 $0.team < $1.team
             }
         }
+
     
 }
 

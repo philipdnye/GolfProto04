@@ -2,7 +2,7 @@
 //  TeeBox+CoreDataProperties.swift
 //  GolfProto04
 //
-//  Created by Philip Nye on 24/04/2023.
+//  Created by Philip Nye on 26/04/2023.
 //
 //
 
@@ -24,8 +24,9 @@ extension TeeBox {
     @NSManaged public var competitors: NSSet?
     @NSManaged public var course: Course?
     @NSManaged public var game: NSSet?
-    @NSManaged public var holes: NSSet?
     @NSManaged public var gameForDiffTees: NSSet?
+    @NSManaged public var holes: NSSet?
+    @NSManaged public var gameForScoreEntry: NSSet?
 
     public var holesArray: [Hole] {
             let set = holes as? Set<Hole> ?? []
@@ -37,6 +38,7 @@ extension TeeBox {
         public var wrappedColour: String {
             colour ?? "Unknown colour"
         }
+
     
 }
 
@@ -74,6 +76,23 @@ extension TeeBox {
 
 }
 
+// MARK: Generated accessors for gameForDiffTees
+extension TeeBox {
+
+    @objc(addGameForDiffTeesObject:)
+    @NSManaged public func addToGameForDiffTees(_ value: Game)
+
+    @objc(removeGameForDiffTeesObject:)
+    @NSManaged public func removeFromGameForDiffTees(_ value: Game)
+
+    @objc(addGameForDiffTees:)
+    @NSManaged public func addToGameForDiffTees(_ values: NSSet)
+
+    @objc(removeGameForDiffTees:)
+    @NSManaged public func removeFromGameForDiffTees(_ values: NSSet)
+
+}
+
 // MARK: Generated accessors for holes
 extension TeeBox {
 
@@ -91,20 +110,20 @@ extension TeeBox {
 
 }
 
-// MARK: Generated accessors for gameForDiffTees
+// MARK: Generated accessors for gameForScoreEntry
 extension TeeBox {
 
-    @objc(addGameForDiffTeesObject:)
-    @NSManaged public func addToGameForDiffTees(_ value: Game)
+    @objc(addGameForScoreEntryObject:)
+    @NSManaged public func addToGameForScoreEntry(_ value: Game)
 
-    @objc(removeGameForDiffTeesObject:)
-    @NSManaged public func removeFromGameForDiffTees(_ value: Game)
+    @objc(removeGameForScoreEntryObject:)
+    @NSManaged public func removeFromGameForScoreEntry(_ value: Game)
 
-    @objc(addGameForDiffTees:)
-    @NSManaged public func addToGameForDiffTees(_ values: NSSet)
+    @objc(addGameForScoreEntry:)
+    @NSManaged public func addToGameForScoreEntry(_ values: NSSet)
 
-    @objc(removeGameForDiffTees:)
-    @NSManaged public func removeFromGameForDiffTees(_ values: NSSet)
+    @objc(removeGameForScoreEntry:)
+    @NSManaged public func removeFromGameForScoreEntry(_ values: NSSet)
 
 }
 

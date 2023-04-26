@@ -70,6 +70,7 @@
         <relationship name="competitors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Competitor" inverseName="game" inverseEntity="Competitor"/>
         <relationship name="defaultTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="game" inverseEntity="TeeBox"/>
         <relationship name="diffTeesTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="gameForDiffTees" inverseEntity="TeeBox"/>
+        <relationship name="scoreEntryTeeBox" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeeBox" inverseName="gameForScoreEntry" inverseEntity="TeeBox"/>
         <relationship name="teamScores" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamScore" inverseName="game" inverseEntity="TeamScore"/>
         <relationship name="teamShots" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamShots" inverseName="game" inverseEntity="TeamShots"/>
         <relationship name="teamTeeBoxes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TeamTeeBox" inverseName="game" inverseEntity="TeamTeeBox"/>
@@ -134,6 +135,7 @@
         <relationship name="course" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Course" inverseName="teeBoxes" inverseEntity="Course"/>
         <relationship name="game" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="defaultTeeBox" inverseEntity="Game"/>
         <relationship name="gameForDiffTees" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="diffTeesTeeBox" inverseEntity="Game"/>
+        <relationship name="gameForScoreEntry" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Game" inverseName="scoreEntryTeeBox" inverseEntity="Game"/>
         <relationship name="holes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Hole" inverseName="teeBox" inverseEntity="Hole"/>
     </entity>
 </model>

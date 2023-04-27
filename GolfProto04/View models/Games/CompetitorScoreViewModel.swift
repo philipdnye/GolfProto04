@@ -45,6 +45,14 @@ struct CompetitorScoreViewModel: Hashable {
     var grossScore: Int16 {
         return competitorScore.grossScore
     }
+    var committedGrossScore: Int16 {
+        if self.committed{
+            return self.grossScore
+        } else {
+            return 0
+        }
+    }
+    
     
     var hole: Int16 {
         return competitorScore.hole
@@ -62,4 +70,8 @@ struct CompetitorScoreViewModel: Hashable {
     var strokeIndex: Int16 {
         return competitorScore.strokeIndex
     }
+    var committed: Bool {
+        return competitorScore.scoreCommitted
+    }
+    
 }

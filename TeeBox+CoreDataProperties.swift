@@ -34,7 +34,29 @@ extension TeeBox {
                 $0.number < $1.number
             }
         }
+    
+    
+    public var holesArray_front9: [Hole] {
+            let set = holes as? Set<Hole> ?? []
+        let filteredSet = set.filter({$0.number < 10})
+            let sortedSet = filteredSet.sorted {
+                $0.number < $1.number
+            }
+       return Array(sortedSet)
+        }
         
+    public var holesArray_back9: [Hole] {
+            let set = holes as? Set<Hole> ?? []
+        let filteredSet = set.filter({$0.number > 9})
+            let sortedSet = filteredSet.sorted {
+                $0.number < $1.number
+            }
+       return Array(sortedSet)
+        }
+    
+    
+    
+    
         public var wrappedColour: String {
             colour ?? "Unknown colour"
         }

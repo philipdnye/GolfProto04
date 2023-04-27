@@ -1,5 +1,5 @@
 //
-//  ScoreCardScreen.swift
+//  ScorecardScreen.swift
 //  GolfProto04
 //
 //  Created by Philip Nye on 27/04/2023.
@@ -7,59 +7,55 @@
 
 import SwiftUI
 
-struct ScorecardScreen: View {
+struct ScorecardScreenPreview: View {
     @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
     var body: some View {
-      
-        
+       
+       
+        let initials = ["PN", "JD", "PS", "TB"]
+        let scores = [5,7,13,6]
+        let totalscores = [44,34,36,51]
+        let finalScores = [88,104,78,91]
         GeometryReader{geo in
             
             
             List{
                 HStack(spacing: 0){
                     Group{
-                        ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self) {
-                            Text($0.player?.Initials() ?? "")
+                        ForEach(initials, id: \.self){initials in
+                            Text(initials)
                         }
                     }
                     .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                 }
                 .offset(x: geo.size.width * 0.3)
                 .foregroundColor(darkTeal)
-                .fontWeight(.semibold)
-                
-                let front9Holes = Array(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray ?? []).prefix(9)
                 
                 
-                
-                ForEach(0..<front9Holes.count, id: \.self) {holeIndex in
+                ForEach(0..<9){i in
                     HStack(spacing:0){
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].number.formatted() ?? "")
-                        Text(Int(front9Holes[holeIndex].number).formatted())
+                        Text((i+1).formatted())
                             .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].distance.formatted() ?? "")
-                        Text(Int(front9Holes[holeIndex].distance).formatted())
+                        Text("377")
                             .frame(width: geo.size.width * 0.1, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].par.formatted() ?? "")
-                        Text(Int(front9Holes[holeIndex].par).formatted())
+                        Text("5")
                             .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].strokeIndex.formatted() ?? "")
-                        Text(Int(front9Holes[holeIndex].strokeIndex).formatted())
+                        Text("15")
                             .frame(width: geo.size.width * 0.075, height: geo.size.height * 0.03)
                             .foregroundColor(burntOrange)
                         
                         
                         HStack(spacing:0){
                             Group{
-                                    
-                                ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                  
-                                    CompetitorScore_forArray(competitor: $0,holeIndex: holeIndex)
-                                    
-                                    
+                                ForEach(scores, id:\.self){score in
+                                    Text(score.formatted())
                                 }
                             }
                             .foregroundColor(.blue)
@@ -67,16 +63,16 @@ struct ScorecardScreen: View {
                             .offset(x: geo.size.width * 0.026)
                         }
                     }
-                }//foreach
+                }
                
                 
                 
                 HStack(spacing:0){
                     //hole summary front 9
                     HStack(spacing:0){
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_front9.TotalDistance() ?? 0))
+                        Text ("3456")
                             .frame(width:geo.size.width * 0.15)
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_front9.TotalPar() ?? 0))
+                        Text("36")
                             .frame(width:geo.size.width * 0.065)
                     }
                     .foregroundColor(darkTeal)
@@ -88,15 +84,9 @@ struct ScorecardScreen: View {
                     // players front 9 totals
                     HStack(spacing: 0){
                         Group{
-                            ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                if $0.competitorScoresArray.TotalGrossScore_front9() != 0 {
-                                    Text($0.competitorScoresArray.TotalGrossScore_front9().formatted())
-                                }
+                            ForEach(totalscores, id:\.self){score in
+                                Text(score.formatted())
                             }
-                            
-//                            ForEach(totalscores, id:\.self){score in
-//                                Text(score.formatted())
-//                            }
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
@@ -106,34 +96,31 @@ struct ScorecardScreen: View {
                     
                 }
                 
-                let back9Holes = Array(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray ?? []).suffix(9)
                 
-                ForEach(0..<back9Holes.count, id: \.self) {holeIndex in
+                
+                ForEach(9..<18){i in
                     HStack(spacing:0){
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].number.formatted() ?? "")
-                        Text(Int(back9Holes[holeIndex + 9].number).formatted())
+                        Text((i+1).formatted())
                             .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].distance.formatted() ?? "")
-                        Text(Int(back9Holes[holeIndex + 9].distance).formatted())
+                        Text("377")
                             .frame(width: geo.size.width * 0.1, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].par.formatted() ?? "")
-                        Text(Int(back9Holes[holeIndex + 9].par).formatted())
+                        Text("5")
                             .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].strokeIndex.formatted() ?? "")
-                        Text(Int(back9Holes[holeIndex + 9].strokeIndex).formatted())
+                        Text("15")
                             .frame(width: geo.size.width * 0.075, height: geo.size.height * 0.03)
                             .foregroundColor(burntOrange)
                         
                         HStack(spacing:0){
                             Group{
-                                ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                  
-                                    CompetitorScore_forArray(competitor: $0,holeIndex: holeIndex + 9)
-                                    
-                                    
+                                ForEach(scores, id:\.self){score in
+                                    Text(score.formatted())
                                 }
                             }
                             .foregroundColor(.blue)
@@ -149,13 +136,13 @@ struct ScorecardScreen: View {
                     }
                 }
                 
-                // hole back 9 totals
+                // players back 9 totals
                 HStack(spacing:0){
                     //hole summary front 9
                     HStack(spacing:0){
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_back9.TotalDistance() ?? 0))
+                        Text ("3456")
                             .frame(width:geo.size.width * 0.15)
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_back9.TotalPar() ?? 0))
+                        Text("36")
                             .frame(width:geo.size.width * 0.065)
                     }
                     .foregroundColor(darkTeal)
@@ -164,13 +151,11 @@ struct ScorecardScreen: View {
                     
                     
                     
-                    // players back 9 totals
+                    // players front 9 totals
                     HStack(spacing: 0){
                         Group{
-                            ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                if $0.competitorScoresArray.TotalGrossScore_back9() != 0 {
-                                    Text($0.competitorScoresArray.TotalGrossScore_back9().formatted())
-                                }
+                            ForEach(totalscores, id:\.self){score in
+                                Text(score.formatted())
                             }
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
@@ -185,9 +170,9 @@ struct ScorecardScreen: View {
                 HStack(spacing:0){
                     //hole summary front 9
                     HStack(spacing:0){
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_front9.TotalDistance() ?? 0))
+                        Text ("3456")
                             .frame(width:geo.size.width * 0.15)
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray_front9.TotalPar() ?? 0))
+                        Text("36")
                             .frame(width:geo.size.width * 0.065)
                     }
                     .foregroundColor(darkTeal)
@@ -196,13 +181,11 @@ struct ScorecardScreen: View {
                     
                     
                     
-                    // players fromt 9 totals
+                    // players front 9 totals
                     HStack(spacing: 0){
                         Group{
-                            ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                if $0.competitorScoresArray.TotalGrossScore_front9() != 0 {
-                                    Text($0.competitorScoresArray.TotalGrossScore_front9().formatted())
-                                }
+                            ForEach(totalscores, id:\.self){score in
+                                Text(score.formatted())
                             }
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
@@ -215,11 +198,11 @@ struct ScorecardScreen: View {
                 
                 // players  totals
                 HStack(spacing:0){
-                    //hole summary overall
+                    //hole summary front 9
                     HStack(spacing:0){
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.TotalDistance() ?? 0))
+                        Text ("6573")
                             .frame(width:geo.size.width * 0.15)
-                        Text (String(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.TotalPar() ?? 0))
+                        Text("72")
                             .frame(width:geo.size.width * 0.065)
                     }
                     .foregroundColor(darkTeal)
@@ -228,13 +211,11 @@ struct ScorecardScreen: View {
                     
                     
                     
-                    // players overall totals
+                    // players front 9 totals
                     HStack(spacing: 0){
                         Group{
-                            ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                if $0.competitorScoresArray.TotalGrossScore() != 0 {
-                                    Text($0.competitorScoresArray.TotalGrossScore().formatted())
-                                }
+                            ForEach(finalScores, id:\.self){score in
+                                Text(score.formatted())
                             }
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
@@ -249,8 +230,8 @@ struct ScorecardScreen: View {
                 
                 HStack(spacing: 0){
                     Group{
-                        ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self) {
-                            Text($0.player?.Initials() ?? "")
+                        ForEach(initials, id: \.self){initials in
+                            Text(initials)
                         }
                            
                     }
@@ -258,7 +239,6 @@ struct ScorecardScreen: View {
                 }
                 .offset(x: geo.size.width * 0.3)
                 .foregroundColor(darkTeal)
-                .fontWeight(.semibold)
                 
             }
             
@@ -267,10 +247,10 @@ struct ScorecardScreen: View {
     }
 }
 
-struct ScorecardScreen_Previews: PreviewProvider {
+struct ScorecardScreenPreview_Previews: PreviewProvider {
     static var previews: some View {
         
-        ScorecardScreen()
+        ScorecardScreenPreview()
             .environmentObject(ScoreEntryViewModel())
     }
 }

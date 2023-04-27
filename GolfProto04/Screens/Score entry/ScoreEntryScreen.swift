@@ -10,7 +10,8 @@ import SwiftUI
 struct ScoreEntryScreen: View {
     @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
     @State private var showHoleNavigator: Bool = false
-    
+    @State private var isShowingDialogueCommitScores: Bool = false
+   
     var game: GameViewModel
     var body: some View {
         ZStack{
@@ -143,16 +144,21 @@ struct ScoreEntryScreen: View {
                     
                     Button("Hole \(scoreEntryVM.holeIndex + 2) >"){
                         
-                        //code here to check to see if any of score have been changed - dialouge box
-                        
-                        for i in 0..<game.game.competitorArray.count {
-                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][i] = true
+                        //code here to check to see if any of score have been changed -> dialouge box
+                        if scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex].allSatisfy({$0 == false}){
+                            isShowingDialogueCommitScores.toggle()
+                            
+                        } else {
+                            // if they aren't all false it suggests that user has chnaged the ones they need to so move forward and commit all scores
+                            
+                            for i in 0..<game.game.competitorArray.count {
+                                scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][i] = true
+                            }
+                            
+                            
+                            scoreEntryVM.saveCompetitorsScore()
+                            scoreEntryVM.holeIndex += 1
                         }
-                        
-                        
-                        
-                        scoreEntryVM.holeIndex += 1
-                        
                         
                         
                         
@@ -166,6 +172,16 @@ struct ScoreEntryScreen: View {
                     //.padding([.leading], 25)
                     .disabled(scoreEntryVM.holeIndex == 17)
                     .zIndex(0)
+                    .confirmationDialog("Confirm scores", isPresented: $isShowingDialogueCommitScores, actions: {
+                        Button("Commit scores", role: .destructive){
+                            for i in 0..<game.game.competitorArray.count {
+                                scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][i] = true
+                            }
+                            scoreEntryVM.saveCompetitorsScore()
+                            scoreEntryVM.holeIndex += 1
+                        }
+                        
+                    }, message: {Text("You haven't amended any scores on this hole. Commit these scores and continue to the next hole?")})
                     
                 }
                
@@ -179,15 +195,22 @@ struct ScoreEntryScreen: View {
                 
                 
                 //for testing purposes
-                HStack{
-                    ForEach(0..<game.game.competitorArray.count, id: \.self) {i in
-                        Text(game.game.competitorArray[i].competitorScoresArray.count.formatted())
-                    }
-                    Button("Save scores"){
-                        scoreEntryVM.saveCompetitorsScore()
-                    }
-                }
+//                HStack{
+//                    ForEach(0..<game.game.competitorArray.count, id: \.self) {i in
+//                        Text(game.game.competitorArray[i].competitorScoresArray.count.formatted())
+//                    }
+//                    Button("Save scores"){
+//                        scoreEntryVM.saveCompetitorsScore()
+//                    }
+//                }
                 
+//                .confirmationDialog(isPresented: $isShowingDialogueCommitScores){
+//                    //code in here
+//
+//                } message: {
+//
+//                    Text("You haven't amended any scores on this hole? Do you want to commit these scores to the game and continue to the next hole")
+//                }
                 
                 
             }//geo

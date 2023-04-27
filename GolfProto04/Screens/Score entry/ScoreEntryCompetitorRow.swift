@@ -40,6 +40,7 @@ struct ScoreEntryCompetitorRow: View {
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] -= 1
                     scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
+                    scoreEntryVM.saveCompetitorsScore()
 //                    competitorScore -= 1
 //                    let manager = CoreDataManager.shared
 //                    let CC = manager.getCompetitorById(id: competitor.objectID)
@@ -86,7 +87,11 @@ struct ScoreEntryCompetitorRow: View {
                         .font(.title)
                         .font(.footnote.weight(.bold))
                         .foregroundColor(.brown)
-                        .opacity(0.6)
+                        .opacity(0.5)
+                        .onTapGesture(count: 2, perform:{
+                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex].toggle()
+                            scoreEntryVM.saveCompetitorsScore()
+                        })
                 case true:
                     Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
                     
@@ -101,12 +106,17 @@ struct ScoreEntryCompetitorRow: View {
                         .font(.footnote.weight(.bold))
                         .foregroundColor(.brown)
                         .opacity(1.0)
+                        .onTapGesture(count: 2, perform:{
+                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex].toggle()
+                            scoreEntryVM.saveCompetitorsScore()
+                        })
                     
                 }
                 
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] += 1
                     scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
+                    scoreEntryVM.saveCompetitorsScore()
 //                    competitorScore += 1
 //                    let manager = CoreDataManager.shared
 //                    let CC = manager.getCompetitorById(id: competitor.objectID)

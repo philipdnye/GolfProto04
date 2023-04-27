@@ -20,6 +20,33 @@ class ScoreEntryViewModel: ObservableObject {
     @Published var scoresCommitted: [[Bool]] = Array(repeating: [false,false,false,false], count: 18)
     @Published var currentGame: GameViewModel = GameViewModel(game: Game())
     
+    
+    
+    func assignDefaultValues(){
+        let manager = CoreDataManager.shared
+        let game = manager.getGameById(id: self.currentGame.id)
+        for i in 0..<(game?.competitorArray.count ?? 0) {
+            for j in 0..<18 {
+                let par = Int(game?.competitorArray[i].competitorScoresArray[j].par ?? 0)
+                let stroke = Int(game?.competitorArray[i].competitorScoresArray[j].shotsRecdHoleStroke ?? 0)
+                let score = par + stroke
+                
+                self.competitorsScores[j][i] = score
+                self.scoresCommitted[j][i] = false
+            }
+        }
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
     func loadCompetitorsScore() {
         let manager = CoreDataManager.shared
         let game = manager.getGameById(id: self.currentGame.id)

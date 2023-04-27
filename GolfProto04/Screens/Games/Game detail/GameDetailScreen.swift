@@ -20,11 +20,11 @@ struct GameDetailScreen: View {
     
     @State private var isShowingDialogueTrash:Bool = false
     @State private var isShowingDialogueScoreEntry:Bool = false
-    @State private var showingSheetScorecard: Bool = false
-    @State private var gotoScoreEntry: Bool = false
+    //@State private var showingSheetScorecard: Bool = false
+    //@State private var gotoScoreEntry: Bool = false
     @State private var showingSheetHandicapCalc: Bool = false
     @State private var isPresentedGameTeeBox: Bool = false
-    @State private var isShowingDetailView: Bool = false
+    @State private var isShowingScoreEntryScreen: Bool = false
     
     func OnAppear() {
         gameListVM.getAllGames()
@@ -52,6 +52,40 @@ struct GameDetailScreen: View {
         gameListVM.getAllCompetitors()
     }
     
+    
+    private var gotoScoreEntryButton: some View {
+        
+        AnyView(Button(action: GotoScoreEntryScreen){
+            if game.game.started == false {
+                Text("Start game")
+            } else {
+                Text("Resume game")
+            }
+        })
+    }
+    
+    
+    
+    
+    private func GotoScoreEntryScreen() {
+        if game.game.started == false {
+            isShowingDialogueScoreEntry.toggle()
+           
+        } else {
+            scoreEntryVM.currentGame = game
+            scoreEntryVM.loadCompetitorsScore() // if game has already started just reload the competitor scores, as default values will have already been set up
+            isShowingScoreEntryScreen = true
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
     private var scoreEntryButton: some View {
         AnyView(Button(action: showScoreEntry){
 //            let CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
@@ -74,18 +108,20 @@ struct GameDetailScreen: View {
     }
     
     private func showScoreEntry() {
-//        let CGI = games.allGames.firstIndex(where: {$0 == game}) ?? 0
+
         if game.gameStarted == false {
             isShowingDialogueScoreEntry.toggle()
         } else {
             
             switch game.gameFinished {
             case true:
+                break
                 //code here to launch the scorecard
-                print("game finished")
-                showingSheetScorecard.toggle()
+                
+                //showingSheetScorecard.toggle()
             case false:
-                gotoScoreEntry.toggle()
+                break
+                //gotoScoreEntry.toggle()
             }
         }
     }
@@ -153,28 +189,7 @@ struct GameDetailScreen: View {
                 
                 teamPlayingHandicaps
                 teamShotsReceived
-                Button {
-                    
-                    if game.game.started == false {
-                        startGameVM.StartGame(game: game.game, currentGF: currentGF)
-                        scoreEntryVM.currentGame = game // this is used in score entry screen
-                        scoreEntryVM.loadCompetitorsScore()
-                        isShowingDetailView = true
-                    } else {
-                        scoreEntryVM.currentGame = game
-                        scoreEntryVM.loadCompetitorsScore()
-                        isShowingDetailView = true
-                    }
-                              } label: {
-                                  if game.game.started == false {
-                                      Text("Start game")
-                                  } else {
-                                      Text("Resume game")
-                                  }
-                              }
-                
-                
-                
+          
                 
                 if
                     currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false ||
@@ -257,10 +272,7 @@ struct GameDetailScreen: View {
                                     .disabled(competitor.team == TeamAssignment.teamB.rawValue || currentGF.assignTeamGrouping != Assignment.TeamsAB || game.game.competitorArray.filter{$0.team == 2}.count > 2 || game.gameStarted)
                                     
                                 }
-                            
-                            
-                            
-                            
+                           
                             
                         }
                     } //section
@@ -278,7 +290,7 @@ struct GameDetailScreen: View {
             }//vstack
             
             .navigationTitle("Navigation")
-                       .navigationDestination(isPresented: $isShowingDetailView) {
+                       .navigationDestination(isPresented: $isShowingScoreEntryScreen) {
                            ScoreEntryScreen(game: game)
                       }
         
@@ -306,6 +318,20 @@ struct GameDetailScreen: View {
             })
             
             
+        
+            .confirmationDialog("Start game", isPresented: $isShowingDialogueScoreEntry, actions: {
+                Button("Start game", role: .destructive){
+                    startGameVM.StartGame(game: game.game, currentGF: currentGF)
+                    scoreEntryVM.currentGame = game // this is used in score entry screen
+                    //need code here to load up defualt values for each competitor OR team
+                    scoreEntryVM.assignDefaultValues()
+               
+                    isShowingScoreEntryScreen = true
+                }
+                
+            }, message: {Text("If you start this game, you will not be able to amend any settings. Are you sure you want to continue?")})
+        
+        
             .onAppear(perform: {
                 OnAppear()
             })
@@ -454,13 +480,13 @@ struct GameDetailScreen: View {
             
             
             
-//            .navigationBarItems(
-//                leading:trashButton,
-//                trailing: HStack{
-//                    handicapCalcButton
-//                    scoreEntryButton
-//                }
-//            )
+            .navigationBarItems(
+                leading:trashButton,
+                trailing: HStack{
+                    handicapCalcButton
+                    gotoScoreEntryButton
+                }
+            )
             
             
             

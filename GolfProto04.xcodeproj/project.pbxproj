@@ -220,6 +220,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D4431CEC29FA54B700EA02E7 /* Score entry */ = {
+			isa = PBXGroup;
+			children = (
+				D4804E8429F82A64004A0F0B /* ScoreEntryViewModel.swift */,
+			);
+			path = "Score entry";
+			sourceTree = "<group>";
+		};
 		D46C8BBD29F83E520059F26E /* Score entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,6 +364,7 @@
 		D48237C029F3B4EE0029ECBF /* View models */ = {
 			isa = PBXGroup;
 			children = (
+				D4431CEC29FA54B700EA02E7 /* Score entry */,
 				D482381629F3B81C0029ECBF /* Games */,
 				D48237D929F3B5500029ECBF /* Players */,
 				D48237C229F3B53F0029ECBF /* Clubs */,
@@ -482,7 +491,6 @@
 				D482384B29F538590029ECBF /* TeamShotsViewModel.swift */,
 				D482384D29F53ABB0029ECBF /* TeamTeeBoxViewModel.swift */,
 				D482381829F3B8680029ECBF /* AddGameViewModel.swift */,
-				D4804E8429F82A64004A0F0B /* ScoreEntryViewModel.swift */,
 				D482381C29F3B95A0029ECBF /* GameListViewModel.swift */,
 				D4F953C529F65AD0002A00BD /* StartGameViewModel.swift */,
 			);

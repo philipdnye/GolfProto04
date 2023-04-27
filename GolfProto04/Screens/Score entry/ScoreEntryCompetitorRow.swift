@@ -39,6 +39,7 @@ struct ScoreEntryCompetitorRow: View {
             HStack(spacing:25){
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] -= 1
+                    scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
 //                    competitorScore -= 1
 //                    let manager = CoreDataManager.shared
 //                    let CC = manager.getCompetitorById(id: competitor.objectID)
@@ -58,24 +59,54 @@ struct ScoreEntryCompetitorRow: View {
                 }
                 //.disabled(score < 1)
                 
-                Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
-                
-                    .frame(width: 32, height: 32)
-                    .padding()
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 16)
-                            .stroke(darkTeal, lineWidth: 2)
-                    )
-                
-                    .font(.title)
-                    .font(.footnote.weight(.bold))
-                    .foregroundColor(.brown)
-                    .opacity(0.6)
-                
-                
+//                Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
+//                
+//                    .frame(width: 32, height: 32)
+//                    .padding()
+//                    .overlay(
+//                        RoundedRectangle(cornerRadius: 16)
+//                            .stroke(darkTeal, lineWidth: 2)
+//                    )
+//                
+//                    .font(.title)
+//                    .font(.footnote.weight(.bold))
+//                    .foregroundColor(.brown)
+//                    .opacity(0.6)
+                switch scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] {// changes the opacity of the font depending on whther the score has been committed
+                case false:
+                    Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
+                    
+                        .frame(width: 32, height: 32)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(darkTeal, lineWidth: 2)
+                        )
+                    
+                        .font(.title)
+                        .font(.footnote.weight(.bold))
+                        .foregroundColor(.brown)
+                        .opacity(0.6)
+                case true:
+                    Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
+                    
+                        .frame(width: 32, height: 32)
+                        .padding()
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 16)
+                                .stroke(darkTeal, lineWidth: 2)
+                        )
+                    
+                        .font(.title)
+                        .font(.footnote.weight(.bold))
+                        .foregroundColor(.brown)
+                        .opacity(1.0)
+                    
+                }
                 
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] += 1
+                    scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
 //                    competitorScore += 1
 //                    let manager = CoreDataManager.shared
 //                    let CC = manager.getCompetitorById(id: competitor.objectID)

@@ -17,6 +17,7 @@ class ScoreEntryViewModel: ObservableObject {
     
     @Published var grossScore: Int = 0
     @Published var competitorsScores: [[Int]] = Array(repeating: [0,0,0,0], count: 18)
+    @Published var scoresCommitted: [[Bool]] = Array(repeating: [false,false,false,false], count: 18)
     @Published var currentGame: GameViewModel = GameViewModel(game: Game())
     
     func loadCompetitorsScore() {
@@ -25,6 +26,7 @@ class ScoreEntryViewModel: ObservableObject {
         for i in 0..<(game?.competitorArray.count ?? 0) {
             for j in 0..<18 {
                 self.competitorsScores[j][i] = Int(game?.competitorArray[i].competitorScoresArray[j].grossScore ?? 0)
+                self.scoresCommitted[j][i] = Bool(game?.competitorArray[i].competitorScoresArray[j].scoreCommitted ?? false)
             }
         }
         
@@ -40,6 +42,7 @@ class ScoreEntryViewModel: ObservableObject {
         for i in 0..<(game?.competitorArray.count ?? 0) {
             for j in 0..<18 {
                 game?.competitorArray[i].competitorScoresArray[j].grossScore = Int16(self.competitorsScores[j][i])
+                game?.competitorArray[i].competitorScoresArray[j].scoreCommitted = self.scoresCommitted[j][i]
             }
         }
         

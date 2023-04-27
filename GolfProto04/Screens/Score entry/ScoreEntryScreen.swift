@@ -143,7 +143,18 @@ struct ScoreEntryScreen: View {
                     
                     Button("Hole \(scoreEntryVM.holeIndex + 2) >"){
                         
+                        //code here to check to see if any of score have been changed - dialouge box
+                        
+                        for i in 0..<game.game.competitorArray.count {
+                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][i] = true
+                        }
+                        
+                        
+                        
                         scoreEntryVM.holeIndex += 1
+                        
+                        
+                        
                         
                         //games.allGames[scoreEntryVar.CGI].lastHoleIndex = scoreEntryVar.holeIndex
                         

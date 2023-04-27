@@ -13,7 +13,7 @@ struct ScoreEntryScreen: View {
     @Environment(\.dismiss) private var dismiss
     @State private var showHoleNavigator: Bool = false
     @State private var isShowingDialogueCommitScores: Bool = false
-    @State private var showingSheetScoreCard: Bool = false
+    @State private var isPresentedSheetScoreCard: Bool = false
    
     var game: GameViewModel
     
@@ -21,7 +21,7 @@ struct ScoreEntryScreen: View {
         AnyView(Button(action: showScorecard){Image(systemName: "list.number")})
     }
     private func showScorecard () {
-        showingSheetScoreCard.toggle()
+        isPresentedSheetScoreCard.toggle()
     }
     
     var body: some View {
@@ -260,6 +260,16 @@ struct ScoreEntryScreen: View {
                 scoreCardButton
             }
             }
+        
+        
+        .sheet(isPresented: $isPresentedSheetScoreCard, onDismiss: {
+            
+           
+        }, content: {
+           ScorecardScreen()
+        })
+        
+        
     }
 }
 

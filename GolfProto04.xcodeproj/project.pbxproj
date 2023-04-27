@@ -17,6 +17,7 @@
 		D4431CE729F9139300EA02E7 /* TeeBox+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CE329F9139300EA02E7 /* TeeBox+CoreDataProperties.swift */; };
 		D4431CE929F96C8C00EA02E7 /* ScoreEntryCompetitorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CE829F96C8C00EA02E7 /* ScoreEntryCompetitorRow.swift */; };
 		D4431CEE29FA820C00EA02E7 /* CompetitorRowScoreBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CED29FA820C00EA02E7 /* CompetitorRowScoreBox.swift */; };
+		D4431CF129FA922E00EA02E7 /* ScorecardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CF029FA922E00EA02E7 /* ScorecardScreen.swift */; };
 		D46C8BBF29F86CA70059F26E /* HoleNavigatorPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */; };
 		D46CB01C29F595A20078169B /* EXtension_NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */; };
 		D4804E8129F827D4004A0F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4804E8029F827D3004A0F0B /* HomeView.swift */; };
@@ -118,6 +119,7 @@
 		D4431CE329F9139300EA02E7 /* TeeBox+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TeeBox+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		D4431CE829F96C8C00EA02E7 /* ScoreEntryCompetitorRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreEntryCompetitorRow.swift; sourceTree = "<group>"; };
 		D4431CED29FA820C00EA02E7 /* CompetitorRowScoreBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitorRowScoreBox.swift; sourceTree = "<group>"; };
+		D4431CF029FA922E00EA02E7 /* ScorecardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardScreen.swift; sourceTree = "<group>"; };
 		D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleNavigatorPopUp.swift; sourceTree = "<group>"; };
 		D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXtension_NSNumber.swift; sourceTree = "<group>"; };
 		D4804E8029F827D3004A0F0B /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,14 @@
 				D4804E8429F82A64004A0F0B /* ScoreEntryViewModel.swift */,
 			);
 			path = "Score entry";
+			sourceTree = "<group>";
+		};
+		D4431CEF29FA921200EA02E7 /* Scorecard */ = {
+			isa = PBXGroup;
+			children = (
+				D4431CF029FA922E00EA02E7 /* ScorecardScreen.swift */,
+			);
+			path = Scorecard;
 			sourceTree = "<group>";
 		};
 		D46C8BBD29F83E520059F26E /* Score entry */ = {
@@ -378,6 +388,7 @@
 		D48237C129F3B4FD0029ECBF /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				D4431CEF29FA921200EA02E7 /* Scorecard */,
 				D4804E8029F827D3004A0F0B /* HomeView.swift */,
 				D4804E8229F828EE004A0F0B /* SettingsScreen.swift */,
 				D482381429F3B5AD0029ECBF /* MainScreen.swift */,
@@ -699,6 +710,7 @@
 				D482384829F530B20029ECBF /* CompetitorScoreViewModel.swift in Sources */,
 				D482379129F2F83A0029ECBF /* UIImageTransformer.swift in Sources */,
 				D48237FD29F3B5850029ECBF /* TeeBoxListScreen.swift in Sources */,
+				D4431CF129FA922E00EA02E7 /* ScorecardScreen.swift in Sources */,
 				D48237FB29F3B5850029ECBF /* CourseListRowItem.swift in Sources */,
 				D48237D629F3B53F0029ECBF /* TeeBoxListViewModel.swift in Sources */,
 				D482380329F3B5850029ECBF /* HoleListScreen.swift in Sources */,

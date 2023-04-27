@@ -27,31 +27,13 @@ struct ScoreEntryCompetitorRow: View {
             .padding([.leading],10)
             
             Spacer()
-            
-            
-            
-            //            .frame(width: geo.size.width * 0.95, height:70, alignment: .trailing)
-            //.background(.blue)
-            //            .offset(x:geo.size.width * 0, y: geo.size.height * 0.33)
-            //            .zIndex(0)
-            
-            
+       
             HStack(spacing:25){
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] -= 1
                     scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
                     scoreEntryVM.saveCompetitorsScore()
-//                    competitorScore -= 1
-//                    let manager = CoreDataManager.shared
-//                    let CC = manager.getCompetitorById(id: competitor.objectID)
-//                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
-//                    manager.save()
-                    
-                    //                    scoreCommitted = true
-                    //                    games.allGames[scoreEntryVar.CGI].CompetitorsCurrentResult(competitorsNetScoresToPar: &scoreEntryVar.competitorsNetScoreToPar)
-                    //                    games.saveGamesFM()
-                    
-                    //            scoreEntryVar.minusTapCount -= 1
+//
                 }) {
                     Image(systemName: "minus.circle.fill")
                         .resizable()
@@ -60,68 +42,21 @@ struct ScoreEntryCompetitorRow: View {
                 }
                 //.disabled(score < 1)
                 
-//                Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
-//                
-//                    .frame(width: 32, height: 32)
-//                    .padding()
-//                    .overlay(
-//                        RoundedRectangle(cornerRadius: 16)
-//                            .stroke(darkTeal, lineWidth: 2)
-//                    )
-//                
-//                    .font(.title)
-//                    .font(.footnote.weight(.bold))
-//                    .foregroundColor(.brown)
-//                    .opacity(0.6)
+//
                 switch scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] {// changes the opacity of the font depending on whther the score has been committed
                 case false:
-                    Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
+                    CompetitorRowScoreBox(competitorIndex: competitorIndex, opacity: 0.5)
                     
-                        .frame(width: 32, height: 32)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(darkTeal, lineWidth: 2)
-                        )
-                    
-                        .font(.title)
-                        .font(.footnote.weight(.bold))
-                        .foregroundColor(.brown)
-                        .opacity(0.5)
-                        .onTapGesture(count: 2, perform:{
-                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex].toggle()
-                            scoreEntryVM.saveCompetitorsScore()
-                        })
+//
                 case true:
-                    Text(scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex].formatted())
-                    
-                        .frame(width: 32, height: 32)
-                        .padding()
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 16)
-                                .stroke(darkTeal, lineWidth: 2)
-                        )
-                    
-                        .font(.title)
-                        .font(.footnote.weight(.bold))
-                        .foregroundColor(.brown)
-                        .opacity(1.0)
-                        .onTapGesture(count: 2, perform:{
-                            scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex].toggle()
-                            scoreEntryVM.saveCompetitorsScore()
-                        })
-                    
+                    CompetitorRowScoreBox(competitorIndex: competitorIndex, opacity: 1.0)
                 }
                 
                 Button(action: {
                     scoreEntryVM.competitorsScores[scoreEntryVM.holeIndex][competitorIndex] += 1
                     scoreEntryVM.scoresCommitted[scoreEntryVM.holeIndex][competitorIndex] = true
                     scoreEntryVM.saveCompetitorsScore()
-//                    competitorScore += 1
-//                    let manager = CoreDataManager.shared
-//                    let CC = manager.getCompetitorById(id: competitor.objectID)
-//                    CC?.competitorScoresArray[scoreEntryVM.holeIndex].grossScore = Int16(competitorScore)
-//                    manager.save()
+
                 }) {
                     Image(systemName: "plus.circle.fill")
                         .resizable()
@@ -129,14 +64,11 @@ struct ScoreEntryCompetitorRow: View {
                         .foregroundColor(gold)
                 }
             }
-            //Text(scoreEntryVM.holeIndex.formatted())
-            //            .frame(width: geo.size.width * 0.5)
-            //            .offset(x:geo.size.width * 0.5, y: geo.size.height * 0.33)
-            //            .zIndex(0)
+
         }
-        .onAppear(perform: {
-           // competitorScore = Int(competitor.competitorScoresArray[scoreEntryVM.holeIndex].grossScore)
-        })
+//        .onAppear(perform: {
+//
+//        })
         
     }
 }

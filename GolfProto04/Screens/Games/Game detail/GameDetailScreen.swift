@@ -192,8 +192,8 @@ struct GameDetailScreen: View {
           
                 
                 if
-                    currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false ||
-                        currentGF.assignTeamGrouping == .TeamC && currentGF.assignShotsRecd == .TeamC && game.game.TeeBoxesAllSame() == false
+                    currentGF.assignTeamGrouping == .TeamsAB && currentGF.assignShotsRecd == .TeamsAB && game.game.TeeBoxesAllSame() == false && game.gameStarted == false ||
+                        currentGF.assignTeamGrouping == .TeamC && currentGF.assignShotsRecd == .TeamC && game.game.TeeBoxesAllSame() == false && game.gameStarted == false
                 {
                     HStack{
                         Text(game.game.diffTeesTeeBox?.wrappedColour ?? "")
@@ -219,6 +219,7 @@ struct GameDetailScreen: View {
                                         Text("TeeBox")
                                     }
                                     .tint(.mint)
+                                    .disabled(game.gameStarted)
                                 }
                             
                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
@@ -280,16 +281,23 @@ struct GameDetailScreen: View {
                     
                     Text("Players in this game")
                 } footer: {
-                    VStack{
-                        Text("Swipe LEFT to change the players teebox")
-                        Text("Swipe RIGHT to assign TEAMS")
+                    if game.gameStarted == false {
+                        VStack{
+                            Text("Swipe LEFT to change the players teebox")
+                            Text("Swipe RIGHT to assign TEAMS")
+                        }
                     }
                 }
                 }
                 
             }//vstack
             
-            .navigationTitle("Navigation")
+        
+        
+        
+        
+        
+        
                        .navigationDestination(isPresented: $isShowingScoreEntryScreen) {
                            ScoreEntryScreen(game: game)
                       }

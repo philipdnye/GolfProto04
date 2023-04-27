@@ -9,10 +9,21 @@ import SwiftUI
 
 struct ScoreEntryScreen: View {
     @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
+    @EnvironmentObject var currentGF: CurrentGameFormat
+    @Environment(\.dismiss) private var dismiss
     @State private var showHoleNavigator: Bool = false
     @State private var isShowingDialogueCommitScores: Bool = false
+    @State private var showingSheetScoreCard: Bool = false
    
     var game: GameViewModel
+    
+    private var scoreCardButton: some View {
+        AnyView(Button(action: showScorecard){Image(systemName: "list.number")})
+    }
+    private func showScorecard () {
+        showingSheetScoreCard.toggle()
+    }
+    
     var body: some View {
         ZStack{
             GeometryReader { geo in
@@ -57,7 +68,7 @@ struct ScoreEntryScreen: View {
                     Text(game.game.game_format.stringValue())
                         .frame(width: geo.size.width * 0.37, alignment: .leading)
                         .offset(x:geo.size.width * 0.02, y: geo.size.height * 0.088)
-                    Text(game.game.play_format.stringValue())
+                    Text(currentGF.playFormat.stringValue())
                         .frame(width: geo.size.width * 0.21, alignment: .center)
                         .offset(x:geo.size.width * 0.00, y: geo.size.height * 0.088)
                     Text(game.game.sc_format.stringValue())
@@ -191,6 +202,7 @@ struct ScoreEntryScreen: View {
                         .frame(width: geo.size.width * 0.95, height: 75)
                         .offset(x: 0, y: geo.size.height * CGFloat(((Double(i)+1)*0.15)+0.2))
                 }
+               
                 
                 
                 
@@ -216,9 +228,38 @@ struct ScoreEntryScreen: View {
             }//geo
             
         }
+       
+//        NavigationLink("Press Me", destination: Text("Detail").navigationTitle("Detail View"))
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    // this sets the Back button text when a new screen is pushed
+//                    .navigationTitle("Back to Primary View")
+//                    .toolbar {
+//                        ToolbarItem(placement: .principal) {
+//                            // this sets the screen title in the navigation bar, when the screen is visible
+//                            Text("Primary View")
+//                        }
+//                    }
+        //.navigationTitle("Nav title")
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing){
+                Button {
+                    //code here to save competitorscores
+                    scoreEntryVM.saveCompetitorsScore()
+                    dismiss()
+                } label: {
+                    
+                    Text("Pause game")
+                                            
+                }
+                
+                }
             
             
-        
+            ToolbarItem(placement: .navigationBarLeading){
+                scoreCardButton
+            }
+            }
     }
 }
 
@@ -227,6 +268,7 @@ struct ScoreEntryScreen_Previews: PreviewProvider {
         let game = GameViewModel(game: Game(context: CoreDataManager.shared.viewContext))
         ScoreEntryScreen(game: game)
             .environmentObject(ScoreEntryViewModel())
+            .environmentObject(CurrentGameFormat())
             
     }
 }

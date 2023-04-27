@@ -15,7 +15,7 @@ struct AddGamePlayerRowItem: View {
             Text(player.firstName)
             Text(player.lastName)
             Text(player.player.handicapArray.currentHandicapIndex().formatted())
-            Text(player.selectedForGame.description)
+//            Text(player.selectedForGame.description)
             
         }
     }

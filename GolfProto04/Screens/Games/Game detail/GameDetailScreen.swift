@@ -206,14 +206,7 @@ struct GameDetailScreen: View {
                 Form{
                     Section {
                         
-                        ForEach(Array(game.game.competitorArray.sorted(by:
-                                                                        {if $0.team == $1.team{
-                                                                            return $0.handicapIndex < $1.handicapIndex
-                                                                        }
-                            return $0.team < $1.team
-                        }
-                                                                       
-                                                                      )), id: \.self){competitor in
+                        ForEach(game.game.SortedCompetitors(currentGF: currentGF), id: \.self){competitor in
                             CompetitorRowItem_GameDetail(competitor: competitor,game: game ,needsRefresh: $needsRefresh)
                                 .swipeActions(edge: .trailing, allowsFullSwipe: false){
                                     Button{

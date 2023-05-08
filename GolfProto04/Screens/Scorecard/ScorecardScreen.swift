@@ -24,7 +24,7 @@ struct ScorecardScreen: View {
                     }
                     .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                 }
-                .offset(x: geo.size.width * 0.3)
+                .offset(x: geo.size.width * 0.31)
                 .foregroundColor(darkTeal)
                 .fontWeight(.semibold)
                 
@@ -36,7 +36,7 @@ struct ScorecardScreen: View {
                     HStack(spacing:0){
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].number.formatted() ?? "")
                         Text(Int(front9Holes[holeIndex].number).formatted())
-                            .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
+                            .frame(width: geo.size.width * 0.06, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].distance.formatted() ?? "")
                         Text(Int(front9Holes[holeIndex].distance).formatted())
@@ -62,7 +62,7 @@ struct ScorecardScreen: View {
                                     
                                 }
                             }
-                            .foregroundColor(.blue)
+                           // .foregroundColor(.blue)
                             .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                             .offset(x: geo.size.width * 0.026)
                         }
@@ -89,9 +89,21 @@ struct ScorecardScreen: View {
                     HStack(spacing: 0){
                         Group{
                             ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self){
-                                if $0.competitorScoresArray.TotalGrossScore_front9() != 0 {
-                                    Text($0.competitorScoresArray.TotalGrossScore_front9().formatted())
-                                }
+                                
+                                
+                                
+                                    if $0.competitorScoresArray.TotalGrossScore_front9() != 0 {
+                                        //ZStack{
+                                        
+                                          CompetitorFront9Scores(competitor: $0)
+                                            
+                                        
+                                    }
+                                    // }
+                                    
+                                
+                                
+                                
                             }
                             
 //                            ForEach(totalscores, id:\.self){score in
@@ -100,8 +112,8 @@ struct ScorecardScreen: View {
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
-                    .offset(x: geo.size.width * 0.085)
-                    .foregroundColor(.blue)
+                    .offset(x: geo.size.width * 0.095)
+                    
                     .fontWeight(.semibold)
                     
                 }
@@ -112,7 +124,7 @@ struct ScorecardScreen: View {
                     HStack(spacing:0){
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].number.formatted() ?? "")
                         Text(Int(back9Holes[holeIndex + 9].number).formatted())
-                            .frame(width: geo.size.width * 0.05, height: geo.size.height * 0.03)
+                            .frame(width: geo.size.width * 0.06, height: geo.size.height * 0.03)
                             .foregroundColor(darkTeal)
                         //Text(scoreEntryVM.currentGame.game.scoreEntryTeeBox?.holesArray[i].distance.formatted() ?? "")
                         Text(Int(back9Holes[holeIndex + 9].distance).formatted())
@@ -175,7 +187,7 @@ struct ScorecardScreen: View {
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
-                    .offset(x: geo.size.width * 0.085)
+                    .offset(x: geo.size.width * 0.095)
                     .foregroundColor(.blue)
                     .fontWeight(.semibold)
                     
@@ -207,7 +219,7 @@ struct ScorecardScreen: View {
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
-                    .offset(x: geo.size.width * 0.085)
+                    .offset(x: geo.size.width * 0.095)
                     .foregroundColor(.blue)
                     .fontWeight(.semibold)
                     
@@ -239,7 +251,7 @@ struct ScorecardScreen: View {
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
-                    .offset(x: geo.size.width * 0.085)
+                    .offset(x: geo.size.width * 0.095)
                     .foregroundColor(.blue)
                     .fontWeight(.semibold)
                     
@@ -256,7 +268,7 @@ struct ScorecardScreen: View {
                     }
                     .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                 }
-                .offset(x: geo.size.width * 0.3)
+                .offset(x: geo.size.width * 0.31)
                 .foregroundColor(darkTeal)
                 .fontWeight(.semibold)
                 

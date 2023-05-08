@@ -8,15 +8,21 @@
 import SwiftUI
 
 struct ScoreEntryCompetitorRow: View {
+   
     var competitorIndex: Int
     
     //@StateObject var scoreEntryVM: ScoreEntryViewModel
 //    @Binding var competitorScore: Int
     @EnvironmentObject var scoreEntryVM: ScoreEntryViewModel
+    @EnvironmentObject var currentGF: CurrentGameFormat
     var body: some View {
         
         HStack(spacing:0){
             HStack(spacing: 5){
+                
+                
+                //.sorted(by: {$0.TotalPlayingHandicap(currentGF: currentGF ) < $1.TotalPlayingHandicap(currentGF: currentGF)})
+                
                 Text(scoreEntryVM.currentGame.game.competitorArray[competitorIndex].FirstName())
                 Text(scoreEntryVM.currentGame.game.competitorArray[competitorIndex].LastName().prefix(1).capitalized)
             }
@@ -76,5 +82,7 @@ struct ScoreEntryCompetitorRow_Previews: PreviewProvider {
     static var previews: some View {
         ScoreEntryCompetitorRow(competitorIndex: 0)
             .environmentObject(ScoreEntryViewModel())
+            .environmentObject(CurrentGameFormat())
+            
     }
 }

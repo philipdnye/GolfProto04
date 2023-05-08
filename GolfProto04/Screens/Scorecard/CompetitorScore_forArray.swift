@@ -11,9 +11,26 @@ struct CompetitorScore_forArray: View {
     var competitor: Competitor = Competitor()
     var holeIndex: Int
     var body: some View {
-        if competitor.competitorScoresArray[holeIndex].scoreCommitted {
-            Text(competitor.competitorScoresArray[holeIndex].grossScore.formatted())
+        
+        
+        ZStack{
+            if competitor.competitorScoresArray[holeIndex].scoreCommitted {
+                Text(competitor.competitorScoresArray[holeIndex].grossScore.formatted())
+                    .foregroundColor(.blue)
+                if competitor.competitorScoresArray[holeIndex].StablefordPointsNet() != 0 {
+                    Text(competitor.competitorScoresArray[holeIndex].StablefordPointsNet().formatted())
+                        .foregroundColor(burntOrange)
+                        .font(.caption)
+                        .offset(x: 10, y: 5)
+                        
+                }
+            }
         }
+        
+        
+        
+        
+        
     }
 }
 

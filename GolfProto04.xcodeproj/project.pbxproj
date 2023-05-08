@@ -22,6 +22,8 @@
 		D4431CF529FAC33A00EA02E7 /* Extensions_HoleArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CF429FAC33900EA02E7 /* Extensions_HoleArray.swift */; };
 		D4431CF729FACF6100EA02E7 /* CompetitorScore_forArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CF629FACF6100EA02E7 /* CompetitorScore_forArray.swift */; };
 		D4431CF929FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CF829FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift */; };
+		D44F22952A08F8EB001EDC74 /* Extensions_CompetitorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F22942A08F8EB001EDC74 /* Extensions_CompetitorScore.swift */; };
+		D44F22972A0906D4001EDC74 /* CompetitorFront9Scores.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F22962A0906D4001EDC74 /* CompetitorFront9Scores.swift */; };
 		D46C8BBF29F86CA70059F26E /* HoleNavigatorPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */; };
 		D46CB01C29F595A20078169B /* EXtension_NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */; };
 		D4804E8129F827D4004A0F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4804E8029F827D3004A0F0B /* HomeView.swift */; };
@@ -128,6 +130,8 @@
 		D4431CF429FAC33900EA02E7 /* Extensions_HoleArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_HoleArray.swift; sourceTree = "<group>"; };
 		D4431CF629FACF6100EA02E7 /* CompetitorScore_forArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitorScore_forArray.swift; sourceTree = "<group>"; };
 		D4431CF829FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_CompetitorScoreArray.swift; sourceTree = "<group>"; };
+		D44F22942A08F8EB001EDC74 /* Extensions_CompetitorScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_CompetitorScore.swift; sourceTree = "<group>"; };
+		D44F22962A0906D4001EDC74 /* CompetitorFront9Scores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitorFront9Scores.swift; sourceTree = "<group>"; };
 		D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleNavigatorPopUp.swift; sourceTree = "<group>"; };
 		D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXtension_NSNumber.swift; sourceTree = "<group>"; };
 		D4804E8029F827D3004A0F0B /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				D4431CF229FAAF7A00EA02E7 /* ScoreCardScreen.swift */,
 				D4431CF029FA922E00EA02E7 /* ScorecardScreenPreview.swift */,
 				D4431CF629FACF6100EA02E7 /* CompetitorScore_forArray.swift */,
+				D44F22962A0906D4001EDC74 /* CompetitorFront9Scores.swift */,
 			);
 			path = Scorecard;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */,
 				D4431CF429FAC33900EA02E7 /* Extensions_HoleArray.swift */,
 				D4431CF829FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift */,
+				D44F22942A08F8EB001EDC74 /* Extensions_CompetitorScore.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -639,6 +645,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D482381929F3B8680029ECBF /* AddGameViewModel.swift in Sources */,
+				D44F22972A0906D4001EDC74 /* CompetitorFront9Scores.swift in Sources */,
 				D48237DF29F3B5500029ECBF /* AddHandicapViewModel.swift in Sources */,
 				D482382A29F3B98E0029ECBF /* AddGamePlayerRowItem.swift in Sources */,
 				D48237A229F2F8630029ECBF /* Extensions_Club.swift in Sources */,
@@ -734,6 +741,7 @@
 				D4804E8329F828EE004A0F0B /* SettingsScreen.swift in Sources */,
 				D4431CF929FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift in Sources */,
 				D482381129F3B5A20029ECBF /* AddHandicapScreen.swift in Sources */,
+				D44F22952A08F8EB001EDC74 /* Extensions_CompetitorScore.swift in Sources */,
 				D400309629F6BE2C00FD8A0B /* ChangeMatchTeeBoxSheet.swift in Sources */,
 				D482381B29F3B8E10029ECBF /* Extensions_Game.swift in Sources */,
 				D4431CE929F96C8C00EA02E7 /* ScoreEntryCompetitorRow.swift in Sources */,

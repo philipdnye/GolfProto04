@@ -47,3 +47,17 @@ extension [CompetitorScore] {
         return total
     }
 }
+
+
+extension [CompetitorScore] {
+    func TotalStablefordPoints_front9 () -> Int16 {
+        var total: Int16 = 0
+        for hole in self.filter({$0.hole < 10}) {
+        
+            if (hole as AnyObject).scoreCommitted {
+                total += (hole.StablefordPointsNet())
+            }
+        }
+        return total
+    }
+}

@@ -57,8 +57,8 @@ struct ScoreEntryScreen: View {
                     
                     
                     
-                    Text(game.game.scoreEntryTeeBox?.course?.name ?? "")
-                        .frame(width:geo.size.width * 0.32, alignment: .trailing)
+//                    Text(game.game.scoreEntryTeeBox?.course?.name ?? "")
+//                        .frame(width:geo.size.width * 0.32, alignment: .trailing)
                     
                 }
                 .zIndex(0)
@@ -113,7 +113,7 @@ struct ScoreEntryScreen: View {
                 .font(.title)
                 .background(burntOrange)
                 .foregroundColor(.white)
-                .offset(x:0, y: geo.size.height * 0.13)
+                .offset(x:0, y: geo.size.height * 0.15)
                 .zIndex(0)
                 
                 
@@ -129,7 +129,7 @@ struct ScoreEntryScreen: View {
                 .font(.title2)
                 .background(gold)
                 .foregroundColor(darkTeal)
-                .offset(x:0, y: geo.size.height * 0.21)
+                .offset(x:0, y: geo.size.height * 0.23)
                 .zIndex(0)
                 
                 
@@ -145,7 +145,7 @@ struct ScoreEntryScreen: View {
                     .buttonStyle(HoleButton())
                     
                     .frame(width: geo.size.width * 0.27, height: 50)
-                    .offset(x:geo.size.width * 0.05, y: geo.size.height * 0.13)
+                    .offset(x:geo.size.width * 0.05, y: geo.size.height * 0.15)
                     //.padding([.leading], 25)
                     .disabled(scoreEntryVM.holeIndex == 0)
                     .zIndex(0)
@@ -179,7 +179,7 @@ struct ScoreEntryScreen: View {
                     .buttonStyle(HoleButton())
                     
                     .frame(width: geo.size.width * 0.27, height: 50)
-                    .offset(x:geo.size.width * 0.68, y: geo.size.height * 0.13)
+                    .offset(x:geo.size.width * 0.68, y: geo.size.height * 0.15)
                     //.padding([.leading], 25)
                     .disabled(scoreEntryVM.holeIndex == 17)
                     .zIndex(0)

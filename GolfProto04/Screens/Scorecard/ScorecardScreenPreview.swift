@@ -14,6 +14,7 @@ struct ScorecardScreenPreview: View {
        
         let initials = ["PN", "JD", "PS", "TB"]
         let scores = [5,7,13,6]
+        //let points = [3,0,1,2]
         let totalscores = [44,34,36,51]
         let finalScores = [88,104,78,91]
         GeometryReader{geo in
@@ -51,6 +52,10 @@ struct ScorecardScreenPreview: View {
                             .frame(width: geo.size.width * 0.075, height: geo.size.height * 0.03)
                             .foregroundColor(burntOrange)
                         
+                     //   ****ADD POINTS HERE**********
+                        
+                        
+                        
                         
                         HStack(spacing:0){
                             Group{
@@ -86,13 +91,14 @@ struct ScorecardScreenPreview: View {
                         Group{
                             ForEach(totalscores, id:\.self){score in
                                 Text(score.formatted())
+                                    .foregroundColor(.blue)
+                                    .fontWeight(.semibold)
                             }
                         }
                         .frame(width: geo.size.width * 0.08, height: geo.size.height * 0.03)
                     }
                     .offset(x: geo.size.width * 0.085)
-                    .foregroundColor(.blue)
-                    .fontWeight(.semibold)
+                    
                     
                 }
                 

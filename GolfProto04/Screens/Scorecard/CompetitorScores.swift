@@ -1,5 +1,5 @@
 //
-//  CompetitorFront9Scores.swift
+//  CompetitorScores.swift
 //  GolfProto04
 //
 //  Created by Philip Nye on 08/05/2023.
@@ -7,14 +7,16 @@
 
 import SwiftUI
 
-struct CompetitorFront9Scores: View {
+struct CompetitorScores: View {
     var competitor: Competitor
+    var grossTotal: Int16
+    var pointsTotal: Int16
     var body: some View {
         
         ZStack{
-            Text(competitor.competitorScoresArray.TotalGrossScore_front9().formatted())
+            Text(grossTotal.formatted())
                 .foregroundColor(.blue)
-            Text(competitor.competitorScoresArray.TotalStablefordPoints_front9().formatted())
+            Text(pointsTotal.formatted())
                 .foregroundColor(burntOrange)
                 .font(.caption)
                 .offset(x: 15, y: 10)
@@ -22,8 +24,8 @@ struct CompetitorFront9Scores: View {
     }
 }
 
-struct CompetitorFront9Scores_Previews: PreviewProvider {
+struct CompetitorScores_Previews: PreviewProvider {
     static var previews: some View {
-        CompetitorFront9Scores(competitor: Competitor())
+        CompetitorScores(competitor: Competitor(), grossTotal: 0, pointsTotal: 0)
     }
 }

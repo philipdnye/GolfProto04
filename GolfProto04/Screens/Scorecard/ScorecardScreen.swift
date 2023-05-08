@@ -95,7 +95,7 @@ struct ScorecardScreen: View {
                                     if $0.competitorScoresArray.TotalGrossScore_front9() != 0 {
                                         //ZStack{
                                         
-                                          CompetitorFront9Scores(competitor: $0)
+                                        CompetitorScores(competitor: $0, grossTotal: $0.competitorScoresArray.TotalGrossScore_front9(), pointsTotal: $0.competitorScoresArray.TotalStablefordPoints_front9())
                                             
                                         
                                     }

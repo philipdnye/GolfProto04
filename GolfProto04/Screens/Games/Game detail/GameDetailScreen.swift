@@ -207,7 +207,11 @@ struct GameDetailScreen: View {
                     Section {
                         
                         ForEach(Array(game.game.competitorArray.sorted(by:
-                                                                        {$0.team < $1.team}
+                                                                        {if $0.team == $1.team{
+                                                                            return $0.handicapIndex < $1.handicapIndex
+                                                                        }
+                            return $0.team < $1.team
+                        }
                                                                        
                                                                       )), id: \.self){competitor in
                             CompetitorRowItem_GameDetail(competitor: competitor,game: game ,needsRefresh: $needsRefresh)

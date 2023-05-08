@@ -24,6 +24,7 @@
 		D4431CF929FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4431CF829FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift */; };
 		D44F22952A08F8EB001EDC74 /* Extensions_CompetitorScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F22942A08F8EB001EDC74 /* Extensions_CompetitorScore.swift */; };
 		D44F22972A0906D4001EDC74 /* CompetitorScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F22962A0906D4001EDC74 /* CompetitorScores.swift */; };
+		D44F229A2A096A2F001EDC74 /* exampleGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = D44F22992A096A2F001EDC74 /* exampleGames.swift */; };
 		D46C8BBF29F86CA70059F26E /* HoleNavigatorPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */; };
 		D46CB01C29F595A20078169B /* EXtension_NSNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */; };
 		D4804E8129F827D4004A0F0B /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4804E8029F827D3004A0F0B /* HomeView.swift */; };
@@ -132,6 +133,7 @@
 		D4431CF829FAD39100EA02E7 /* Extensions_CompetitorScoreArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_CompetitorScoreArray.swift; sourceTree = "<group>"; };
 		D44F22942A08F8EB001EDC74 /* Extensions_CompetitorScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions_CompetitorScore.swift; sourceTree = "<group>"; };
 		D44F22962A0906D4001EDC74 /* CompetitorScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompetitorScores.swift; sourceTree = "<group>"; };
+		D44F22992A096A2F001EDC74 /* exampleGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exampleGames.swift; sourceTree = "<group>"; };
 		D46C8BBE29F86CA70059F26E /* HoleNavigatorPopUp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HoleNavigatorPopUp.swift; sourceTree = "<group>"; };
 		D46CB01B29F595A20078169B /* EXtension_NSNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EXtension_NSNumber.swift; sourceTree = "<group>"; };
 		D4804E8029F827D3004A0F0B /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -255,6 +257,14 @@
 			path = Scorecard;
 			sourceTree = "<group>";
 		};
+		D44F22982A096A00001EDC74 /* Examples for previews */ = {
+			isa = PBXGroup;
+			children = (
+				D44F22992A096A2F001EDC74 /* exampleGames.swift */,
+			);
+			path = "Examples for previews";
+			sourceTree = "<group>";
+		};
 		D46C8BBD29F83E520059F26E /* Score entry */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +317,7 @@
 		D482378029F2F6E30029ECBF /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
+				D44F22982A096A00001EDC74 /* Examples for previews */,
 				D482378129F2F6E30029ECBF /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
@@ -714,6 +725,7 @@
 				D482379029F2F83A0029ECBF /* UIColorTransformer.swift in Sources */,
 				D4804E8129F827D4004A0F0B /* HomeView.swift in Sources */,
 				D482382829F3B98E0029ECBF /* ChangeCompetitorTeeBoxSheet.swift in Sources */,
+				D44F229A2A096A2F001EDC74 /* exampleGames.swift in Sources */,
 				D482382C29F3B98E0029ECBF /* GameListRowItem.swift in Sources */,
 				D4F953C629F65AD0002A00BD /* StartGameViewModel.swift in Sources */,
 				D4431CE529F9139300EA02E7 /* Game+CoreDataProperties.swift in Sources */,

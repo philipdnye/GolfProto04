@@ -16,6 +16,14 @@ struct ScorecardScreen: View {
             
             
             List{
+                HStack{
+                    Text(scoreEntryVM.currentGame.game.FourBallBetterBallNetResult()[0])
+                    Text(scoreEntryVM.currentGame.game.FourBallBetterBallNetResult()[1])
+                    Text(scoreEntryVM.currentGame.game.FourBallBetterBallNetResult()[2])
+                }
+                
+                
+                
                 HStack(spacing: 0){
                     Group{
                         ForEach(scoreEntryVM.currentGame.game.competitorArray, id: \.self) {

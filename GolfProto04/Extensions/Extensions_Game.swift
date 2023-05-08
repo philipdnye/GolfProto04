@@ -71,6 +71,29 @@ extension Game {
 }
 
 extension Game {
+    func AllScoresCommitted(holeIndex: Int) -> Bool {
+        var scoresCommitted: [Bool] = []
+        if self.competitorArray.first?.competitorScoresArray[holeIndex].scoreCommitted == true{
+            for i in 0..<self.competitorArray.count {
+                scoresCommitted.append(self.competitorArray[i].competitorScoresArray[holeIndex].scoreCommitted)
+                
+                //teeBoxes.append(self.competitorArray[i].teeBox ?? TeeBox())
+            }
+            let hasAllItemsEqual = scoresCommitted.dropFirst().reduce(true) { (partialResult, element) in
+                return partialResult && element == scoresCommitted
+                
+                    .first
+            }
+            return hasAllItemsEqual
+        } else {
+            return false
+        }
+    }
+}
+
+
+
+extension Game {
     func TotalPlayingHandicapA () -> Double {
         if !self.teamShotsArray.isEmpty{
             let totalPHA = Double(self.teamShotsArray[0].playingHandicap + self.teamShotsArray[0].diffTeesXShots)
@@ -147,5 +170,110 @@ extension Game {
         
         let shotsReceived = shots18Recd + shots36Recd + shots54Recd
         return shotsReceived
+    }
+}
+
+extension Game {
+    func SortedCompetitorArray () -> [Competitor] {
+        return self.competitorArray.sorted(by: {$0.playingHandicap < $1.playingHandicap})
+    }
+}
+
+
+extension Game {
+    
+    func FourBallBetterBallNetResult () -> [String] { // first value is for team A, second value for team B and third is for all square
+        
+        
+        let teamA = self.competitorArray.filter({$0.team_String == .teamA})
+        let teamB = self.competitorArray.filter({$0.team_String == .teamB})
+        
+        var currentMatchScore: Int = 0
+        var holesPlayed: Int = 0
+       
+        
+        
+        var result = ["","",""]
+        
+        for i in 0..<18 {
+                
+                switch self.AllScoresCommitted(holeIndex: i){
+                case true:
+                    holesPlayed += 1
+                    let teamANetLowScore = min(teamA[0].competitorScoresArray[i].NetScoreMatch(),teamA[1].competitorScoresArray[i].NetScoreMatch() )
+                    let teamBNetLowScore = min(teamB[0].competitorScoresArray[i].NetScoreMatch(),teamB[1].competitorScoresArray[i].NetScoreMatch() )
+                    
+                    print("hole \(i) all scores committed")
+                    print("team A low \(teamANetLowScore) team B low \(teamBNetLowScore)")
+                    
+                    switch teamANetLowScore - teamBNetLowScore {
+                        
+                    case _ where teamANetLowScore - teamBNetLowScore < 0:
+                        currentMatchScore += 1
+                        
+                    case _ where teamANetLowScore - teamBNetLowScore > 0:
+                        currentMatchScore -= 1
+                    default:
+                        break
+                    }
+                case false:
+                    break
+                }
+            
+        }
+       
+        print("current match score \(currentMatchScore)")
+        // teamA score, teamB Score
+        let holesRemaining = 18 - holesPlayed
+       print("holes remaining \(holesRemaining)")
+        switch currentMatchScore {
+        case 0:
+            result[2] = "All square"
+        case _ where currentMatchScore > 0:
+            result[0] = "team A \(currentMatchScore) UP"
+        case _ where currentMatchScore < 0:
+            result[1] = "team B \(-currentMatchScore) UP"
+        default:
+            result = ["","",""]
+        }
+        
+        
+        
+        
+        return result
+    }
+}
+
+
+extension Game {
+    func SortedCompetitors (currentGF: CurrentGameFormat) -> [Competitor] {
+       
+        var sortedCompetitors: [Competitor] = []
+        switch currentGF.assignTeamGrouping {
+            case .Indiv:
+            sortedCompetitors = self.competitorArray.sorted(by: {
+                if $0.handicapIndex == $1.handicapIndex {
+                    return $0.player?.firstName ?? "" < $1.player?.firstName ?? ""}
+                return $0.handicapIndex < $1.handicapIndex
+                
+            })
+       
+        case .TeamsAB:
+            sortedCompetitors = self.competitorArray.sorted(by:{
+            if $0.team == $1.team
+                {return $0.handicapIndex < $1.handicapIndex}
+                return $0.team < $1.team
+            })
+        case .TeamC:
+            sortedCompetitors = self.competitorArray.sorted(by: {
+                if $0.handicapIndex == $1.handicapIndex {
+                    return $0.player?.firstName ?? "" < $1.player?.firstName ?? ""}
+                return $0.handicapIndex < $1.handicapIndex
+                
+            })
+            
+            
+        }
+    return sortedCompetitors
     }
 }

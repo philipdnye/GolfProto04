@@ -21,6 +21,12 @@ class ScoreEntryViewModel: ObservableObject {
     @Published var currentGame: GameViewModel = GameViewModel(game: Game())
     
     
+    @Published var currentMatchScore: Int = 0
+    @Published var holesCommitted: Int = 0
+    
+    
+    
+    
     
     func assignDefaultValues(){
         let manager = CoreDataManager.shared

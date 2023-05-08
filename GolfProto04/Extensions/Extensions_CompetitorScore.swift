@@ -28,3 +28,16 @@ extension  CompetitorScore {
        return stablefordPoints
     }
 }
+
+
+extension CompetitorScore {
+    func NetScoreMatch () -> Int16 {
+        var netScore: Int16 = 0
+        if self.scoreCommitted {
+            netScore = self.grossScore - self.shotsRecdHoleMatch
+        } else {
+            netScore = 0
+        }
+        return netScore
+    }
+}

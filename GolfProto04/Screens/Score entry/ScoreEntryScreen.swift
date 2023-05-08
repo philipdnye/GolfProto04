@@ -203,9 +203,11 @@ struct ScoreEntryScreen: View {
                         .offset(x: 0, y: geo.size.height * CGFloat(((Double(i)+1)*0.15)+0.2))
                 }
                
-                
-                
-                
+                HStack{
+                    Text(game.game.FourBallBetterBallNetResult()[0])
+                    Text(game.game.FourBallBetterBallNetResult()[1])
+                    Text(game.game.FourBallBetterBallNetResult()[2])
+                }
                 //for testing purposes
 //                HStack{
 //                    ForEach(0..<game.game.competitorArray.count, id: \.self) {i in

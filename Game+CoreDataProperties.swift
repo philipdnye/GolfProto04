@@ -50,6 +50,13 @@ extension Game {
                     $0.id < $1.id
                 }
             }
+    
+    public var competitorArraySortedAB: [Competitor] {
+                let set = competitors as? Set<Competitor> ?? []
+                return set.sorted {
+                    $0.team < $1.team
+                }
+            }
         
         public var teamShotsArray: [TeamShots]{
             let set = teamShots as? Set<TeamShots> ?? []
